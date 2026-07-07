@@ -10,15 +10,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
+<link rel="stylesheet" href="mockups/snowbotix-system.css">
+  <style>
 :root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--snow:#F0F2F5;--snow-soft:#E8EAED;--surface:#FFFFFF;--line:#D0D5DD;--steel:#3C4146;--muted:#5A6268;--brand-green:#008A1E;--brand-green-soft:rgba(0,138,30,0.08);--gold-yellow:#C9A227;--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--ink-panel:#1C1F22;--ink-border:#2E3235;--ink-muted:#AEB5BA;--radius:3px;--page-max:1180px;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--font-body);background:var(--snow);color:var(--ink);font-size:16px;line-height:1.6;}
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
-.nav{background:var(--ink);position:sticky;top:0;z-index:100;border-bottom:1px solid #2a2d31;}
-.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
-.nav-brand img{height:28px;width:auto;}
 .nav-links{display:flex;gap:24px;margin-left:auto;}
 .nav-links a{color:#AEB5BA;font-size:14px;font-weight:500;transition:color .15s;}
 .nav-links a:hover,.nav-links a.current{color:#F0F2F5;}
@@ -114,6 +112,7 @@ footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
 </head>
 <body>
 
+<!-- SITE-NAV-START -->
 <nav class="nav">
   <div class="wrap nav-row">
     <a class="brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
@@ -149,6 +148,7 @@ footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
     <a class="btn btn-green" href="#">Request a Site Assessment</a>
   </div>
 </nav>
+<!-- SITE-NAV-END -->
 
 <section class="hero">
   <div class="hero-inner">
@@ -441,6 +441,7 @@ footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
   </div>
 </div>
 
+<!-- SITE-FOOTER-START -->
 <footer style="background:#F0F2F5;color:#5A6268;border-top:1px solid #D0D5DD;">
   <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;padding:48px 0 32px;border-bottom:1px solid #D0D5DD;">
@@ -506,6 +507,7 @@ footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
     </div>
   </div>
 </footer>
+<!-- SITE-FOOTER-END -->
 
 </body>
 </html>
