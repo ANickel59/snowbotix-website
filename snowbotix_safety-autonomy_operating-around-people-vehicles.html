@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Operating Around People &amp; Vehicles | Snowbotix</title>
+<meta name="description" content="Snowbotix is designed for mapped operation on active outdoor sites with pedestrians, crews, and vehicles — with speed governance, stop behavior, line-of-sight manual operation, and supervisor escalation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--snow:#F4F1E8;--snow-soft:#EDE9DC;--surface:#FFFFFF;--line:#D9DEE3;--steel:#3C4146;--muted:#5A6268;--brand-green:#008A1E;--brand-green-soft:rgba(0,138,30,0.08);--gold-yellow:#C9A227;--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--ink-panel:#1C1F22;--ink-border:#2E3235;--ink-muted:#AEB5BA;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--snow);color:var(--ink);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:var(--ink);position:sticky;top:0;z-index:100;border-bottom:1px solid #2a2d31;}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:#AEB5BA;font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:#F4F1E8;}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-green{background:var(--brand-green);color:#fff;margin-left:16px;}
+.btn-green:hover{opacity:.88;}
+.sec-link{color:var(--brand-green);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link::after{content:'→';}
+.sec-link:hover{opacity:.8;}
+.sec-link-light{color:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:.8;}
+.breadcrumb{background:var(--ink);padding:10px 24px;border-bottom:1px solid #2a2d31;}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:#5a6068;}
+.breadcrumb a{color:var(--ink-muted);transition:color .15s;}
+.breadcrumb a:hover{color:var(--snow);}
+.hero{background:var(--snow-soft);padding:72px 24px 64px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin-bottom:16px;}
+.hero h1{font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.18;max-width:820px;margin-bottom:20px;color:var(--ink);}
+.hero-sub{font-size:17px;color:var(--muted);max-width:680px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:40px;}
+.qual-bar{display:flex;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--line);padding-top:24px;}
+.qual-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.qual-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brand-green);flex-shrink:0;}
+.section{padding:72px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;}
+.section h2{font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.25;margin-bottom:16px;color:var(--ink);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px;max-width:740px;}
+.control-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px;}
+.control-col{border-radius:var(--radius);overflow:hidden;}
+.control-col-header{background:var(--ink);padding:18px 24px;}
+.control-col-header h3{font-size:14px;font-weight:700;color:var(--snow);}
+.control-col-header p{font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;}
+.control-item{background:var(--surface);padding:16px 24px;border-bottom:1px solid var(--line);}
+.control-item:last-child{border-bottom:none;}
+.control-item h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+.control-item p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+@media(max-width:640px){.control-pair{grid-template-columns:1fr;}}
+.speed-spec{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.speed-item p.mode-label{font-family:var(--font-mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;}
+.speed-item p.speed-val{font-size:32px;font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:6px;}
+.speed-item p.speed-note{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+@media(max-width:540px){.speed-spec{grid-template-columns:1fr;}}
+.scenario-table{width:100%;border-collapse:collapse;margin-top:28px;border-radius:var(--radius);overflow:hidden;}
+.scenario-table th{background:var(--ink);color:var(--snow);font-size:12px;font-weight:600;padding:12px 16px;text-align:left;font-family:var(--font-mono);letter-spacing:.06em;}
+.scenario-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+.scenario-table tr:last-child td{border-bottom:none;}
+.scenario-table td:first-child{color:var(--ink);font-weight:600;font-size:13px;width:220px;}
+.coord-table{width:100%;border-collapse:collapse;margin-top:28px;border-radius:var(--radius);overflow:hidden;}
+.coord-table th{background:var(--ink);color:var(--snow);font-size:12px;font-weight:600;padding:12px 16px;text-align:left;font-family:var(--font-mono);letter-spacing:.06em;}
+.coord-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+.coord-table tr:last-child td{border-bottom:none;}
+.coord-table td:first-child{color:var(--ink);font-weight:600;font-size:13px;width:200px;}
+.faq-list{margin-top:32px;display:flex;flex-direction:column;gap:2px;}
+.faq-row{background:var(--surface);padding:22px 28px;border-radius:var(--radius);}
+.faq-row h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--ink);}
+.faq-row p{font-size:14px;color:var(--muted);line-height:1.65;margin:0;}
+.cta-band{background:var(--brand-green);padding:72px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(22px,3vw,34px);font-weight:700;color:#fff;margin-bottom:14px;max-width:640px;}
+.cta-band p{font-size:15px;color:rgba(255,255,255,.8);max-width:560px;line-height:1.65;margin-bottom:28px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.btn-white{background:#fff;color:var(--brand-green);}
+.btn-white:hover{opacity:.92;}
+.cta-micro{font-size:13px;color:rgba(255,255,255,.65);margin-top:20px;max-width:540px;line-height:1.6;}
+footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand img{height:24px;width:auto;filter:brightness(0)invert(1);margin-bottom:12px;}
+.footer-brand p{font-size:13px;color:var(--ink-muted);line-height:1.6;}
+.footer-col h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--snow);margin-bottom:12px;}
+.footer-col a{display:block;font-size:13px;color:var(--ink-muted);padding:3px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--snow);}
+.footer-bottom{border-top:1px solid var(--steel);padding-top:20px;font-size:12px;color:#5a6068;}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_safety-autonomy.html" class="current">Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="btn btn-green" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="snowbotix_safety-autonomy.html">Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    <span>/</span>
+    <span style="color:var(--ink-muted);">Operating Around People &amp; Vehicles</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Operating Around People &amp; Vehicles</p>
+    <h1>Controlled autonomy for active outdoor sites.</h1>
+    <p class="hero-sub">Commercial sites are not empty. They have pedestrians, employees, maintenance crews, deliveries, service vehicles, and shift changes happening around the same routes the robot is meant to maintain. Snowbotix is not designed for controlled test environments. It is designed for sites where people and vehicles are already there — with operating controls that account for that from the start.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-green" href="#">Request a Site Assessment</a>
+      <a class="sec-link" href="snowbotix_techspecs_safety-systems.html">View Safety Systems Specs</a>
+    </div>
+    <div class="qual-bar">
+      <span class="qual-item">2 mph autonomous operating speed</span>
+      <span class="qual-item">Pedestrian detection and halt behavior</span>
+      <span class="qual-item">Vehicle operating controls</span>
+      <span class="qual-item">Line-of-sight manual mode for active areas</span>
+      <span class="qual-item">Remote supervisor oversight</span>
+      <span class="qual-item">People-flow inputs at site planning</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">01 — Speed Governance</p>
+    <h2>Autonomous operating speeds are governed, not variable.</h2>
+    <p>Speed governance is not a software setting that can be turned up. Autonomous operation is governed to a controlled speed that reflects the reality of working in environments where people are present.</p>
+    <div class="speed-spec">
+      <div class="speed-item">
+        <p class="mode-label">Autonomous mode</p>
+        <p class="speed-val">2 mph</p>
+        <p class="speed-note">Maximum governed speed for autonomous route operation. Consistent across all commercial and institutional site types.</p>
+      </div>
+      <div class="speed-item">
+        <p class="mode-label">Line-of-sight / manual mode</p>
+        <p class="speed-val">5 mph</p>
+        <p class="speed-note">Maximum speed when a local operator controls the unit directly. Used for repositioning, loading, docking, and complex maneuvers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — Operating Controls</p>
+    <h2>Separate operating controls for pedestrians and vehicles.</h2>
+    <div class="control-pair">
+      <div class="control-col">
+        <div class="control-col-header">
+          <h3>Pedestrian operating controls</h3>
+          <p>Applied wherever people are present on or near the route</p>
+        </div>
+        <div class="control-item">
+          <h4>360-degree pedestrian detection</h4>
+          <p>Sensors detect people around the unit, not just in the forward travel direction. The perimeter is active during autonomous operation.</p>
+        </div>
+        <div class="control-item">
+          <h4>Automatic halt when person detected</h4>
+          <p>When a person is detected within the sensing radius, the unit stops autonomously. It does not continue. The event is logged.</p>
+        </div>
+        <div class="control-item">
+          <h4>Route scheduling for off-peak windows</h4>
+          <p>High-foot-traffic areas can be scheduled for off-peak or overnight operation windows when pedestrian activity is lower.</p>
+        </div>
+        <div class="control-item">
+          <h4>Signage and site communication</h4>
+          <p>Site teams are advised to communicate robot operating windows to employees and visitors for high-activity zones.</p>
+        </div>
+        <div class="control-item">
+          <h4>Supervisor escalation path</h4>
+          <p>Any pedestrian-related stop event can be escalated by the remote supervisor for facility notification or rerouting.</p>
+        </div>
+      </div>
+      <div class="control-col">
+        <div class="control-col-header">
+          <h3>Vehicle operating controls</h3>
+          <p>Applied at routes shared with trucks, service vehicles, and equipment</p>
+        </div>
+        <div class="control-item">
+          <h4>Vehicle detection and halt</h4>
+          <p>Vehicles within the sensing perimeter trigger a halt. The event is logged and escalated to the supervisor for review.</p>
+        </div>
+        <div class="control-item">
+          <h4>Line-of-sight manual in active vehicle areas</h4>
+          <p>Route segments with active or unpredictable vehicle traffic are handled through line-of-sight manual operation, not autonomous mode.</p>
+        </div>
+        <div class="control-item">
+          <h4>Geofenced separation of vehicle and pedestrian zones</h4>
+          <p>Operating boundaries separate areas of active vehicle movement from pedestrian or lower-traffic routes.</p>
+        </div>
+        <div class="control-item">
+          <h4>Time-based operating windows</h4>
+          <p>Dock lanes, delivery areas, and loading zones are scheduled to operate during defined windows outside peak vehicle traffic.</p>
+        </div>
+        <div class="control-item">
+          <h4>Site planning input on vehicle flow</h4>
+          <p>Truck routes, shift change patterns, and delivery windows are mapped during site assessment and reflected in operating boundaries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">03 — Interaction Scenarios</p>
+    <h2>How the system responds in common site situations.</h2>
+    <table class="scenario-table">
+      <thead>
+        <tr><th>Scenario</th><th>Robot response</th><th>Supervisor action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pedestrian enters route mid-mission</td><td>Halt autonomously, log event, hold position</td><td>Review event, clear path or reroute, resume or reassign</td></tr>
+        <tr><td>Crew working on a nearby section of the route</td><td>Halt at crew detection range, hold and alert</td><td>Coordinate with site team, defer route segment, switch to manual</td></tr>
+        <tr><td>Delivery truck blocking normal path</td><td>Halt before contact, log, hold</td><td>Route around obstruction using manual mode or defer segment</td></tr>
+        <tr><td>Shift change creating high foot traffic</td><td>Pre-scheduled operating window avoids peak period</td><td>Confirm schedule before mission starts</td></tr>
+        <tr><td>Vehicle turning into operating zone unexpectedly</td><td>Vehicle detection triggers halt</td><td>Hold position, alert site contact, reassess route segment</td></tr>
+        <tr><td>Person approaching from behind during autonomous run</td><td>360-degree sensing detects approach, unit halts</td><td>Event logged, supervisor review, clear before resuming</td></tr>
+        <tr><td>Loading dock activity spilling into planned route</td><td>Detection triggers halt at boundary of activity</td><td>Defer segment, switch to manual for dock-adjacent work, or reschedule</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Crew Coordination</p>
+    <h2>Working alongside maintenance crews, not around them.</h2>
+    <p>Snowbotix does not operate independently from the people managing the site. Deployment works better when robot operating windows are communicated to maintenance crews, facility management, and supervisors who can plan around them.</p>
+    <table class="coord-table">
+      <thead>
+        <tr><th>Crew type</th><th>Coordination approach</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Grounds maintenance crews</td><td>Schedule robot routes during windows when crews are not working the same zones; use line-of-sight manual when adjacent work is underway</td></tr>
+        <tr><td>Delivery and logistics teams</td><td>Map dock and delivery route segments for off-peak windows; use manual mode for dock-adjacent work during active shift hours</td></tr>
+        <tr><td>Building maintenance and contractors</td><td>Flag active work zones as temporary exclusions; supervisor holds robot at boundary until zone is clear</td></tr>
+        <tr><td>Security and patrol personnel</td><td>Communicate robot operating windows to security teams; supervisor notifies patrol of active routes</td></tr>
+        <tr><td>Facility management</td><td>Include robot routes in facility planning; alert facility team for any stop event near critical access areas</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">05 — Site Planning Inputs</p>
+    <h2>People-flow and vehicle-flow information improves deployment design.</h2>
+    <p>The more accurately the site assessment captures how people and vehicles actually move through the property, the better the routes, boundaries, and operating windows can be planned. Useful inputs include:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:24px;">
+      <div style="background:var(--surface);padding:18px 22px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">People flow</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Peak foot traffic hours, shift change times, public access patterns, primary pedestrian routes, and high-visibility public zones.</p>
+      </div>
+      <div style="background:var(--surface);padding:18px 22px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Vehicle flow</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Truck delivery schedules, internal service vehicle routes, shift-change traffic, parking lot peak hours, and dock assignment patterns.</p>
+      </div>
+      <div style="background:var(--surface);padding:18px 22px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Operating windows</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Off-peak hours, overnight windows, early-morning access before tenant or visitor arrival, and shift-gap timing for schedule-based routes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2>Questions about operating in active environments.</h2>
+    <div class="faq-list">
+      <div class="faq-row">
+        <h3>How fast does the robot move near people?</h3>
+        <p>During autonomous operation, the robot is governed to 2 mph. During line-of-sight manual operation — where a local operator controls the unit directly — the maximum speed is 5 mph. There is no mode that removes speed governance.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What happens when the robot detects someone?</h3>
+        <p>When a person is detected within the sensing perimeter, the unit stops and holds position. The event is logged with location, timestamp, and sensor data. The remote supervisor reviews the event and determines whether to hold, reroute, or switch to manual operation.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Can the robot operate in a location that is always busy?</h3>
+        <p>High-foot-traffic areas are best handled through scheduled operating windows — overnight, early morning, or shift-gap timing when pedestrian activity is lower. Routes that cannot be scheduled around consistent activity may be identified as candidates for line-of-sight manual operation or exclusion.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What happens if a truck pulls into the operating zone?</h3>
+        <p>Vehicle detection triggers an automatic halt. The supervisor reviews the event and decides whether to hold the robot at its current position, defer the route segment, or switch to manual mode to handle the nearby work.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Does Snowbotix work in truck yards and active logistics facilities?</h3>
+        <p>Snowbotix can operate in logistics environments with careful route design. Pedestrian corridors and access paths are typically the best starting routes. Active dock lanes and vehicle-heavy areas are handled through line-of-sight manual operation and time-based scheduling rather than autonomous operation.</p>
+      </div>
+      <div class="faq-row">
+        <h3>How are crews told that the robot is operating?</h3>
+        <p>Site communication is set up during deployment planning. This typically includes facility notices, signage at the operating area, and direct coordination with maintenance, security, and facilities management teams. The supervisor can also notify facility contacts directly from the monitoring dashboard.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Does Snowbotix work when there are contractors on site?</h3>
+        <p>Temporary work zones from contractors can be added as time-limited exclusions in the site map. The supervisor holds the robot at the boundary of any active contractor work and can route around the area or defer the segment until the zone is clear.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Who is responsible for telling people a robot is operating?</h3>
+        <p>Site communication is the responsibility of the facility operator and the deployment team, not the robot. The supervisor supports escalation and facility notification, but operational communication — signage, employee briefings, and contractor coordination — is a site management function.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Review how controlled autonomy would work at your site.</h2>
+    <p>A site assessment maps your people-flow patterns, vehicle routes, operating windows, and high-activity zones so routes can be designed for how your facility actually operates.</p>
+    <div class="cta-band-btns">
+      <a class="btn btn-white" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="snowbotix_safety-autonomy.html">Back to Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <p class="cta-micro">Site assessments include a review of pedestrian patterns, vehicle access, operating window options, and deployment constraints specific to your facility.</p>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

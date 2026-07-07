@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Snowbotix | Commercial Outdoor Robotics by RoboWorkX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="mockups/snowbotix-system.css">
+<style>
+  .company-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex; align-items: flex-end;
+    background: linear-gradient(180deg, rgba(10,12,14,0.25) 0%, rgba(10,12,14,0.45) 45%, rgba(10,12,14,0.96) 100%),
+                url('images/company-hero-nightedit.jpg') center 62% / cover no-repeat;
+    color: var(--paper-0);
+  }
+  .company-hero .wrap { padding-bottom: 88px; padding-top: 160px; }
+  .company-hero h1 { max-width: 900px; color: var(--white); margin-top: 22px; }
+  .company-hero .hero-copy { max-width: 620px; margin-top: 26px; font-size: 17px; color: #d7dbdd; }
+  .company-hero .cta-row { margin-top: 40px; }
+  .company-hero .eyebrow { color: var(--amber-400); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .split .story-text p { color: #c7cdd3; font-size: 15.5px; margin: 0 0 18px; }
+  .split .story-text p:first-of-type { color: var(--paper-0); font-size: 18px; font-weight: 500; }
+  .split figure { margin: 0; background: var(--white); padding: 28px; }
+  .split figcaption {
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink-500);
+    letter-spacing: .06em; text-transform: uppercase; margin-top: 14px;
+  }
+
+  .feature-full { position: relative; }
+  .feature-full .feature-copy { max-width: 640px; margin-bottom: 48px; }
+  .feature-full .feature-copy p { color: #c7cdd3; font-size: 16.5px; }
+  .feature-full .frame { position: relative; }
+  .feature-full img { width: 100%; }
+  .feature-full .frame-tag {
+    position: absolute; top: 20px; left: 20px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--charcoal-950); background: var(--amber-500); padding: 6px 12px;
+  }
+
+  .build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--paper-100); margin-top: 56px; }
+  .build-grid .cell { background: var(--paper-0); padding: 28px 24px; }
+  .build-grid .cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--amber-600); font-weight: 700; }
+  .build-grid .cell .label { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; margin-top: 10px; font-weight: 700; }
+  .build-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .build-intro p { color: var(--ink-700); font-size: 16px; }
+  .build-note { margin-top: 36px; font-size: 14px; color: var(--ink-500); border-left: 2px solid var(--amber-500); padding-left: 16px; }
+
+  .pressure { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; }
+  .pressure-list { display: flex; flex-direction: column; gap: 0; }
+  .pressure-list .row { padding: 20px 0; border-bottom: 1px solid var(--line-on-dark); display: flex; gap: 20px; align-items: baseline; }
+  .pressure-list .row:first-child { border-top: 1px solid var(--line-on-dark); }
+  .pressure-list .row .tag { font-family: var(--font-mono); font-size: 11px; color: var(--amber-500); min-width: 90px; }
+  .pressure-list .row p { margin: 0; color: #d7dbdd; font-size: 15px; }
+
+  .stack-diagram { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 20px; position: relative; }
+  .stack-diagram .stack-cell {
+    border: 1px solid var(--paper-100); padding: 36px 28px; background: var(--white); position: relative;
+  }
+  .stack-diagram .stack-cell + .stack-cell::before {
+    content: '?'; position: absolute; left: -13px; top: 50%; transform: translateY(-50%);
+    width: 24px; height: 24px; background: var(--amber-500); color: var(--charcoal-950);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;
+  }
+  .stack-cell .tag-strip { color: var(--amber-600); }
+  .stack-cell h3 { margin-top: 10px; font-size: 20px; }
+  .stack-cell p { color: var(--ink-700); font-size: 14px; margin-top: 12px; }
+
+  .cred-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-on-dark); margin-top: 40px; }
+  .cred-grid .badge-cell {
+    background: var(--charcoal-900); padding: 26px 20px; min-height: 96px;
+    display: flex; align-items: center; font-size: 13.5px; color: #d7dbdd; font-weight: 500; line-height: 1.4;
+  }
+  .cred-grid .photo-cell {
+    grid-column: span 2; grid-row: span 2; padding: 0; position: relative; overflow: hidden; min-height: 220px;
+  }
+  .cred-grid .photo-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cred-grid .event-cell { padding: 0; overflow: hidden; aspect-ratio: 492/331; }
+  .cred-grid .event-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cred-grid .wide-cell { grid-column: span 2; justify-content: center; }
+  .cred-grid .photo-cell .cap {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(0deg, rgba(10,12,14,0.92) 0%, rgba(10,12,14,0) 100%);
+    padding: 32px 20px 16px; font-size: 13.5px; color: var(--paper-0); font-weight: 500;
+  }
+
+  .cta-band { background: var(--amber-500); color: var(--charcoal-950); }
+  .cta-band .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .cta-band h2 { font-size: clamp(26px,3vw,38px); max-width: 560px; }
+  .cta-band .btn-ghost-dark { border-color: var(--charcoal-950); color: var(--charcoal-950); }
+  .cta-band .btn-ghost-dark:hover { background: var(--charcoal-950); color: var(--amber-400); }
+.sec-link-dark{font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--charcoal-950);border-bottom:1px solid rgba(0,0,0,.3);padding-bottom:2px;transition:opacity .15s;}
+.sec-link-dark:hover{opacity:.65;}
+
+  @media (max-width: 860px) {
+    .split, .build-intro, .pressure { grid-template-columns: 1fr; }
+    .build-grid, .cred-grid { grid-template-columns: repeat(2, 1fr); }
+    .stack-diagram { grid-template-columns: 1fr; }
+    .stack-diagram .stack-cell + .stack-cell::before { left: 50%; top: -13px; transform: translateX(-50%) rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="#">Solutions</a>
+      <a href="#">Who It's For</a>
+      <a href="#" class="current">Company</a>
+      <a href="snowbotix_investors_page.html">Investors</a>
+    </div>
+    <a class="btn btn-amber" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<header class="company-hero">
+  <div class="wrap">
+    <span class="eyebrow">RoboWorkX Inc. / Company</span>
+    <h1>Rugged outdoor autonomy,<br>built for real maintenance work.</h1>
+    <p class="hero-copy">Snowbotix is the commercial outdoor maintenance platform from RoboWorkX, building autonomy for work that happens outside, in weather, around people, across real sites.</p>
+    <div class="cta-row">
+      <a class="btn btn-amber" href="#">Request a Site Assessment</a>
+      <a class="sec-link-dark" href="snowbotix_investors_page.html">Investor Inquiries &rarr;</a>
+    </div>
+  </div>
+</header>
+
+<section class="section on-dark">
+  <div class="wrap split">
+    <div class="story-text">
+      <div class="kicker-line"><span class="num">01</span></div>
+      <h2 style="margin-bottom:28px;">Our Story</h2>
+      <p>RoboWorkX began with a practical problem.</p>
+      <p>Outdoor maintenance still depends on people operating equipment in conditions where the work is repetitive, difficult to staff, and sometimes dangerous. Snow-covered sidewalks. Icy entrances. Steep mowing areas. Debris after storms. Long routes that need to be cleared, checked, and documented.</p>
+      <p>These are ordinary problems until they fail. Then they become safety issues, access issues, service issues, and liability issues.</p>
+      <p>Snowbotix was built to address that kind of work. The first version focused on snow removal for non-road environments such as sidewalks, plazas, entryways, campuses, and commercial routes. As the company tested the system, the need widened. The same customers also needed help with sweeping, mowing, brush, deicing, and recurring outdoor maintenance.</p>
+      <p>That changed the product. Snowbotix moved from a single-season robot to a year-round autonomous maintenance platform. It also clarified the company's long-term direction. The most important part of the system is the autonomy layer: sensing, compute, navigation, obstacle detection, route execution, supervision, and reporting. RoboWorkX calls that layer AIB, Autonomy-in-a-Box.</p>
+      <p style="color:var(--amber-400); font-weight:600;">Snowbotix is the first commercial application. AIB is the technology foundation behind it.</p>
+    </div>
+    <div>
+      <figure>
+        <img src="mockups/images/lineart-full-platform.png" alt="Snowbotix modular platform technical line drawing" width="1402" height="1122" loading="lazy">
+        <figcaption>Modular platform: mower deck and broom attachments, one chassis</figcaption>
+      </figure>
+      <figure style="margin-top:24px;">
+        <img src="mockups/images/company-v1-prototype.png" alt="Early Snowbotix prototype clearing a snow-covered path" width="308" height="543" loading="lazy">
+        <figcaption>Early prototype (v1): the first version, built for snow removal</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section on-mid feature-full">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--amber-400);">Our Philosophy</span>
+    <h2 style="margin-top:20px; color:var(--white);">Supervised Autonomy</h2>
+    <div class="feature-copy" style="margin-top:24px;">
+      <p style="font-size:19px; color:var(--paper-0);">Autonomy should support the people responsible for the work. The robot performs defined tasks, while people remain involved in planning, deployment, monitoring, service, and judgment.</p>
+      <p>That human layer matters. Outdoor work is variable. Sites are different. Weather changes. Customers need confidence that the system is being watched, supported, and improved. RoboWorkX is building for that reality.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="frame">
+      <span class="frame-tag">Live: Autonomous Operations Center</span>
+      <img src="mockups/images/company-command-center.png" alt="Snowbotix command center: operators monitoring the fleet interface" width="1672" height="941" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section on-light">
+  <div class="wrap">
+    <div class="build-intro">
+      <div>
+        <div class="kicker-line"><span class="num">02</span></div>
+        <h2>What We Build</h2>
+      </div>
+      <div>
+        <p>RoboWorkX builds autonomy systems for outdoor work. Snowbotix applies that technology to commercial maintenance tasks that are recurring, hazardous, hard to staff, or difficult to verify. Each deployment is built around defined routes or zones that are assessed, mapped, configured, and supported before operation.</p>
+      </div>
+    </div>
+    <div class="build-grid">
+      <div class="cell"><div class="n">01</div><div class="label">Robotic Outdoor Equipment</div></div>
+      <div class="cell"><div class="n">02</div><div class="label">Modular Attachments</div></div>
+      <div class="cell"><div class="n">03</div><div class="label">AIB Autonomy Hardware &amp; Software</div></div>
+      <div class="cell"><div class="n">04</div><div class="label">Mapped Routes &amp; Operating Zones</div></div>
+      <div class="cell"><div class="n">05</div><div class="label">Remote Monitoring</div></div>
+      <div class="cell"><div class="n">06</div><div class="label">Fleet Visibility</div></div>
+      <div class="cell"><div class="n">07</div><div class="label">Service Support</div></div>
+      <div class="cell"><div class="n">08</div><div class="label">Proof-of-Service Reporting</div></div>
+    </div>
+    <p class="build-note">The system is designed for commercial, institutional, municipal, industrial, and government environments. It is not a residential snow robot or a one-time service product.</p>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="wrap pressure">
+    <div>
+      <div class="kicker-line"><span class="num">03</span></div>
+      <h2 style="color:var(--white);">Why It Matters</h2>
+      <p style="color:#c7cdd3; margin-top:24px; font-size:16px;">Commercial outdoor maintenance is under pressure. Snowbotix gives operators a way to test autonomy in bounded, practical environments. Start with a specific route. Prove the fit. Expand from there.</p>
+      <p style="color:var(--amber-400); font-weight:600; margin-top:20px;">The goal: make outdoor maintenance safer, more consistent, and easier to supervise.</p>
+    </div>
+    <div class="pressure-list">
+      <div class="row"><span class="tag">FACILITIES</span><p>Facilities teams, municipalities, and commercial campuses are dealing with labor constraints.</p></div>
+      <div class="row"><span class="tag">SAFETY</span><p>Rising safety expectations across airports, industrial sites, and government &amp; defense operators.</p></div>
+      <div class="row"><span class="tag">WEATHER</span><p>Weather volatility demands equipment that performs outside the lab, in real conditions.</p></div>
+      <div class="row"><span class="tag">PROOF</span><p>Higher demands for proof that work was actually completed, not just verbal assurance.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-light">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">04</span></div>
+    <h2>RoboWorkX &amp; Snowbotix</h2>
+    <p style="max-width:680px; margin-top:20px; color:var(--ink-700); font-size:16px;">RoboWorkX Inc. is the robotics company behind Snowbotix. AIB, Autonomy-in-a-Box, is the core autonomy layer inside the system, where RoboWorkX is building long-term value, starting with outdoor maintenance and field operations where customers already have urgent, recurring work to manage.</p>
+    <div class="stack-diagram">
+      <div class="stack-cell">
+        <span class="tag-strip">THE COMPANY</span>
+        <h3>RoboWorkX Inc.</h3>
+        <p>The robotics company behind Snowbotix.</p>
+      </div>
+      <div class="stack-cell">
+        <span class="tag-strip">THE PLATFORM</span>
+        <h3>Snowbotix</h3>
+        <p>The commercial outdoor maintenance platform customers use to evaluate and deploy the technology.</p>
+      </div>
+      <div class="stack-cell">
+        <span class="tag-strip">THE TECHNOLOGY</span>
+        <h3>AIB</h3>
+        <p>Autonomy-in-a-Box, the core autonomy layer RoboWorkX is building for outdoor equipment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">05</span></div>
+    <h2 style="color:var(--white);">Credibility Signals</h2>
+    <div class="cred-grid">
+      <div class="photo-cell">
+        <img src="mockups/images/company-pikes-peak.jpg" alt="Snowbotix robot deployed at Pikes Peak, Colorado" width="2040" height="1536" loading="lazy">
+        <div class="cap">Pikes Peak, Colorado: competitive municipal pilot</div>
+      </div>
+      <div class="badge-cell logo-cell"><img src="mockups/images/xtech-logo.png" alt="US Army xTechEdge Ground Competition 2026" loading="lazy"></div>
+      <div class="badge-cell logo-cell"><img src="mockups/images/medc-logo.png" alt="MEDC grant recipient" loading="lazy"></div>
+      <div class="badge-cell event-cell wide-cell"><img src="mockups/images/uncrewed-triple-challenge.png" alt="Uncrewed Triple Challenge 2025" width="492" height="331" loading="lazy"></div>
+      <div class="badge-cell">Field-tested autonomous outdoor maintenance systems</div>
+      <div class="badge-cell">Active commercial evaluations</div>
+      <div class="badge-cell">Paid deployment activity</div>
+      <div class="badge-cell logo-cell"><img src="mockups/images/techstars-logo.png" alt="Techstars participant" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-band">
+  <div class="wrap">
+    <div>
+      <h2>Have a commercial site with recurring outdoor maintenance work?</h2>
+      <p style="margin-top:14px; max-width:480px; font-weight:500;">Request a site assessment to see whether Snowbotix fits your routes, zones, and operating needs.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-glass-dark" href="#">Request a Site Assessment</a>
+      <a class="sec-link-dark" href="snowbotix_investors_page.html">Investor Inquiries &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snowbotix Deployment Requirements | Site Assessment, Mapping, Operating Plan</title>
+<meta name="description" content="Review Snowbotix deployment requirements: 10-step pre-deployment process, site mapping, route approval, power logistics, deployment models, and the 16-item readiness checklist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--ink-soft:#1E2024;--snow:#F4F1E8;--surface:#242628;--surface-soft:#2A2D30;--line:#2E3235;--steel:#666C72;--muted:#9AA0A6;--brand-green:#008A1E;--gold-yellow:#C9A227;--gold-yellow-soft:rgba(201,162,39,0.1);--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--ink);color:var(--snow);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:#121315;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;filter:brightness(0)invert(1);}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:var(--snow);}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-gold{background:var(--gold-yellow);color:#121315;margin-left:16px;}
+.btn-gold:hover{opacity:.88;}
+.sec-link-light{color:var(--snow);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;opacity:.75;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:1;}
+.breadcrumb{background:#121315;padding:10px 24px;border-bottom:1px solid var(--line);}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
+.breadcrumb a{color:var(--muted);transition:color .15s;}
+.breadcrumb a:hover{color:var(--snow);}
+.hero{background:var(--ink-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:16px;}
+.hero h1{font-size:clamp(26px,3.5vw,42px);font-weight:700;line-height:1.16;max-width:800px;margin-bottom:18px;color:var(--snow);}
+.hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:36px;}
+.spec-strip{display:flex;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--line);padding-top:20px;}
+.spec-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.spec-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold-yellow);flex-shrink:0;}
+.section{padding:64px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
+.section h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;line-height:1.22;margin-bottom:14px;color:var(--snow);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:740px;}
+.section p:last-child{margin-bottom:0;}
+.step-list{display:flex;flex-direction:column;gap:1px;margin-top:24px;background:var(--line);}
+.step-row{display:flex;background:var(--surface);}
+.step-num{width:56px;min-width:56px;display:flex;align-items:flex-start;justify-content:center;padding:20px 0;font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--gold-yellow);}
+.step-body{padding:20px 24px 20px 12px;border-left:1px solid var(--line);}
+.step-body h3{font-size:15px;font-weight:700;color:var(--snow);margin-bottom:6px;}
+.step-body p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+.spec-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.spec-table th{background:#121315;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);}
+.spec-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.spec-table tr:last-child td{border-bottom:none;}
+.spec-table td:first-child{color:var(--snow);font-weight:600;font-size:13px;width:220px;}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:24px;}
+.model-cell{background:var(--surface);padding:22px 24px;}
+.model-tag{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-yellow);margin-bottom:8px;}
+.model-cell h3{font-size:14px;font-weight:700;color:var(--snow);margin-bottom:8px;}
+.model-cell p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+@media(max-width:760px){.model-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.model-grid{grid-template-columns:1fr;}}
+.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:24px;}
+.check-item{background:var(--surface);padding:14px 18px;display:flex;align-items:flex-start;gap:12px;}
+.check-mark{width:18px;min-width:18px;height:18px;border:1px solid var(--gold-yellow);border-radius:2px;display:flex;align-items:center;justify-content:center;margin-top:2px;flex-shrink:0;}
+.check-mark::after{content:'✓';font-size:11px;color:var(--gold-yellow);}
+.check-item p{font-size:13px;color:var(--muted);line-height:1.5;margin:0;}
+@media(max-width:560px){.checklist{grid-template-columns:1fr;}}
+.related-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:32px;background:var(--line);}
+.related-item{background:var(--surface);padding:16px 20px;}
+.related-item a{font-size:13px;color:var(--muted);font-weight:500;transition:color .15s;}
+.related-item a:hover{color:var(--gold-yellow);}
+.related-item p{font-size:11px;color:var(--steel);margin-top:4px;font-family:var(--font-mono);}
+@media(max-width:640px){.related-nav{grid-template-columns:1fr 1fr;}}
+.cta-band{background:#121315;border-top:1px solid var(--line);padding:64px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;color:var(--snow);margin-bottom:12px;max-width:600px;}
+.cta-band p{font-size:15px;color:var(--muted);max-width:560px;line-height:1.65;margin-bottom:24px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+footer{background:#0E0F11;color:var(--muted);padding:40px 24px 28px;border-top:1px solid var(--line);}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand img{height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;}
+.footer-brand p{font-size:13px;color:var(--steel);line-height:1.6;}
+.footer-col h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono);}
+.footer-col a{display:block;font-size:13px;color:var(--steel);padding:2px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--muted);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--steel);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_techspecs_robot-platform.html" class="current">Tech Specs</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="snowbotix_techspecs_robot-platform.html">Technology Specifications</a>
+    <span>/</span>
+    <span style="color:var(--snow);">Deployment Requirements</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Technology Specifications / Deployment Requirements</p>
+    <h1>Build the operating plan before the robot runs.</h1>
+    <p class="hero-sub">Snowbotix does not deploy to an unmapped site and start running. Every deployment follows a structured process: site survey, route mapping, boundary and exclusion zone definition, power logistics, crew coordination, safety review, and approval before the first autonomous mission begins. This page describes what that process requires and what operators need to have in place.</p>
+    <div class="hero-ctas">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+    <div class="spec-strip">
+      <span class="spec-item">10-step pre-deployment process</span>
+      <span class="spec-item">Physical site survey required</span>
+      <span class="spec-item">Route mapping and boundary approval</span>
+      <span class="spec-item">Power logistics confirmed before go-live</span>
+      <span class="spec-item">Crew coordination protocols set</span>
+      <span class="spec-item">16-item deployment readiness checklist</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">01 — Why Deployment Requires Preparation</p>
+    <h2>Autonomous outdoor maintenance is site-specific by design.</h2>
+    <p>Snowbotix operates within defined, pre-mapped zones with approved routes, geofenced boundaries, and human oversight. None of this can be set up remotely from a catalog description. The terrain, surface conditions, route geometry, pedestrian patterns, power access, crew responsibilities, and local requirements at your site determine how the system is configured.</p>
+    <p>Deployments that skip site preparation produce operational gaps: unmapped hazards, incorrectly set exclusion zones, mismatched attachment configurations, inadequate power logistics, and undefined supervision responsibilities. The deployment process exists to prevent those gaps, not to add administrative friction.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — 10-Step Pre-Deployment Process</p>
+    <h2>From site assessment to first autonomous mission.</h2>
+    <div class="step-list">
+      <div class="step-row">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Site assessment and feasibility review</h3>
+          <p>Physical walk-through of the site. Route geometry, surface conditions, terrain, slopes, exclusion candidates, pedestrian and vehicle traffic patterns, and power access documented. Route feasibility confirmed before further planning proceeds.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Operating zone definition</h3>
+          <p>Authorized operating zones defined with GPS coordinates and physical boundary markers. Zones are documented, reviewed, and approved before any mapping work begins.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Exclusion zone mapping</h3>
+          <p>Areas where the robot must not operate are identified and mapped: pedestrian-only zones, infrastructure exclusions, loading dock active areas, emergency access requirements, and any site-specific no-go areas. Exclusion zones are programmed into the navigation system before deployment.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Route programming and review</h3>
+          <p>Approved routes are programmed into the fleet portal. Pass patterns, turn geometry, priority zones, and route sequencing are defined and reviewed by the operator before authorization.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h3>Attachment selection and configuration</h3>
+          <p>Attachments are selected based on route requirements, surface type, seasonal work scope, slope, and material logistics. Configuration is reviewed against route geometry and confirmed before deployment.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">06</div>
+        <div class="step-body">
+          <h3>Power logistics planning</h3>
+          <p>Charging dock location, power circuit requirements, hot-swap battery staging, and wireless dock setup are confirmed. Power access must be available at the planned dock location before go-live. 110V circuit required for wireless dock charging.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">07</div>
+        <div class="step-body">
+          <h3>Supervisor and crew roles defined</h3>
+          <p>Supervision staffing, crew coordination protocols, on-site E-stop responsibility, physical E-stop locations, and alert routing are documented and confirmed. Role-based portal access is provisioned before operation begins.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">08</div>
+        <div class="step-body">
+          <h3>Safety and communication protocol review</h3>
+          <p>On-site pedestrian and vehicle coordination protocols, hazard escalation procedures, communication contacts, and operating window schedules reviewed with the site team before the first mission.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">09</div>
+        <div class="step-body">
+          <h3>Supervised test run</h3>
+          <p>First mission executed under direct on-site supervision. Route, boundaries, exclusion zones, speed, sensing, alert routing, and proof-of-service record generation verified before unsupervised scheduled operation is authorized.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">10</div>
+        <div class="step-body">
+          <h3>Deployment authorization and go-live</h3>
+          <p>All checklist items confirmed. Deployment authorized. Scheduled and on-demand missions enabled. Supervisor monitoring responsibilities active from the first authorized mission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">03 — Deployment Models</p>
+    <h2>Five common deployment configurations.</h2>
+    <div class="model-grid">
+      <div class="model-cell">
+        <p class="model-tag">On-Site Staging</p>
+        <h3>Dedicated dock at a fixed site</h3>
+        <p>Robot is permanently staged at one facility. Wireless dock charging overnight or between shifts. Suited for campuses, hospitals, government facilities, and logistics yards with consistent recurring routes.</p>
+      </div>
+      <div class="model-cell">
+        <p class="model-tag">Mobile Hopping</p>
+        <h3>Contractor-style multi-site routing</h3>
+        <p>Robot is transported between sites by crew. Hot-swap batteries allow rapid turnaround between locations. Routes are pre-mapped at each site before deployment. Suited for snow contractors and service companies managing multiple accounts.</p>
+      </div>
+      <div class="model-cell">
+        <p class="model-tag">Storm-Response Staging</p>
+        <h3>Positioned for rapid dispatch when conditions trigger</h3>
+        <p>Robot is staged at or near the site before a storm event. Up to 60 days standby capability supports pre-positioning before storm season. Auto-dispatch when weather conditions meet defined thresholds.</p>
+      </div>
+      <div class="model-cell">
+        <p class="model-tag">Persistent Patrol</p>
+        <h3>Continuous or near-continuous cycling</h3>
+        <p>Robot runs recurring passes across approved routes during defined operating windows. Dock return between pass cycles for charging or swap. Suited for airport ground-side, logistics yard, and campus walkway applications.</p>
+      </div>
+      <div class="model-cell">
+        <p class="model-tag">Pilot</p>
+        <h3>Bounded first deployment to validate site fit</h3>
+        <p>Defined scope — typically one or two routes — under direct supervision for initial service period. Route performance, proof-of-service records, and operational fit reviewed before scale decisions are made.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Site Requirements Summary</p>
+    <h2>What must be confirmed before deployment begins.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Requirement category</th><th>What must be confirmed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Site access</td><td>Physical site walk-through access for assessment and route mapping survey</td></tr>
+        <tr><td>Route width</td><td>Routes must be wide enough for the robot's chassis and attachment configuration</td></tr>
+        <tr><td>Turning geometry</td><td>Route endpoints and intersections must accommodate the robot's turn radius</td></tr>
+        <tr><td>Surface type and condition</td><td>Surface compatibility with selected attachment confirmed — plow, broom, or mower may not be appropriate for all surfaces</td></tr>
+        <tr><td>Slope confirmation</td><td>Slopes above 40° operating limit require site-specific validation. 52° peak capability is subject to site validation only.</td></tr>
+        <tr><td>Clearance heights</td><td>Overhead clearances for robot and attachment confirmed on all route segments</td></tr>
+        <tr><td>Power access</td><td>110V circuit at or near planned dock location. Hot-swap staging logistics confirmed for mobile or high-frequency models.</td></tr>
+        <tr><td>Supervision staffing</td><td>At least one trained supervisor with fleet portal access available during all authorized autonomous operating windows</td></tr>
+        <tr><td>Crew coordination</td><td>On-site crew roles, E-stop locations, and hazard protocols defined and communicated before first mission</td></tr>
+        <tr><td>Material compatibility</td><td>Deicing or other materials selected and validated against attachment, surface, environmental, and local regulatory requirements</td></tr>
+        <tr><td>Data and integration scope</td><td>Portal access provisioned, GIS export formats confirmed, integration requirements documented before go-live</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">05 — Deployment Readiness Checklist</p>
+    <h2>16 items. All must be confirmed before first autonomous operation.</h2>
+    <div class="checklist">
+      <div class="check-item"><div class="check-mark"></div><p>Site walk-through completed</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Operating zones defined and GPS-bounded</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Exclusion zones mapped and programmed</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Routes programmed and reviewed in fleet portal</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Route geometry confirmed — width, turns, clearances</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Slope at or within confirmed operating limit</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Attachment selected and configured</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Material compatibility validated (if applicable)</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Power access confirmed at dock location</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Charging infrastructure installed and tested</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Supervisor trained and fleet portal access provisioned</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>On-site crew E-stop locations and protocols confirmed</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Alert routing configured and tested</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Safety and pedestrian coordination protocols communicated</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Supervised test run completed and reviewed</p></div>
+      <div class="check-item"><div class="check-mark"></div><p>Deployment authorized by site lead and fleet administrator</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">Related Technical Specifications</p>
+    <h2>Review the connected specification pages.</h2>
+    <div class="related-nav">
+      <div class="related-item"><a href="snowbotix_techspecs_robot-platform.html">Robot Platform</a><p>Chassis, tracks, weight, terrain</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_attachments-capabilities.html">Attachments &amp; Capabilities</a><p>Snow, sweep, mow, apply, inspect</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_autonomy-navigation.html">Autonomy &amp; Navigation</a><p>RTK-GNSS, mapping, route planning</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_safety-systems.html">Safety Systems</a><p>360° sensing, E-stops, supervision</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Dispatch, live status, proof-of-work</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>GIS, API, OCI, cloud privacy</p></div>
+      <div class="related-item"><a href="#">Download Spec Sheet</a><p>Full technical specifications PDF</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Start with a site assessment.</h2>
+    <p>Every deployment begins the same way: a physical assessment of your site's routes, surfaces, terrain, power access, crew structure, and operating requirements. The assessment produces an operating plan, not a sales presentation.</p>
+    <div class="cta-band-btns">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

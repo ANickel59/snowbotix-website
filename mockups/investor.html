@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investors | RoboWorkX and Snowbotix Outdoor Autonomy</title>
+<link rel="stylesheet" href="snowbotix-system.css">
+<style>
+  .inv-hero { background: var(--charcoal-950); padding-top: 60px; }
+  .inv-hero .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; padding-bottom: var(--pad-desktop); }
+  .inv-hero h1 { color: var(--white); margin-top: 22px; }
+  .inv-hero .eyebrow { color: var(--amber-400); }
+  .inv-hero p { color: #c7cdd3; font-size: 16px; margin-top: 18px; }
+  .inv-hero p.lead { color: var(--paper-0); font-size: 18px; font-weight: 500; margin-top: 26px; }
+
+  .hero-photo {
+    position: relative; border: 1px solid var(--line-on-dark);
+    overflow: hidden; aspect-ratio: 5/4;
+  }
+  .hero-photo img { width: 100%; display: block; height: 100%; object-fit: cover; object-position: center 15%; }
+  .hero-photo .cap {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(0deg, rgba(10,12,14,0.92) 0%, rgba(10,12,14,0) 100%);
+    padding: 40px 22px 16px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--amber-400);
+    letter-spacing: .06em; text-transform: uppercase; line-height: 1.6;
+  }
+  .hero-photo .cap b { color: var(--paper-0); display:block; font-size:12px; margin-bottom:4px; text-transform:none; letter-spacing:0; font-family: var(--font-body); font-weight:600; }
+
+  .journey { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; }
+  .journey p { color: #c7cdd3; font-size: 16px; }
+  .journey .big { color: var(--white); font-size: 20px; font-weight: 500; }
+
+  .wedge { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .wedge img { width: 100%; }
+  .wedge .copy p { color: var(--ink-700); font-size: 15.5px; margin: 0 0 16px; }
+  .wedge .copy .highlight { color: var(--ink-900); font-weight: 600; }
+
+  .aib-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; margin-top: 32px; }
+  .aib-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line-on-dark); }
+  .aib-grid .cell { background: var(--charcoal-900); padding: 26px; color: #d7dbdd; font-size: 14px; }
+  .aib-grid .cell .n { font-family: var(--font-mono); color: var(--amber-500); font-size: 12px; }
+  .aib-figure { background: var(--white); padding: 24px; }
+  .aib-figure img { width: 100%; display: block; }
+  .aib-figure figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--ink-500); letter-spacing: .06em; text-transform: uppercase; margin-top: 14px; }
+
+  .why-market { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; }
+  .why-market ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .why-market li { padding: 16px 0; border-bottom: 1px solid var(--paper-100); font-size: 15px; color: var(--ink-700); position: relative; padding-left: 24px; }
+  .why-market li:first-child { border-top: 1px solid var(--paper-100); }
+  .why-market li::before { content: '›'; position: absolute; left: 0; color: var(--amber-600); }
+
+  .thesis {
+    text-align: left; padding: 72px 0;
+  }
+  .thesis-lines { display: flex; flex-direction: column; gap: 4px; margin-top: 28px; }
+  .thesis-lines .line { font-family: var(--font-display); font-size: clamp(22px,2.6vw,32px); text-transform: uppercase; color: #7c868f; }
+  .thesis-lines .line b { color: var(--amber-400); font-weight: 700; }
+  .thesis-lines .line.final b { color: var(--white); }
+
+  .traction-strip { display: flex; gap: 0; border-top: 1px solid var(--line-on-dark); border-bottom: 1px solid var(--line-on-dark); margin-top: 32px; }
+  .traction-strip .t-cell { flex: 1; padding: 26px 24px; border-right: 1px solid var(--line-on-dark); font-size: 13.5px; color: #c7cdd3; }
+  .traction-strip .t-cell:last-child { border-right: none; }
+
+  .team-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--paper-100); margin-top: 40px; }
+  .team-summary .p-cell { background: var(--paper-0); padding: 32px; }
+  .team-summary h3 { font-size: 20px; }
+  .team-summary .role { font-family: var(--font-mono); font-size: 11px; color: var(--amber-600); text-transform: uppercase; letter-spacing: .06em; display: block; margin: 8px 0 14px; }
+  .team-summary p { color: var(--ink-700); font-size: 14px; }
+  .team-summary a.more { font-size: 13px; color: var(--ink-900); border-bottom: 1px solid var(--ink-900); display: inline-block; margin-top: 14px; }
+
+  .cred-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-on-dark); margin-top: 40px; }
+  .cred-grid .badge-cell { background: var(--charcoal-900); padding: 26px 20px; min-height: 90px; display: flex; align-items: center; font-size: 13px; color: #d7dbdd; font-weight: 500; line-height: 1.4; text-align:center; justify-content:center; }
+  .cred-grid .event-cell { padding: 0; overflow: hidden; }
+  .cred-grid .event-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .contact-block { background: var(--amber-500); color: var(--charcoal-950); }
+  .contact-block .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+  .contact-block h2 { font-size: clamp(24px,2.8vw,32px); }
+  .contact-block .card-contact { background: var(--charcoal-950); color: var(--paper-0); padding: 32px; }
+  .contact-block .card-contact .role { font-family: var(--font-mono); font-size: 11px; color: var(--amber-400); text-transform: uppercase; letter-spacing: .05em; }
+  .contact-block .card-contact h3 { margin-top: 8px; font-size: 20px; }
+  .contact-block .card-contact .line { font-size: 14px; color: #c7cdd3; margin-top: 6px; }
+  .contact-block .card-contact a { color: var(--paper-0); }
+  .contact-block .card-contact a:hover { color: var(--amber-400); }
+
+  @media (max-width: 900px) {
+    .inv-hero .wrap, .journey, .wedge, .why-market, .team-summary, .contact-block .wrap, .aib-layout { grid-template-columns: 1fr; }
+    .cred-grid { grid-template-columns: repeat(2,1fr); }
+    .traction-strip { flex-direction: column; }
+    .traction-strip .t-cell { border-right: none; border-bottom: 1px solid var(--line-on-dark); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="homepage.html"><img src="images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="#">Solutions</a>
+      <a href="#">Who It's For</a>
+      <a href="company.html">Company</a>
+      <a href="investor.html" class="current">Investors</a>
+    </div>
+    <a class="btn btn-amber" href="#">Request Assessment</a>
+  </div>
+</nav>
+
+<header class="inv-hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Investors</span>
+      <h1>RoboWorkX is building the autonomy layer for outdoor equipment.</h1>
+      <p>RoboWorkX started with Snowbotix, an autonomous snow removal robot, because snow is a hard field problem. It is urgent. It is hazardous. It is labor constrained. It happens in poor conditions.</p>
+      <p>That first product grew into a year-round outdoor maintenance platform for snow, ice, sweeping, mowing, brush, deicing, and recurring surface care.</p>
+      <p class="lead">Snowbotix is the commercial proof path.<br>AIB is the scalable product.</p>
+    </div>
+    <div class="hero-photo">
+      <img src="images/investor-hero-sasi-stage.jpg" alt="Dr. Sasi Prabhakaran presenting RoboWorkX at Techstars">
+      <div class="cap"><b>Dr. Sasi Prabhakaran</b>Techstars Investor Preview: NYC Accelerator, Google Cloud &amp; Brex</div>
+    </div>
+  </div>
+</header>
+
+<section class="section on-mid">
+  <div class="wrap journey">
+    <div>
+      <div class="kicker-line"><span class="num">01</span></div>
+      <h2 style="color:var(--white);">The Journey</h2>
+    </div>
+    <div>
+      <p class="big">RoboWorkX began with a robot in the snow.</p>
+      <p style="margin-top:16px;">Snow removal forced the company to confront the real constraints of outdoor robotics: weather, visibility, traction, pedestrians, vehicles, obstacles, charging, supervision, service, and customer trust.</p>
+      <p style="margin-top:16px;">The first Snowbotix system proved the starting point. The next version expanded the product beyond winter into all-season outdoor maintenance. The current direction is more focused: build the autonomy layer that can make outdoor equipment more useful, more supervised, and more commercially deployable.</p>
+      <p style="margin-top:16px; color:var(--amber-400); font-weight:600;">That is AIB.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section on-light">
+  <div class="wrap wedge">
+    <img src="images/investor-wedge-mower.png" alt="Snowbotix robot clearing overgrown brush">
+    <div class="copy">
+      <div class="kicker-line"><span class="num">02</span></div>
+      <h2 style="margin-bottom:20px;">The Opportunity</h2>
+      <p>Outdoor maintenance is a large, practical category that has not automated at the same pace as indoor robotics.</p>
+      <p class="highlight">The near-term focus is commercial outdoor maintenance where the company can build customer evidence, deployment data, service learnings, and repeatable sales motions, particularly in accounts with potential for multiple robot deployments.</p>
+      <p>Initial use cases: snow removal, deicing, sweeping, mowing, brush control, debris removal, and inspection services for commercial campuses, facilities teams, municipalities, airports, industrial sites, and government &amp; defense operators.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">03</span></div>
+    <h2 style="color:var(--white);">What We Are Building</h2>
+    <p style="max-width:640px; color:#c7cdd3; margin-top:20px; font-size:16px;">AIB, Autonomy-in-a-Box, is RoboWorkX's core technology platform. It is designed to support supervised autonomous operation for outdoor equipment working in defined routes and zones. The product direction is grounded in practical equipment categories customers already understand: compact outdoor platforms, plows, brooms, mowers, deicing systems, and attachments.</p>
+    <div class="aib-layout">
+      <div class="aib-grid">
+        <div class="cell"><div class="n">01</div>Sensor integration</div>
+        <div class="cell"><div class="n">02</div>Onboard compute</div>
+        <div class="cell"><div class="n">03</div>Local navigation</div>
+        <div class="cell"><div class="n">04</div>Obstacle detection</div>
+        <div class="cell"><div class="n">05</div>Route execution</div>
+        <div class="cell"><div class="n">06</div>Remote monitoring</div>
+        <div class="cell"><div class="n">07</div>Fleet visibility</div>
+        <div class="cell"><div class="n">08</div>Deployment workflows</div>
+        <div class="cell"><div class="n">09</div>Service support logic</div>
+      </div>
+      <figure class="aib-figure">
+        <img src="images/lineart-plow-spreader.png" alt="AIB-equipped plow and spreader attachment technical line drawing">
+        <figcaption>AIB hardware integration: sensor mast, compute enclosure, plow attachment</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section on-light">
+  <div class="wrap why-market">
+    <div>
+      <div class="kicker-line"><span class="num">04</span></div>
+      <h2>Why This Market</h2>
+      <p style="margin-top:20px; color:var(--ink-700);">The work is fragmented, weather-driven, labor-intensive, and expensive to supervise. RoboWorkX is building for customers who already spend money on these problems.</p>
+    </div>
+    <ul>
+      <li>Labor is harder to find and retain</li>
+      <li>Snow, ice, slopes, and poor weather create operator risk</li>
+      <li>Customers want service proof, not verbal assurance</li>
+      <li>Facilities and contractors need more predictable execution</li>
+      <li>Electrification is changing outdoor equipment buying</li>
+      <li>Large sites need better ways to manage recurring routes and zones</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section on-mid thesis">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">05</span></div>
+    <h2 style="color:var(--white);">Strategic Thesis</h2>
+    <p style="max-width:680px; color:#c7cdd3; margin-top:20px; font-size:16px;">Outdoor equipment is moving toward autonomy. Adoption will depend on systems that work in real environments, solve specific customer problems, and fit the way equipment is bought, deployed, serviced, and supervised.</p>
+    <div class="thesis-lines">
+      <div class="line">The starting wedge is <b>outdoor maintenance</b></div>
+      <div class="line">The first commercial platform is <b>Snowbotix</b></div>
+      <div class="line">The core technology is <b>AIB</b></div>
+      <div class="line final">The long-term opportunity is <b>autonomy for rugged outdoor equipment</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">06</span></div>
+    <h2 style="color:var(--white);">Traction</h2>
+    <p style="max-width:680px; color:#c7cdd3; margin-top:20px; font-size:16px;">RoboWorkX is in early commercialization with field-tested autonomous outdoor maintenance systems, active customer pilots, and paid deployment activity. The company has used snow removal, deicing, sweeping, mowing, and brush applications to refine its autonomy stack, equipment configuration, deployment process, and service model.</p>
+    <div class="traction-strip">
+      <div class="t-cell">Field-tested across snow, deicing, sweeping, mowing &amp; brush applications</div>
+      <div class="t-cell">Active customer pilots underway</div>
+      <div class="t-cell">Paid deployment activity in market</div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-light">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">07</span></div>
+    <h2>Founding Team</h2>
+    <div class="team-summary">
+      <div class="p-cell">
+        <h3>Dr. Sasi Prabhakaran</h3>
+        <span class="role">Founder &amp; CEO</span>
+        <p>Roboticist with research experience in autonomous navigation, estimation, control, UAVs, spacecraft systems, and GPS-denied environments. Founder of Snowbotix and architect of AIB.</p>
+        <a class="more" href="team.html">Full bio &amp; team &rarr;</a>
+      </div>
+      <div class="p-cell">
+        <h3>Klaus Hahn</h3>
+        <span class="role">COO</span>
+        <p>Senior outdoor equipment and commercialization executive with 30+ years across Greenworks Tools, Techtronic Industries, and K&auml;rcher. Brings product, supply chain, and international scale experience.</p>
+        <a class="more" href="team.html">Full bio &amp; team &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-dark">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">08</span></div>
+    <h2 style="color:var(--white);">Recognition &amp; Programs</h2>
+    <div class="cred-grid">
+      <div class="badge-cell logo-cell"><img src="images/techstars-logo.png" alt="Techstars"></div>
+      <div class="badge-cell logo-cell"><img src="images/medc-logo.png" alt="MEDC"></div>
+      <div class="badge-cell logo-cell"><img src="images/xtech-logo.png" alt="US Army xTechEdge"></div>
+      <div class="badge-cell event-cell"><img src="images/uncrewed-triple-challenge.png" alt="Uncrewed Triple Challenge"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-block">
+  <div class="wrap">
+    <h2>Investor Inquiries</h2>
+    <div class="card-contact">
+      <span class="role">Contact</span>
+      <h3>Dr. Sasi Prabhakaran</h3>
+      <div class="line">Founder &amp; CEO, RoboWorkX Inc. / Snowbotix</div>
+      <div class="line"><a href="mailto:info@snowbotix.com">info@snowbotix.com</a></div>
+      <div class="line"><a href="tel:+13479270009">+1 (347) 927 0009</a></div>
+      <div class="line"><a href="https://www.linkedin.com/in/sasi-prabhakaran/">linkedin.com/in/sasi-prabhakaran</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="homepage.html" style="margin-bottom:14px;"><img src="images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+        <p style="font-size:13px; max-width:280px; color:#5c666c;">The commercial outdoor maintenance platform from RoboWorkX Inc.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#">Snow Removal &amp; De-icing</a></li>
+          <li><a href="#">Slope Mowing &amp; Brush/Vegetation</a></li>
+          <li><a href="#">Sweeping &amp; Debris</a></li>
+          <li><a href="#">Proof-of-Service &amp; Reporting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="team.html">Team / Leadership</a></li>
+          <li><a href="investor.html">Investors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@snowbotix.com">info@snowbotix.com</a></li>
+          <li><a href="tel:+13479270009">+1 (347) 927 0009</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 RoboWorkX Inc. Snowbotix is a product of RoboWorkX Inc.</span>
+      <span>Privacy &nbsp;·&nbsp; Terms &nbsp;·&nbsp; LinkedIn</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

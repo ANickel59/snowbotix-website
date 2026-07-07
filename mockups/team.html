@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leadership | RoboWorkX and Snowbotix</title>
+<link rel="stylesheet" href="snowbotix-system.css">
+<style>
+  .team-nav { background: rgba(246,244,239,0.92); border-bottom: 1px solid var(--paper-100); }
+  .team-nav .brand { color: var(--ink-900); }
+  .team-nav .nav-links a { color: var(--ink-700); }
+  .team-nav .nav-links a:hover { color: var(--ink-900); }
+  .team-nav .nav-links a.current { color: var(--amber-600); }
+
+  .team-hero { background: var(--paper-0); padding-top: 64px; }
+  .team-hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; padding-bottom: var(--pad-desktop); }
+  .team-hero h1 { color: var(--ink-900); margin-top: 22px; }
+  .team-hero p.intro { color: var(--ink-700); font-size: 16.5px; margin-top: 24px; max-width: 520px; }
+  .team-hero .eyebrow { color: var(--amber-600); }
+  .team-hero figure { margin: 0; }
+  .team-hero img { width: 100%; }
+  .team-hero figcaption {
+    font-family: var(--font-mono); font-size: 11px; color: var(--ink-500);
+    letter-spacing: .06em; text-transform: uppercase; margin-top: 14px;
+  }
+
+  .leader-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--paper-100); margin-top: 56px; }
+  .leader-card { background: var(--white); padding: 44px; color: var(--ink-900); }
+  .leader-photo { aspect-ratio: 4/5; overflow: hidden; margin: -44px -44px 28px -44px; background: var(--paper-100); }
+  .leader-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; display: block; }
+  .leader-card h3 { font-size: 26px; color: var(--ink-900); }
+  .leader-card .role { font-family: var(--font-mono); font-size: 12px; color: var(--amber-600); letter-spacing: .06em; text-transform: uppercase; margin-top: 8px; display: block; }
+  .leader-card p { color: var(--ink-700); font-size: 14.5px; margin-top: 18px; }
+  .leader-card .li-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-900); border-bottom: 1px solid var(--paper-100); padding-bottom: 4px; }
+  .leader-card .li-link:hover { border-color: var(--amber-600); color: var(--amber-600); }
+
+  .eng-reality { position: relative; color: var(--white); }
+  .eng-reality .bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(10,12,14,0.95) 0%, rgba(10,12,14,0.6) 55%, rgba(10,12,14,0.25) 100%), url('images/team-shopfloor-hardware.jpg') center 22% / cover no-repeat;
+  }
+  .eng-reality .wrap { position: relative; z-index: 1; }
+  .eng-reality .names { display: flex; gap: 24px; flex-wrap: wrap; margin: 22px 0 30px; }
+  .eng-reality .names span { font-family: var(--font-mono); font-size: 13px; color: var(--amber-400); padding: 8px 14px; border: 1px solid var(--line-on-dark); display: flex; flex-direction: column; gap: 4px; }
+  .eng-reality .names span .t-role { font-size: 11px; color: #9aa3ab; letter-spacing: .04em; text-transform: uppercase; }
+  .eng-reality p { max-width: 560px; color: #d7dbdd; font-size: 16px; }
+  .eng-reality h2 { color: var(--white); max-width: 700px; }
+
+  .team-cta { background: var(--paper-0); border-top: 1px solid var(--paper-100); }
+  .team-cta .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; padding: 64px 32px; }
+  .team-cta h2 { color: var(--ink-900); font-size: clamp(24px,2.8vw,34px); max-width: 460px; }
+  .team-cta p { color: var(--ink-700); margin-top: 10px; }
+
+  @media (max-width: 860px) {
+    .team-hero .wrap, .leader-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav team-nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="homepage.html"><img src="images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="#">Solutions</a>
+      <a href="#">Who It's For</a>
+      <a href="company.html" class="current">Company</a>
+      <a href="investor.html">Investors</a>
+    </div>
+    <a class="btn btn-amber" href="#">Request Assessment</a>
+  </div>
+</nav>
+
+<header class="team-hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Leadership</span>
+      <h1>Built by robotics and outdoor equipment operators.</h1>
+      <p class="intro">Outdoor autonomy has to work outside the lab. It has to run in cold, heat, rain, snow, dust, uneven terrain, tight spaces, and active commercial sites. It has to be safe enough for customers to trust, rugged enough for field work, and practical enough to support.</p>
+      <p class="intro" style="margin-top:14px; font-weight:500; color:var(--ink-900);">RoboWorkX is building Snowbotix around that standard: robotics, outdoor equipment, software, service, and deployment experience working together.</p>
+    </div>
+    <figure>
+      <img src="images/team-hero-sasi-klaus.png" alt="Dr. Sasi Prabhakaran and Klaus Hahn">
+      <figcaption>Dr. Sasi Prabhakaran &amp; Klaus Hahn</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section class="section on-light">
+  <div class="wrap">
+    <div class="kicker-line"><span class="num">01</span></div>
+    <h2>Founder &amp; Leadership</h2>
+    <div class="leader-grid">
+      <div class="leader-card">
+        <div class="leader-photo"><img src="images/team-sasi-portrait.jpg" alt="Dr. Sasi Prabhakaran"></div>
+        <h3>Dr. Sasi Prabhakaran</h3>
+        <span class="role">Founder &amp; CEO, RoboWorkX Inc.</span>
+        <p>Roboticist and founder focused on bringing autonomous systems into real outdoor work. His technical background spans autonomous navigation, dynamics, estimation, and control across unmanned systems, including underactuated vehicles, UAVs, spacecraft simulators, and robotic platforms operating in unknown or GPS-denied environments.</p>
+        <p>Before founding Snowbotix, he held research roles at Syracuse University, New Mexico State University, the Indian Institute of Technology Bombay, and the Indian Institute of Science.</p>
+        <p>Sasi founded RoboWorkX to apply that technical foundation to a practical problem: outdoor maintenance work that is hazardous, repetitive, hard to staff, and difficult to perform consistently in weather. His current focus is AIB, Autonomy-in-a-Box.</p>
+        <a class="li-link" href="https://www.linkedin.com/in/sasi-prabhakaran/">LinkedIn &#8599;</a>
+      </div>
+      <div class="leader-card">
+        <div class="leader-photo"><img src="images/team-klaus-portrait.jpg" alt="Klaus Hahn"></div>
+        <h3>Klaus Hahn</h3>
+        <span class="role">COO, RoboWorkX Inc. / Snowbotix</span>
+        <p>Brings more than 30 years of leadership experience across outdoor power equipment, commercial cleaning equipment, product development, marketing, supply chain, and international operations.</p>
+        <p>His background includes senior executive roles at Greenworks Tools, Techtronic Industries, and K&auml;rcher, with responsibility across North America, Europe, product strategy, business development, customer operations, logistics, and commercialization. He has worked with major outdoor and power-tool categories tied to brands and platforms customers already understand, including Greenworks, Ryobi, Milwaukee, and K&auml;rcher.</p>
+        <p>At RoboWorkX, Klaus helps translate robotics into a commercially deployable equipment business. His role strengthens the bridge between Sasi's autonomy technology and the practical requirements of outdoor equipment buyers: product configuration, serviceability, customer proof, channel readiness, cost control, supply chain, and scale.</p>
+        <a class="li-link" href="https://www.linkedin.com/in/klaus-h-040225/">LinkedIn &#8599;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section eng-reality">
+  <div class="bg"></div>
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--amber-400);">The Engineering Reality</span>
+    <h2 style="margin-top:20px;">Field robotics requires more than code.</h2>
+    <div class="names">
+      <span>Syed Jaser<span class="t-role">Project Manager</span></span>
+      <span>Pankaj Choudhary<span class="t-role">Supply Chain Manager</span></span>
+      <span>Thejesh P.</span>
+    </div>
+    <p>RoboWorkX is building a team around the realities of outdoor deployment. The company needs robotics engineering, equipment knowledge, fleet software, customer discovery, service operations, and commercial discipline.</p>
+    <p style="margin-top:14px; color:var(--white); font-weight:500;">Snowbotix brings those pieces together in one commercial platform. AIB gives RoboWorkX a core technology layer to keep improving as the company grows.</p>
+  </div>
+</section>
+
+<section class="team-cta">
+  <div class="wrap">
+    <div>
+      <h2>Want to work with RoboWorkX or Snowbotix?</h2>
+      <p>Contact the team about commercial deployments, partnerships, or investor inquiries.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-amber" href="#">Request a Site Assessment</a>
+      <a class="btn btn-ghost-light" href="investor.html">Investor Inquiries</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="homepage.html" style="margin-bottom:14px;"><img src="images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+        <p style="font-size:13px; max-width:280px; color:#5c666c;">The commercial outdoor maintenance platform from RoboWorkX Inc.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#">Snow Removal &amp; De-icing</a></li>
+          <li><a href="#">Slope Mowing &amp; Brush/Vegetation</a></li>
+          <li><a href="#">Sweeping &amp; Debris</a></li>
+          <li><a href="#">Proof-of-Service &amp; Reporting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="company.html">About</a></li>
+          <li><a href="team.html">Team / Leadership</a></li>
+          <li><a href="investor.html">Investors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@snowbotix.com">info@snowbotix.com</a></li>
+          <li><a href="tel:+13479270009">+1 (347) 927 0009</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 RoboWorkX Inc. Snowbotix is a product of RoboWorkX Inc.</span>
+      <span>Privacy &nbsp;·&nbsp; Terms &nbsp;·&nbsp; LinkedIn</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

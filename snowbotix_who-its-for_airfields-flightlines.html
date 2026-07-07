@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Airfield &amp; Flightline Maintenance Robots | Snowbotix</title>
+<meta name="description" content="Snowbotix automates approved airfield and flightline support routes with supervised autonomy, 360-degree sensing, all-electric attachments, and proof-of-service records.">
+<meta property="og:title" content="Autonomous Outdoor Maintenance for Airfields &amp; Flightlines">
+<meta property="og:description" content="Support critical aviation access routes with supervised autonomous snow, sweeping, de-icing support, inspection records, and all-season outdoor maintenance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--snow:#F4F1E8;--snow-soft:#EDE9DC;--surface:#FFFFFF;--line:#D9DEE3;--steel:#3C4146;--muted:#5A6268;--brand-green:#008A1E;--brand-green-soft:rgba(0,138,30,0.08);--gold-yellow:#C9A227;--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--ink-panel:#1C1F22;--ink-border:#2E3235;--ink-muted:#AEB5BA;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--snow);color:var(--ink);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:var(--ink);position:sticky;top:0;z-index:100;border-bottom:1px solid #2a2d31;}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:#AEB5BA;font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:#F4F1E8;}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-green{background:var(--brand-green);color:#fff;margin-left:16px;}
+.btn-green:hover{opacity:.88;}
+.sec-link{color:var(--brand-green);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link::after{content:'→';}
+.sec-link:hover{opacity:.8;}
+.sec-link-light{color:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:.8;}
+.hero{background:var(--snow-soft);padding:72px 24px 64px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin-bottom:16px;}
+.hero h1{font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.18;max-width:780px;margin-bottom:20px;color:var(--ink);}
+.hero-sub{font-size:17px;color:var(--muted);max-width:640px;line-height:1.65;margin-bottom:12px;}
+.hero-sub2{font-size:15px;color:var(--muted);max-width:640px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:40px;}
+.qual-bar{display:flex;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--line);padding-top:24px;}
+.qual-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.qual-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brand-green);flex-shrink:0;}
+.section{padding:72px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;}
+.section h2{font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.25;margin-bottom:16px;color:var(--ink);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px;max-width:720px;}
+.section p:last-child{margin-bottom:0;}
+.pressure-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+.pg-cell{background:var(--surface);padding:24px;border-radius:var(--radius);}
+.pg-cell h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--ink);}
+.pg-cell p{font-size:14px;color:var(--muted);line-height:1.6;margin:0;}
+@media(max-width:760px){.pressure-grid{grid-template-columns:1fr;}}
+.body-list{margin:16px 0 0 0;padding-left:0;list-style:none;}
+.body-list li{font-size:15px;color:var(--muted);line-height:1.65;padding:6px 0 6px 20px;position:relative;}
+.body-list li::before{content:'—';position:absolute;left:0;color:var(--steel);}
+.usecase-big{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px;}
+.ubc{background:var(--surface);padding:28px;border-radius:var(--radius);}
+.ubc-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-green);margin-bottom:10px;}
+.ubc h3{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--ink);}
+.ubc p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:10px;}
+.ubc .proof-tag{font-family:var(--font-mono);font-size:11px;color:var(--steel);border-top:1px solid var(--line);padding-top:10px;margin-top:10px;}
+@media(max-width:760px){.usecase-big{grid-template-columns:1fr;}}
+.dark-band{background:var(--ink);padding:64px 24px;color:var(--snow);}
+.dark-band .section-inner{max-width:var(--page-max);margin:0 auto;}
+.dark-band h2{font-size:clamp(20px,2.8vw,30px);font-weight:700;margin-bottom:16px;color:var(--snow);}
+.dark-band p{color:var(--ink-muted);font-size:15px;line-height:1.7;max-width:700px;margin-bottom:12px;}
+.season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:32px;}
+.sg-cell{background:var(--ink-panel);padding:24px;border-radius:var(--radius);}
+.sg-season{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin-bottom:8px;}
+.sg-cell p{font-size:14px;color:var(--ink-muted);line-height:1.6;margin:0;}
+@media(max-width:760px){.season-grid{grid-template-columns:1fr 1fr;}}
+.control-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:32px;}
+.ctrl{background:var(--surface);padding:22px 24px;border-radius:var(--radius);display:flex;gap:14px;align-items:flex-start;}
+.ctrl-num{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--steel);flex-shrink:0;padding-top:2px;}
+.ctrl-body h3{font-size:14px;font-weight:700;margin-bottom:4px;color:var(--ink);}
+.ctrl-body p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+@media(max-width:640px){.control-grid{grid-template-columns:1fr;}}
+.proof-module{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-top:32px;overflow:hidden;}
+.proof-header{background:var(--ink);padding:20px 28px;}
+.proof-header h3{font-size:14px;font-weight:700;color:var(--snow);}
+.proof-header p{font-size:13px;color:var(--ink-muted);margin-top:4px;}
+.proof-grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);}
+.proof-cell{background:var(--surface);padding:18px 22px;}
+.proof-cell-label{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:6px;}
+.proof-cell p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+@media(max-width:560px){.proof-grid2{grid-template-columns:1fr;}}
+.steps-list{margin-top:32px;display:flex;flex-direction:column;gap:2px;}
+.step-row{background:var(--surface);padding:22px 28px;border-radius:var(--radius);display:flex;gap:20px;}
+.step-num{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);flex-shrink:0;width:24px;padding-top:3px;}
+.step-body h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--ink);}
+.step-body p{font-size:14px;color:var(--muted);line-height:1.65;margin:0;}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+.fit-box{background:var(--surface);border-radius:var(--radius);padding:24px;}
+.fit-box h3{font-size:14px;font-weight:700;margin-bottom:14px;color:var(--ink);display:flex;align-items:center;gap:8px;}
+.fit-box h3 .badge{font-family:var(--font-mono);font-size:10px;font-weight:500;padding:3px 8px;border-radius:var(--radius);letter-spacing:.06em;}
+.fit-box.strong h3 .badge{background:var(--brand-green-soft);color:var(--brand-green);}
+.fit-box.weak h3 .badge{background:#f5f0e8;color:var(--steel);}
+.fit-box ul{list-style:none;padding:0;}
+.fit-box ul li{font-size:14px;color:var(--muted);line-height:1.6;padding:5px 0 5px 18px;position:relative;border-top:1px solid var(--line);}
+.fit-box ul li:first-child{border-top:none;}
+.fit-box.strong ul li::before{content:'✓';position:absolute;left:0;color:var(--brand-green);font-size:12px;}
+.fit-box.weak ul li::before{content:'✕';position:absolute;left:0;color:var(--steel);font-size:12px;}
+@media(max-width:640px){.fit-grid{grid-template-columns:1fr;}}
+.faq-list{margin-top:32px;display:flex;flex-direction:column;gap:2px;}
+.faq-row{background:var(--surface);padding:22px 28px;border-radius:var(--radius);}
+.faq-row h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--ink);}
+.faq-row p{font-size:14px;color:var(--muted);line-height:1.65;margin:0;}
+.cta-band{background:var(--brand-green);padding:72px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(22px,3vw,34px);font-weight:700;color:#fff;margin-bottom:14px;max-width:640px;}
+.cta-band p{font-size:15px;color:rgba(255,255,255,.8);max-width:560px;line-height:1.65;margin-bottom:28px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.btn-white{background:#fff;color:var(--brand-green);}
+.btn-white:hover{opacity:.92;}
+.cta-micro{font-size:13px;color:rgba(255,255,255,.65);margin-top:20px;max-width:540px;line-height:1.6;}
+.sibling-section{padding:40px 24px;background:var(--snow-soft);border-top:1px solid var(--line);}
+.sibling-inner{max-width:var(--page-max);margin:0 auto;}
+.sibling-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:16px;}
+.sibling-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 28px;display:inline-flex;flex-direction:column;gap:6px;max-width:400px;}
+.sibling-card h3{font-size:15px;font-weight:700;color:var(--ink);}
+.sibling-card p{font-size:13px;color:var(--muted);line-height:1.6;}
+.sibling-card a.sec-link{margin-top:4px;}
+footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand img{height:24px;width:auto;filter:brightness(0)invert(1);margin-bottom:12px;}
+.footer-brand p{font-size:13px;color:var(--ink-muted);line-height:1.6;}
+.footer-col h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--snow);margin-bottom:12px;}
+.footer-col a{display:block;font-size:13px;color:var(--ink-muted);padding:3px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--snow);}
+.footer-bottom{border-top:1px solid var(--steel);padding-top:20px;font-size:12px;color:#5a6068;}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html" class="current">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_company_page.html">Company</a>
+    </div>
+    <a class="btn btn-green" href="#">Request an Airfield Route Assessment</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Airfields &amp; Flightlines</p>
+    <h1>Supervised autonomous maintenance for aviation routes where downtime compounds fast.</h1>
+    <p class="hero-sub">Snowbotix automates approved airfield and flightline support routes with supervised autonomy, mapped operating zones and 360-degree sensing, human-in-the-loop monitoring, and proof-of-service records.</p>
+    <p class="hero-sub2">Use one all-electric robotic platform for recurring snow clearing, power brooming, de-icing support, sweeping, debris control, and selected vegetation routes across controlled aviation environments.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-green" href="#">Request an Airfield Route Assessment</a>
+      <a class="sec-link" href="snowbotix_safety-autonomy.html">View Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+      <a class="sec-link" href="snowbotix_techspecs_safety-systems.html">Review Safety System Specs</a>
+    </div>
+    <div class="qual-bar">
+      <span class="qual-item">Approved-route autonomy</span>
+      <span class="qual-item">Human-in-the-loop monitoring</span>
+      <span class="qual-item">360-degree sentry sensing</span>
+      <span class="qual-item">Power broom and plow attachments</span>
+      <span class="qual-item">Geocoded service evidence</span>
+      <span class="qual-item">All-season utility</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">01 — Operating Reality</p>
+    <h2>Airfield maintenance is not ordinary grounds work.</h2>
+    <p>On an airfield, a missed route is rarely just a missed route. A blocked support lane can slow operations. An uncleared emergency access point can create escalation work for the wrong team. A poorly timed contractor delay can ripple through shift changes, passenger movement, aircraft support, or mission schedules.</p>
+    <p>The pressure is highest during off-hour storms, early-morning launch windows, low-visibility events, and sustained winter weather when crews are already extended. Snowbotix fits this environment by giving teams a supervised autonomous platform for defined routes that can be mapped, staged, monitored, and documented before conditions deteriorate.</p>
+    <div class="pressure-grid">
+      <div class="pg-cell">
+        <h3>Off-hour storm windows</h3>
+        <p>Overnight snow and ice routes before first movement windows require repeatable clearing that manual crews struggle to sustain through extended weather events.</p>
+      </div>
+      <div class="pg-cell">
+        <h3>Flightline-adjacent routes</h3>
+        <p>Flightline-adjacent routes and helipad approaches need controlled movement, documented service, and proof that work was completed before peak operating windows.</p>
+      </div>
+      <div class="pg-cell">
+        <h3>Remote gates and equipment routes</h3>
+        <p>Navigation-equipment access, remote gates, and perimeter roads are difficult to inspect manually and easy to miss when crews focus on visible high-traffic areas.</p>
+      </div>
+    </div>
+    <ul class="body-list" style="margin-top:24px;">
+      <li>Repeated clearing around helipads, hangars, access lanes, and support buildings</li>
+      <li>Landside connectors, staff entrances, and pedestrian routes ready before peak arrivals</li>
+      <li>Power brooming, sweeping, and debris removal where surface condition matters</li>
+      <li>Long storm events where human crews lose consistency after extended shifts</li>
+      <li>Work that needs documented operating records instead of verbal contractor updates</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — Priority Use Cases</p>
+    <h2>Start with approved support routes, not open-ended autonomy.</h2>
+    <p>The first fit is usually not the most complex movement area. It is a defined route where maintenance is recurring, labor is strained, and proof matters. Snowbotix can then scale by route, attachment, season, or facility area after the operating model is proven.</p>
+    <div class="usecase-big">
+      <div class="ubc">
+        <p class="ubc-label">Helipad &amp; Emergency Access</p>
+        <h3>Helipad-adjacent routes and emergency access</h3>
+        <p>Helipad and emergency access areas are high-consequence zones. They need repeatable clearing, careful route approval, and reliable documentation before peak operating windows.</p>
+        <p><strong>Best-fit work:</strong> power brooming, plowing, de-icing support, route verification, service documentation.</p>
+        <p class="proof-tag">Proof: time-stamped route history, geocoded before-and-after imagery, mission path records, sensor logs.</p>
+      </div>
+      <div class="ubc">
+        <p class="ubc-label">Flightline Support</p>
+        <h3>Flightline support lanes and hangar areas</h3>
+        <p>Snowbotix can support approved paved routes around support buildings, hangar-adjacent areas, equipment lanes, and low-traffic service paths after site review.</p>
+        <p><strong>Best-fit work:</strong> snow clearing, sweeping, light debris removal, recurring paved-route maintenance.</p>
+        <p class="proof-tag">Proof: approved route maps, geofenced operating boundaries, supervisor-monitored missions, completion status.</p>
+      </div>
+      <div class="ubc">
+        <p class="ubc-label">Landside Connectors</p>
+        <h3>Landside connectors and staff movement routes</h3>
+        <p>Staff entrances, employee walkways, terminal-side connectors, transit links, and service routes must be ready before people arrive. Snowbotix can operate during low-traffic windows to support these repeatable routes.</p>
+        <p><strong>Best-fit work:</strong> plowing, power brooming, de-icing support, sweeping, surface cleanup.</p>
+        <p class="proof-tag">Proof: route completion records, before-and-after evidence, area metrics, deployment history.</p>
+      </div>
+      <div class="ubc">
+        <p class="ubc-label">Remote Gates &amp; Equipment Routes</p>
+        <h3>Remote gates, perimeter access, and equipment routes</h3>
+        <p>Remote routes are difficult to staff because they require travel, inspection, and repeat service across dispersed areas. They are also easy to miss when crews focus on visible high-traffic zones.</p>
+        <p><strong>Best-fit work:</strong> snow clearing, debris inspection support, sweeping, access-route maintenance, selected vegetation control.</p>
+        <p class="proof-tag">Proof: GPS mission traces, geocoded imagery, obstruction alerts, route status logs.</p>
+      </div>
+      <div class="ubc">
+        <p class="ubc-label">Paved Surface Cleanup</p>
+        <h3>Paved surface cleanup and housekeeping support</h3>
+        <p>Power brooming and sweeping can support route-level cleanup across selected paved areas where debris, sand, salt, leaves, or surface buildup create work for already stretched teams.</p>
+        <p><strong>Best-fit work:</strong> power brooming, sweeping, light snow removal, post-storm cleanup, seasonal debris removal.</p>
+        <p class="proof-tag">Proof: completed route records, visual evidence, area coverage metrics, recurring service history.</p>
+      </div>
+      <div class="ubc">
+        <p class="ubc-label">Pilot Validation Route</p>
+        <h3>Controlled low-traffic routes for pilot validation</h3>
+        <p>Start with one route that is operationally meaningful, controlled enough to evaluate, and specific enough to measure. A staff pedestrian connector, maintenance-building access route, or selected support lane.</p>
+        <p><strong>Best-fit work:</strong> any winter or multi-season attachment, autonomous operation, supervision, and proof documentation.</p>
+        <p class="proof-tag">Proof: full operating record, route map, mission logs, crew coordination notes, expansion plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark-band">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--ink-muted);">03 — All-Season Utility</p>
+    <h2>Built for the work that returns every season.</h2>
+    <p>Airfields do not have a single maintenance season. Winter snow turns into spring debris. Spring cleanup turns into summer vegetation. Summer mowing turns into fall leaves and readiness work before winter returns.</p>
+    <p>Snowbotix is built around a single all-electric platform with modular attachments, so the same base unit can support multiple outdoor workflows across the year.</p>
+    <p style="font-family:var(--font-mono);font-size:13px;color:var(--snow);margin-top:8px;">One Robot. Snow, Mow, and Sweep.</p>
+    <div class="season-grid">
+      <div class="sg-cell">
+        <p class="sg-season">Winter</p>
+        <p>Plow, power broom, and de-icing support for approved routes.</p>
+      </div>
+      <div class="sg-cell">
+        <p class="sg-season">Spring</p>
+        <p>Sweeping, sand removal, salt cleanup, and debris control.</p>
+      </div>
+      <div class="sg-cell">
+        <p class="sg-season">Summer</p>
+        <p>Slope mowing, brush control, perimeter vegetation, and retention-area maintenance where approved.</p>
+      </div>
+      <div class="sg-cell">
+        <p class="sg-season">Fall</p>
+        <p>Leaf, debris, route-readiness, and pre-winter surface cleanup.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">04 — Controlled Autonomy</p>
+    <h2>Controlled autonomy for regulated, high-accountability sites.</h2>
+    <p>Autonomy around aviation environments must be deliberate. Before deployment, the site is mapped and reviewed with the facility team. Routes, geofences, exclusion zones, staging areas, charging locations, vehicle flow, pedestrian flow, aircraft-adjacent constraints, and escalation rules are defined before autonomous work begins.</p>
+    <p>Autonomous does not mean unmanaged. Snowbotix works as a supervised maintenance system operating on approved routes.</p>
+    <div class="control-grid">
+      <div class="ctrl"><span class="ctrl-num">01</span><div class="ctrl-body"><h3>Site-specific route mapping</h3><p>Routes, geofences, exclusion zones, and staging areas are defined and approved before deployment begins.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">02</span><div class="ctrl-body"><h3>Geofenced operating boundaries</h3><p>The robot operates within approved route boundaries and cannot exit geofenced zones during missions.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">03</span><div class="ctrl-body"><h3>360-degree sentry sensing</h3><p>Full-perimeter sensing detects people, vehicles, and objects near the robot during operation.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">04</span><div class="ctrl-body"><h3>Automatic halt on detection</h3><p>The robot can stop when people or objects enter the sensing radius during active operation.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">05</span><div class="ctrl-body"><h3>Human-in-the-loop monitoring</h3><p>Remote supervisors maintain mission visibility and can intervene, pause, or escalate at any time.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">06</span><div class="ctrl-body"><h3>Line-of-sight manual mode</h3><p>Complex repositioning and tight areas can be handled with direct manual operation by an on-site operator.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">07</span><div class="ctrl-body"><h3>Real-time mission status</h3><p>Route progress, halt events, and obstruction alerts are visible to authorized team members in real time.</p></div></div>
+      <div class="ctrl"><span class="ctrl-num">08</span><div class="ctrl-body"><h3>Defined escalation workflows</h3><p>Obstructions, route issues, and unexpected site conditions trigger escalation to designated contacts.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">05 — Proof of Service</p>
+    <h2>Proof-of-service records for work that has to be verified.</h2>
+    <p>Aviation teams do not need vague service claims. They need to know what route was completed, when it was completed, what conditions were present, and whether anything blocked the mission. Snowbotix creates a documented operating record for each mission.</p>
+    <div class="proof-module">
+      <div class="proof-header">
+        <h3>Airfield Route Service Record — Sample</h3>
+        <p>Geocoded evidence tied to route, time, and condition for every mission.</p>
+      </div>
+      <div class="proof-grid2">
+        <div class="proof-cell">
+          <p class="proof-cell-label">Geocoded imagery</p>
+          <p>Before-and-after visual evidence tied to route location and mission timestamp.</p>
+        </div>
+        <div class="proof-cell">
+          <p class="proof-cell-label">GPS route traces</p>
+          <p>Full mission path record showing where the robot operated, when, and at what speed.</p>
+        </div>
+        <div class="proof-cell">
+          <p class="proof-cell-label">Area and runtime logs</p>
+          <p>Route length, area cleared or swept, runtime duration, and material application where configured.</p>
+        </div>
+        <div class="proof-cell">
+          <p class="proof-cell-label">Obstruction and halt records</p>
+          <p>Sensing events, automatic halts, route interruptions, and supervisor escalation logs.</p>
+        </div>
+        <div class="proof-cell">
+          <p class="proof-cell-label">Weather and surface context</p>
+          <p>Hyperlocal temperature, precipitation, and accumulation data tied to the operating event.</p>
+        </div>
+        <div class="proof-cell">
+          <p class="proof-cell-label">Reporting artifacts</p>
+          <p>Exportable records for operational review, vendor accountability, and safety documentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">06 — Deployment Path</p>
+    <h2>From route assessment to controlled pilot.</h2>
+    <p>Most aviation sites will not approve broad autonomous deployment from a brochure. The right path is route-level proof. Start with one route that is operationally meaningful, controlled enough to evaluate, and specific enough to measure.</p>
+    <div class="steps-list">
+      <div class="step-row">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <h3>Share the route or operating zone</h3>
+          <p>Send a map, aerial image, route list, CAD file, or site plan. Snowbotix reviews the maintenance task, route complexity, access needs, surfaces, traffic patterns, staging constraints, and proof requirements.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <h3>Review aviation-specific constraints</h3>
+          <p>The team reviews aircraft-adjacent areas, pedestrian and vehicle flow, secure access, line-of-sight constraints, communication requirements, storage, charging, refilling, and any approval requirements from operations, safety, facilities, security, or procurement.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <h3>Map and approve the operating environment</h3>
+          <p>Snowbotix maps the route and reviews the proposed operating logic with the facility team. The map includes geofences, exclusion zones, speed rules, priority routes, pile zones, material zones, and escalation rules.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">04</span>
+        <div class="step-body">
+          <h3>Run a controlled pilot</h3>
+          <p>The pilot focuses on one approved route or use case. The goal is to validate autonomous operation, supervision, sensing behavior, charging and staging logistics, proof records, and crew coordination.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">05</span>
+        <div class="step-body">
+          <h3>Expand by route, season, or facility area</h3>
+          <p>After route-level proof, Snowbotix can expand across additional connectors, gates, support lanes, paved cleanup routes, perimeter vegetation routes, or multi-season workflows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">07 — Fit Indicators</p>
+    <h2>Snowbotix is a strong fit when the aviation facility has recurring outdoor work that is difficult to staff, inspect, or document.</h2>
+    <div class="fit-grid">
+      <div class="fit-box strong">
+        <h3><span class="badge">Strong Fit</span></h3>
+        <ul>
+          <li>Defined paved routes or support zones</li>
+          <li>Repeated snow, ice, sweeping, debris, or vegetation tasks</li>
+          <li>Off-hour or low-visibility maintenance windows</li>
+          <li>Labor shortages or contractor performance variability</li>
+          <li>Areas where completed work needs a clear record</li>
+          <li>Controlled routes where geofencing and approved autonomy are practical</li>
+          <li>Facilities, operations, or safety owner willing to support route approval</li>
+          <li>Space for staging, charging, material storage, or mobile deployment support</li>
+        </ul>
+      </div>
+      <div class="fit-box weak">
+        <h3><span class="badge">Not a Fit</span></h3>
+        <ul>
+          <li>One-time service needs with no recurring route</li>
+          <li>Residential or small private property use</li>
+          <li>Open-road use without route review and approval</li>
+          <li>Unmapped areas with no controlled operating boundary</li>
+          <li>Sites with no staging, charging, or operational support path</li>
+          <li>Missions requiring unsupervised operation in unrestricted aircraft movement areas without site-specific review</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2>Common questions from aviation facilities teams.</h2>
+    <div class="faq-list">
+      <div class="faq-row">
+        <h3>Can Snowbotix operate on runways or taxiways?</h3>
+        <p>Snowbotix should first be evaluated for approved support routes, controlled access areas, helipad-adjacent zones, hangar support routes, landside connectors, and facility maintenance zones. Any runway, taxiway, or active movement-area use would require separate site-specific operational, safety, and regulatory review.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Is Snowbotix fully autonomous?</h3>
+        <p>Snowbotix operates autonomously on approved, mapped routes, but it is not unmanaged. Deployments use human-in-the-loop monitoring, 360-degree sensing, geofenced boundaries, mission visibility, and escalation protocols.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Can it operate around aircraft?</h3>
+        <p>Aircraft-adjacent use depends on the route, clearance envelope, operating rules, traffic patterns, and site approval process. Many first pilots should begin away from active aircraft movement and expand only after the operating model is validated.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What happens if a person or vehicle enters the route?</h3>
+        <p>Snowbotix uses 360-degree sentry sensing and can stop when people or objects enter the sensing radius. Route-specific escalation rules are defined during site mapping and pilot planning.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What maintenance tasks can it perform?</h3>
+        <p>Snowbotix supports modular attachments for snow plowing, power brooming, de-icing support, sweeping, slope mowing, brush control, and inspection-support workflows. Attachment fit depends on route, surface, season, and site approval.</p>
+      </div>
+      <div class="faq-row">
+        <h3>How does Snowbotix document completed work?</h3>
+        <p>The system creates proof-of-service records that can include geocoded imagery, time-stamped mission history, GPS route traces, area coverage, sensor logs, halt events, obstruction alerts, and deployment history.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Does it replace airfield crews?</h3>
+        <p>Snowbotix is designed to automate recurring, hard-to-staff outdoor routes so existing teams can focus on higher-judgment work, active operational decisions, exceptions, and tasks that still require people.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What is the best first use case?</h3>
+        <p>Start with a route that is recurring, difficult to staff, controlled enough to evaluate, and useful to document: a staff connector, remote gate, helipad-adjacent path, maintenance-building access route, landside connector, or selected support lane.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sibling-section">
+  <div class="sibling-inner">
+    <p class="sibling-label">Also in Defense &amp; Government</p>
+    <div class="sibling-card">
+      <h3>Military Installations &amp; Test Ranges</h3>
+      <p>Remote gates, perimeter routes, emergency egress, motor pools, and dispersed range support routes.</p>
+      <a class="sec-link" href="snowbotix_who-its-for_military-installations-test-ranges.html">View Military Installations</a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Start with one route aviation teams already worry about.</h2>
+    <p>Share the route, zone, or recurring maintenance task that is difficult to staff, inspect, or document. Snowbotix will assess whether supervised autonomous maintenance is a practical fit and outline what a controlled pilot could prove.</p>
+    <div class="cta-band-btns">
+      <a class="btn btn-white" href="#">Request an Airfield Route Assessment</a>
+      <a class="sec-link-light" href="snowbotix_safety-autonomy.html">View Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <p class="cta-micro">Send a map, aerial image, route list, or site plan. A first assessment should clarify route fit, operating boundaries, staging needs, proof requirements, and pilot scope.</p>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPS-Denied &amp; Adverse Conditions Operation | Snowbotix</title>
+<meta name="description" content="Snowbotix uses site-level sensing, onboard weather data, and human-in-the-loop monitoring to support outdoor maintenance operation during adverse weather, low visibility, and signal-constrained conditions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--snow:#F4F1E8;--snow-soft:#EDE9DC;--surface:#FFFFFF;--line:#D9DEE3;--steel:#3C4146;--muted:#5A6268;--brand-green:#008A1E;--brand-green-soft:rgba(0,138,30,0.08);--gold-yellow:#C9A227;--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--ink-panel:#1C1F22;--ink-border:#2E3235;--ink-muted:#AEB5BA;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--snow);color:var(--ink);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:var(--ink);position:sticky;top:0;z-index:100;border-bottom:1px solid #2a2d31;}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:#AEB5BA;font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:#F4F1E8;}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-green{background:var(--brand-green);color:#fff;margin-left:16px;}
+.btn-green:hover{opacity:.88;}
+.sec-link{color:var(--brand-green);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link::after{content:'→';}
+.sec-link:hover{opacity:.8;}
+.sec-link-light{color:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:.8;}
+.breadcrumb{background:var(--ink);padding:10px 24px;border-bottom:1px solid #2a2d31;}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:#5a6068;}
+.breadcrumb a{color:var(--ink-muted);transition:color .15s;}
+.breadcrumb a:hover{color:var(--snow);}
+.hero{background:var(--snow-soft);padding:72px 24px 64px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin-bottom:16px;}
+.hero h1{font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.18;max-width:820px;margin-bottom:20px;color:var(--ink);}
+.hero-sub{font-size:17px;color:var(--muted);max-width:680px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:40px;}
+.qual-bar{display:flex;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--line);padding-top:24px;}
+.qual-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.qual-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--brand-green);flex-shrink:0;}
+.section{padding:72px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;}
+.section h2{font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.25;margin-bottom:16px;color:var(--ink);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:16px;max-width:740px;}
+.sensing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+.sensing-cell{background:var(--surface);padding:24px;border-radius:var(--radius);}
+.sensing-cell .badge{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-green);display:block;margin-bottom:10px;}
+.sensing-cell h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--ink);}
+.sensing-cell p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+@media(max-width:760px){.sensing-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.sensing-grid{grid-template-columns:1fr;}}
+.decision-table{width:100%;border-collapse:collapse;margin-top:28px;border-radius:var(--radius);overflow:hidden;}
+.decision-table th{background:var(--ink);color:var(--snow);font-size:12px;font-weight:600;padding:12px 16px;text-align:left;font-family:var(--font-mono);letter-spacing:.06em;}
+.decision-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;}
+.decision-table tr:last-child td{border-bottom:none;}
+.decision-table td:first-child{color:var(--ink);font-weight:600;font-size:13px;width:230px;}
+.threshold-block{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:28px;}
+.threshold-header{background:var(--ink);padding:18px 24px;}
+.threshold-header h3{font-size:14px;font-weight:700;color:var(--snow);}
+.threshold-header p{font-size:12px;color:var(--ink-muted);margin-top:4px;line-height:1.5;}
+.threshold-row{display:flex;align-items:flex-start;gap:20px;padding:16px 24px;border-bottom:1px solid var(--line);}
+.threshold-row:last-child{border-bottom:none;}
+.threshold-val{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--brand-green);flex-shrink:0;width:80px;}
+.threshold-desc p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+.threshold-desc h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.note-box{background:var(--brand-green-soft);border:1px solid rgba(0,138,30,.15);border-radius:var(--radius);padding:20px 24px;margin-top:24px;}
+.note-box p{font-size:14px;color:var(--ink);line-height:1.65;margin:0;}
+.note-box p strong{color:var(--brand-green);}
+.faq-list{margin-top:32px;display:flex;flex-direction:column;gap:2px;}
+.faq-row{background:var(--surface);padding:22px 28px;border-radius:var(--radius);}
+.faq-row h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--ink);}
+.faq-row p{font-size:14px;color:var(--muted);line-height:1.65;margin:0;}
+.cta-band{background:var(--brand-green);padding:72px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(22px,3vw,34px);font-weight:700;color:#fff;margin-bottom:14px;max-width:640px;}
+.cta-band p{font-size:15px;color:rgba(255,255,255,.8);max-width:560px;line-height:1.65;margin-bottom:28px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.btn-white{background:#fff;color:var(--brand-green);}
+.btn-white:hover{opacity:.92;}
+.cta-micro{font-size:13px;color:rgba(255,255,255,.65);margin-top:20px;max-width:540px;line-height:1.6;}
+footer{background:var(--ink);color:var(--ink-muted);padding:48px 24px 32px;}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand img{height:24px;width:auto;filter:brightness(0)invert(1);margin-bottom:12px;}
+.footer-brand p{font-size:13px;color:var(--ink-muted);line-height:1.6;}
+.footer-col h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--snow);margin-bottom:12px;}
+.footer-col a{display:block;font-size:13px;color:var(--ink-muted);padding:3px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--snow);}
+.footer-bottom{border-top:1px solid var(--steel);padding-top:20px;font-size:12px;color:#5a6068;}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_safety-autonomy.html" class="current">Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="btn btn-green" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="snowbotix_safety-autonomy.html">Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    <span>/</span>
+    <span style="color:var(--ink-muted);">GPS-Denied &amp; Adverse Conditions</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">GPS-Denied &amp; Adverse Conditions</p>
+    <h1>Supervised autonomy for weather, visibility, and signal-constrained routes.</h1>
+    <p class="hero-sub">The outdoor maintenance problem is worst when conditions are worst. Snowbotix is designed for routes that need to be cleared during active weather, before daylight, and in environments where signal quality is not always consistent. Site-level sensing, onboard weather data, and human-in-the-loop oversight give teams the information to make informed decisions about when and how to operate.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-green" href="#">Request a Site Assessment</a>
+      <a class="sec-link" href="snowbotix_techspecs_autonomy-navigation.html">View Autonomy &amp; Navigation Specs</a>
+    </div>
+    <div class="qual-bar">
+      <span class="qual-item">Snow-penetrating radar</span>
+      <span class="qual-item">Hyperlocal weather sensing</span>
+      <span class="qual-item">34°F de-icing threshold logic</span>
+      <span class="qual-item">Signal-constrained area evaluation</span>
+      <span class="qual-item">Run/stop/switch/escalate/defer framework</span>
+      <span class="qual-item">Off-hour storm response</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">01 — Adverse-Condition Sensing</p>
+    <h2>Onboard sensing built for outdoor maintenance conditions.</h2>
+    <p>Snowbotix uses a combination of onboard sensors that are designed for outdoor maintenance environments rather than controlled indoor conditions. Snow, low visibility, and variable weather are part of the operating context — not exceptions to it.</p>
+    <div class="sensing-grid">
+      <div class="sensing-cell">
+        <span class="badge">Sensing</span>
+        <h3>Snow-penetrating radar</h3>
+        <p>Helps the unit detect surface conditions and obstacles beneath or within snow cover, supporting more accurate route tracking during active accumulation events.</p>
+      </div>
+      <div class="sensing-cell">
+        <span class="badge">Sensing</span>
+        <h3>Hyperlocal weather sensing</h3>
+        <p>Onboard weather sensors capture temperature, accumulation rate, and surface condition data tied to the specific location and time of the mission.</p>
+      </div>
+      <div class="sensing-cell">
+        <span class="badge">Sensing</span>
+        <h3>360-degree perimeter sensing</h3>
+        <p>The sensing perimeter around the unit remains active during adverse weather. Obstacle detection does not require clear visibility in the travel direction only.</p>
+      </div>
+      <div class="sensing-cell">
+        <span class="badge">Threshold</span>
+        <h3>Temperature-based de-icing logic</h3>
+        <p>Material application is triggered by a 34°F threshold. De-icing does not run continuously — it activates when surface conditions indicate it is useful and stops when conditions change.</p>
+      </div>
+      <div class="sensing-cell">
+        <span class="badge">Visibility</span>
+        <h3>Mission portal monitoring</h3>
+        <p>Supervisors receive live route progress, sensor readings, location, and alerts during adverse-condition missions. Human oversight remains active during the hardest operating conditions.</p>
+      </div>
+      <div class="sensing-cell">
+        <span class="badge">Endurance</span>
+        <h3>Extended storm endurance</h3>
+        <p>Snowbotix is designed to operate over long storm events — not just the first pass. Docking, charging, and refilling logistics are planned during site setup to support multi-pass operation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — De-Icing Threshold</p>
+    <h2>Material application tied to a defined temperature threshold.</h2>
+    <div class="threshold-block">
+      <div class="threshold-header">
+        <h3>De-icing activation logic</h3>
+        <p>Threshold-based control reduces material waste and applies treatment when surface conditions indicate it is effective.</p>
+      </div>
+      <div class="threshold-row">
+        <p class="threshold-val">≤ 34°F</p>
+        <div class="threshold-desc">
+          <h4>De-icing activated</h4>
+          <p>When surface temperature readings indicate conditions at or below 34°F, the de-icing application system activates on appropriate route segments.</p>
+        </div>
+      </div>
+      <div class="threshold-row">
+        <p class="threshold-val">&gt; 34°F</p>
+        <div class="threshold-desc">
+          <h4>De-icing not activated</h4>
+          <p>Above threshold, de-icing application is held. The robot continues route clearing without applying material where it would not be effective.</p>
+        </div>
+      </div>
+      <div class="threshold-row">
+        <p class="threshold-val">Route-level</p>
+        <div class="threshold-desc">
+          <h4>Application tied to surface and segment</h4>
+          <p>De-icing logic can be configured at the route segment level — not all surfaces receive the same treatment. Sensitive surfaces, specialty coatings, and high-sensitivity areas can be excluded or adjusted.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">03 — Operating Decision Framework</p>
+    <h2>Run, stop, switch modes, escalate, or defer: a five-option response framework.</h2>
+    <p>Adverse conditions do not always mean a mission stops. The operating decision framework gives supervisors and teams structured options for how to respond to changing conditions during a mission.</p>
+    <table class="decision-table">
+      <thead>
+        <tr><th>Decision</th><th>When it applies</th><th>Who decides</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Run</td><td>Conditions are within operating thresholds; route is clear to proceed autonomously</td><td>System continues; supervisor monitors</td></tr>
+        <tr><td>Stop</td><td>A threshold is exceeded, a detection event occurs, or conditions change beyond operating parameters</td><td>Automatic halt; supervisor reviews event</td></tr>
+        <tr><td>Switch modes</td><td>Conditions favor line-of-sight manual for a specific segment; sensor data suggests a different approach</td><td>Remote supervisor or local operator</td></tr>
+        <tr><td>Escalate</td><td>A condition requires facility notification, crew dispatch, or management awareness beyond the supervisor</td><td>Remote supervisor escalates to facility contact</td></tr>
+        <tr><td>Defer or exclude</td><td>A route segment is not operable under current conditions and should be deferred or removed from the active mission</td><td>Supervisor defers or excludes the segment</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Signal-Constrained Environments</p>
+    <h2>Signal quality is evaluated during site assessment.</h2>
+    <p>Some sites have areas where signal quality is inconsistent — underground access, enclosed outdoor structures, dense building surroundings, and remote industrial locations. Signal-constrained conditions affect how the system operates and what capabilities are available during a mission.</p>
+    <div class="note-box">
+      <p><strong>Important:</strong> Snowbotix does not claim GPS-denied capability as a standard feature. Signal-constrained areas are identified and evaluated during the site assessment process. Operating in areas with degraded signal requires a specific review of what the unit can and cannot do in those conditions. This should be confirmed as part of deployment planning — not assumed from product descriptions.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:24px;">
+      <div style="background:var(--surface);padding:20px 24px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Site assessment role</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Signal quality is mapped during site assessment. Areas with degraded signal are identified, and operating options — including exclusion, manual-only, or deferred segments — are reviewed before deployment.</p>
+      </div>
+      <div style="background:var(--surface);padding:20px 24px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Operating options in constrained areas</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Line-of-sight manual operation does not require network connectivity between the unit and the remote supervisor. For signal-constrained segments, manual operation may be the appropriate mode.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">05 — Off-Hour Storm Response</p>
+    <h2>Routes that need to run before crews or tenants arrive.</h2>
+    <p>The most demanding outdoor maintenance window is often 2 a.m. to 6 a.m. — after accumulation has stopped or peaked, but before facilities need to be open and usable. Snowbotix is designed for this window, with event-triggered mode, supervisor-monitored operation, and proof records that document what happened before the day shift starts.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:24px;">
+      <div style="background:var(--surface);padding:18px 22px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Event-triggered dispatch</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Routes activate when accumulation or weather thresholds are crossed — not on a fixed clock that may not match actual conditions.</p>
+      </div>
+      <div style="background:var(--surface);padding:18px 22px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Remote supervisor oversight</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Off-hour missions are monitored remotely. No crew needs to be on site for autonomous operation to proceed in approved zones.</p>
+      </div>
+      <div style="background:var(--surface);padding:18px 22px;border-radius:var(--radius);">
+        <p style="font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;">Pre-open service records</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Geocoded proof of what was cleared, when, and under what conditions — before the facility team or tenants arrive for the day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2>Questions about adverse conditions and GPS-constrained operation.</h2>
+    <div class="faq-list">
+      <div class="faq-row">
+        <h3>Can Snowbotix operate during active snowfall?</h3>
+        <p>Snowbotix is designed to operate during active maintenance weather events. Sensor performance, route quality, and specific operating conditions should be reviewed during site assessment to confirm what the deployment can support at your location.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Does snow-penetrating radar mean the robot can see through any snow depth?</h3>
+        <p>Snow-penetrating radar helps the unit detect surface conditions and obstacles within snow cover. It does not mean the robot can navigate through unlimited accumulation. Operating thresholds for snow depth and accumulation rates should be confirmed during site assessment.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What is the de-icing threshold and why 34°F?</h3>
+        <p>De-icing material is most effective when surface temperatures are at or below freezing. The 34°F threshold gives a small buffer below the 32°F freezing point to account for surface variability. Application above this threshold adds material cost without proportionate benefit.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Does Snowbotix work in GPS-denied environments?</h3>
+        <p>GPS-constrained areas are evaluated during the site assessment. Snowbotix does not claim GPS-denied capability as a standard feature. If your site has areas with degraded or intermittent signal, this should be reviewed before deployment to identify what operating options are appropriate for those segments.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What happens if weather conditions change during a mission?</h3>
+        <p>The supervisor monitoring the mission receives sensor data and alerts in real time. If conditions change beyond operating thresholds, the supervisor can stop the mission, defer specific segments, switch to manual operation, or escalate to facility contacts.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Can the robot handle a multi-hour storm event?</h3>
+        <p>Snowbotix is designed for extended storm coverage, not just a single pass. Docking, charging, and material refilling logistics are planned during site setup. For long events, the operating model supports multiple passes over the same priority routes during and after a storm.</p>
+      </div>
+      <div class="faq-row">
+        <h3>Can Snowbotix run overnight without a crew on site?</h3>
+        <p>Autonomous operation does not require a crew to be on site. Remote supervisor monitoring supports off-hour missions. Site conditions, charging infrastructure, and supervisor availability for escalation should be confirmed during deployment planning.</p>
+      </div>
+      <div class="faq-row">
+        <h3>What records are created during adverse-condition missions?</h3>
+        <p>Service records capture route progress, sensor readings, weather data, surface conditions, de-icing material use, stop events, and supervisor notes for each mission. These records are timestamped and geocoded regardless of whether conditions were routine or adverse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Confirm what adverse-condition operation looks like on your site.</h2>
+    <p>A site assessment identifies your storm response priorities, reviews signal quality, maps operating thresholds, and establishes what the robot can cover during your most demanding maintenance windows.</p>
+    <div class="cta-band-btns">
+      <a class="btn btn-white" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="snowbotix_safety-autonomy.html">Back to Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <p class="cta-micro">Adverse-condition capability varies by site. A site assessment is the right place to review what Snowbotix can support during your specific storm and weather maintenance scenarios.</p>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

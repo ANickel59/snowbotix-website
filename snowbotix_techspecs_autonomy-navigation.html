@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snowbotix Autonomy &amp; Navigation Specs | RTK-GNSS, Route Mapping, Geofencing</title>
+<meta name="description" content="Review Snowbotix autonomy and navigation specifications: RTK-GNSS positioning, IMU, LiDAR, radar, mapped-route operation, geofencing, 999-route capacity, and GIS export formats.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--ink-soft:#1E2024;--snow:#F4F1E8;--surface:#242628;--surface-soft:#2A2D30;--line:#2E3235;--steel:#666C72;--muted:#9AA0A6;--brand-green:#008A1E;--gold-yellow:#C9A227;--gold-yellow-soft:rgba(201,162,39,0.1);--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--ink);color:var(--snow);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:#121315;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;filter:brightness(0)invert(1);}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:var(--snow);}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-gold{background:var(--gold-yellow);color:#121315;margin-left:16px;}
+.btn-gold:hover{opacity:.88;}
+.sec-link-light{color:var(--snow);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;opacity:.75;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:1;}
+.breadcrumb{background:#121315;padding:10px 24px;border-bottom:1px solid var(--line);}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
+.breadcrumb a{color:var(--muted);transition:color .15s;}
+.breadcrumb a:hover{color:var(--snow);}
+.hero{background:var(--ink-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:16px;}
+.hero h1{font-size:clamp(26px,3.5vw,42px);font-weight:700;line-height:1.16;max-width:800px;margin-bottom:18px;color:var(--snow);}
+.hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:36px;}
+.spec-strip{display:flex;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--line);padding-top:20px;}
+.spec-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.spec-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold-yellow);flex-shrink:0;}
+.section{padding:64px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
+.section h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;line-height:1.22;margin-bottom:14px;color:var(--snow);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:740px;}
+.section p:last-child{margin-bottom:0;}
+.spec-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.spec-table th{background:#121315;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);}
+.spec-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.spec-table tr:last-child td{border-bottom:none;}
+.spec-table td:first-child{color:var(--snow);font-weight:600;font-size:13px;width:220px;}
+.stack-list{display:flex;flex-direction:column;gap:1px;margin-top:24px;background:var(--line);}
+.stack-item{display:grid;grid-template-columns:48px 1fr 1fr;background:var(--surface);}
+.stack-item > div{padding:16px 20px;border-right:1px solid var(--line);}
+.stack-item > div:last-child{border-right:none;}
+.stack-num{font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--gold-yellow);display:flex;align-items:center;justify-content:center;}
+.stack-title{font-size:14px;font-weight:700;color:var(--snow);}
+.stack-body{font-size:13px;color:var(--muted);line-height:1.55;margin-top:4px;}
+.stack-desc{font-size:13px;color:var(--muted);line-height:1.55;}
+@media(max-width:640px){.stack-item{grid-template-columns:40px 1fr;}.stack-desc{display:none;}}
+.workflow-list{margin-top:24px;display:flex;flex-direction:column;gap:1px;background:var(--line);}
+.workflow-step{display:flex;background:var(--surface);}
+.step-num{width:48px;min-width:48px;display:flex;align-items:flex-start;justify-content:center;padding:16px 0;font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--gold-yellow);}
+.step-body{padding:16px 20px 16px 8px;border-left:1px solid var(--line);}
+.step-body h3{font-size:14px;font-weight:700;color:var(--snow);margin-bottom:4px;}
+.step-body p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:24px;background:var(--line);}
+.mode-cell{background:var(--surface);padding:22px 24px;}
+.mode-tag{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-yellow);margin-bottom:8px;}
+.mode-cell h3{font-size:15px;font-weight:700;color:var(--snow);margin-bottom:8px;}
+.mode-cell p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+@media(max-width:760px){.mode-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.mode-grid{grid-template-columns:1fr;}}
+.gis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px;background:var(--line);}
+.gis-cell{background:var(--surface);padding:18px 20px;}
+.gis-cell h3{font-size:13px;font-weight:700;color:var(--snow);margin-bottom:4px;}
+.gis-cell p{font-size:12px;color:var(--muted);line-height:1.55;margin:0;}
+@media(max-width:640px){.gis-grid{grid-template-columns:1fr 1fr;}}
+.note-box{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold-yellow);padding:18px 22px;margin-top:24px;border-radius:var(--radius);}
+.note-box p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+.note-box p strong{color:var(--snow);}
+.related-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:32px;background:var(--line);}
+.related-item{background:var(--surface);padding:16px 20px;}
+.related-item a{font-size:13px;color:var(--muted);font-weight:500;transition:color .15s;}
+.related-item a:hover{color:var(--gold-yellow);}
+.related-item p{font-size:11px;color:var(--steel);margin-top:4px;font-family:var(--font-mono);}
+@media(max-width:640px){.related-nav{grid-template-columns:1fr 1fr;}}
+.cta-band{background:#121315;border-top:1px solid var(--line);padding:64px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;color:var(--snow);margin-bottom:12px;max-width:600px;}
+.cta-band p{font-size:15px;color:var(--muted);max-width:560px;line-height:1.65;margin-bottom:24px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+footer{background:#0E0F11;color:var(--muted);padding:40px 24px 28px;border-top:1px solid var(--line);}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand img{height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;}
+.footer-brand p{font-size:13px;color:var(--steel);line-height:1.6;}
+.footer-col h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono);}
+.footer-col a{display:block;font-size:13px;color:var(--steel);padding:2px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--muted);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--steel);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_techspecs_robot-platform.html" class="current">Tech Specs</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="snowbotix_techspecs_robot-platform.html">Technology Specifications</a>
+    <span>/</span>
+    <span style="color:var(--snow);">Autonomy &amp; Navigation</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Technology Specifications / Autonomy &amp; Navigation</p>
+    <h1>Mapped-route autonomy for commercial outdoor maintenance.</h1>
+    <p class="hero-sub">Snowbotix uses a fused navigation stack combining RTK-GNSS, tactical-grade IMU, LiDAR, radar, Snow Penetrating Radar, HD cameras, thermal sensing, and hyper-local weather data to execute mapped routes in outdoor commercial environments. All autonomous operation is bounded by approved zones, supervised by remote human operators, and logged for proof-of-service records.</p>
+    <div class="hero-ctas">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+    <div class="spec-strip">
+      <span class="spec-item">RTK-GNSS positioning</span>
+      <span class="spec-item">Tactical-grade IMU</span>
+      <span class="spec-item">LiDAR + radar sensing</span>
+      <span class="spec-item">Snow Penetrating Radar</span>
+      <span class="spec-item">HD cameras + thermal</span>
+      <span class="spec-item">Hyper-local weather integration</span>
+      <span class="spec-item">999 mapped routes</span>
+      <span class="spec-item">Geofenced operating boundaries</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">01 — Navigation Stack</p>
+    <h2>Eight sensor and data sources operating as one system.</h2>
+    <p>Snowbotix does not rely on a single sensor for navigation. The platform fuses multiple positioning and perception inputs into a coherent navigation picture. When one input degrades due to weather, terrain, or signal conditions, the fusion stack adjusts without stopping the mission.</p>
+    <div class="stack-list">
+      <div class="stack-item">
+        <div class="stack-num">01</div>
+        <div><p class="stack-title">RTK-GNSS</p><p class="stack-body">High-precision GNSS positioning for defined outdoor routes. RTK correction supports accurate positioning in open-sky conditions for repeatable, consistent route execution.</p></div>
+        <div class="stack-desc"><p class="stack-body">Supports defined-route repeatability across commercial sites, parking lots, sidewalk networks, and grounds maintenance routes where sky visibility is adequate.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">02</div>
+        <div><p class="stack-title">Tactical-grade IMU</p><p class="stack-body">Inertial measurement unit for velocity tracking, tilt detection, platform orientation, and dead-reckoning in GNSS-degraded environments.</p></div>
+        <div class="stack-desc"><p class="stack-body">Provides heading stability and position estimation during brief positioning dropouts. IMU-only navigation is time-limited and site-validated, not a standard operational claim.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">03</div>
+        <div><p class="stack-title">HD cameras</p><p class="stack-body">High-definition cameras for visual navigation, object classification, surface observation, and proof-of-service media capture during autonomous operation.</p></div>
+        <div class="stack-desc"><p class="stack-body">Camera feeds are logged to the fleet portal, viewable live by supervisors, and stored as mission records for reporting and incident review.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">04</div>
+        <div><p class="stack-title">Thermal sensing</p><p class="stack-body">Infrared/thermal imaging for low-visibility environments, nighttime route execution, and hot-spot identification on surfaces in early freeze conditions.</p></div>
+        <div class="stack-desc"><p class="stack-body">Supports scheduled off-hour operations and conditions where visible-light cameras have reduced effectiveness.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">05</div>
+        <div><p class="stack-title">LiDAR</p><p class="stack-body">Lidar scanning for 3D environment mapping, obstacle detection, route boundary verification, and high-precision object detection around the robot's operating perimeter.</p></div>
+        <div class="stack-desc"><p class="stack-body">Contributes to the 360° sensing envelope and supports both navigation accuracy and the 6-foot safety buffer response system.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">06</div>
+        <div><p class="stack-title">Radar / Snow Penetrating Radar</p><p class="stack-body">Surface and subsurface sensing for object detection through snow cover, icy conditions, and low-visibility scenarios where optical and thermal sensing are reduced.</p></div>
+        <div class="stack-desc"><p class="stack-body">Snow Penetrating Radar detects objects and surface hazards masked by snow accumulation, supporting consistent navigation in active accumulation conditions.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">07</div>
+        <div><p class="stack-title">360° sensing envelope</p><p class="stack-body">Full perimeter coverage combining LiDAR, camera, radar, and thermal inputs for consistent obstacle detection in all directions around the platform.</p></div>
+        <div class="stack-desc"><p class="stack-body">Supports the 6-foot safety bubble response system and remote human oversight. Feeds hazard alerts to supervisors and the fleet portal.</p></div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-num">08</div>
+        <div><p class="stack-title">Hyper-local weather sensing</p><p class="stack-body">Integrated weather data for route scheduling, deicing trigger logic, and mission hold decisions based on site-specific temperature, precipitation, and accumulation conditions.</p></div>
+        <div class="stack-desc"><p class="stack-body">Feeds automatic deicing activation logic (34°F trigger threshold) and storm-response scheduling. Viewable in fleet portal dashboard.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — Route Architecture</p>
+    <h2>All routes are pre-mapped, approved, and bounded before autonomous execution begins.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Route specification</th><th>Detail</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Route capacity</td><td>Up to 999 mapped routes per deployment</td></tr>
+        <tr><td>Route boundaries</td><td>Geofenced by GPS coordinates and physical survey markers. The robot operates within defined zones and stops at boundary edges.</td></tr>
+        <tr><td>Route types</td><td>Repeating scheduled routes, on-demand dispatch routes, storm-response priority routes, inspection routes</td></tr>
+        <tr><td>Mapping method</td><td>Pre-deployment site mapping with operator-defined routes, exclusion zones, pass patterns, and boundary markers</td></tr>
+        <tr><td>Route updates</td><td>Managed through the fleet portal by authorized operators. Route changes require review before deployment.</td></tr>
+        <tr><td>Exclusion zones</td><td>Defined areas where the robot cannot operate, set during site mapping and updated through the portal</td></tr>
+        <tr><td>Priority routing</td><td>Emergency access paths, deicing routes, and priority zones configurable for front-of-queue dispatch</td></tr>
+        <tr><td>Route repeatability</td><td>High-precision positioning supports consistent route execution across repeated missions. Actual positioning performance depends on site conditions including sky visibility, terrain, and signal quality.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">03 — Operating Modes</p>
+    <h2>Three supervised operating states.</h2>
+    <div class="mode-grid">
+      <div class="mode-cell">
+        <p class="mode-tag">Autonomous mode</p>
+        <h3>Route execution within approved boundaries</h3>
+        <p>The robot follows pre-mapped routes within defined geofenced zones at 2 mph. Human supervisor monitors remotely via fleet portal with full override capability at any time.</p>
+      </div>
+      <div class="mode-cell">
+        <p class="mode-tag">Line-of-sight mode</p>
+        <h3>Crew-assisted movement up to 5–6 mph</h3>
+        <p>Used for repositioning, access route transitions, complex maneuvers, and deployment logistics. Requires trained operator in direct line of sight.</p>
+      </div>
+      <div class="mode-cell">
+        <p class="mode-tag">Docked / standby mode</p>
+        <h3>Charging, staging, and mission-ready hold</h3>
+        <p>Platform returns to geotagged dock or staging zone between missions. Battery charges while connected to wireless dock. System maintains mission readiness for scheduled or on-demand dispatch.</p>
+      </div>
+    </div>
+    <div class="note-box" style="margin-top:20px;">
+      <p><strong>GPS-degraded environments:</strong> Snowbotix does not claim standard GPS-denied autonomous operation. Operation in environments with persistent GNSS signal degradation — dense urban canyons, underground structures, heavy canopy cover, or GNSS-jamming environments — is evaluated during site assessment. Any GPS-constrained operation requires site-specific validation before deployment.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Mission Workflow</p>
+    <h2>Eight steps from pre-mapping to GIS outputs.</h2>
+    <div class="workflow-list">
+      <div class="workflow-step"><div class="step-num">01</div><div class="step-body"><h3>Pre-deployment site mapping</h3><p>Physical site survey to map operating zones, identify boundaries, mark exclusion zones, set charging station locations, and define priority routes.</p></div></div>
+      <div class="workflow-step"><div class="step-num">02</div><div class="step-body"><h3>Route programming and review</h3><p>Mapped routes are programmed and reviewed by the operator. Boundaries, exclusion zones, and priority logic are set in the fleet portal before any autonomous operation begins.</p></div></div>
+      <div class="workflow-step"><div class="step-num">03</div><div class="step-body"><h3>Dispatch authorization</h3><p>Missions are dispatched manually or via schedule. Dispatch checks route validity, weather conditions, battery state, and attachment configuration before authorizing launch.</p></div></div>
+      <div class="workflow-step"><div class="step-num">04</div><div class="step-body"><h3>Autonomous route execution</h3><p>Robot executes approved route within geofenced boundaries at 2 mph. 360° sensing active throughout. Position, sensor data, and media logged continuously.</p></div></div>
+      <div class="workflow-step"><div class="step-num">05</div><div class="step-body"><h3>Live supervisor monitoring</h3><p>Human supervisor monitors position, battery, sensor alerts, and camera feeds from the fleet portal. Override available at any time to pause, redirect, or stop the mission.</p></div></div>
+      <div class="workflow-step"><div class="step-num">06</div><div class="step-body"><h3>Obstacle and hazard handling</h3><p>When sensing detects an obstacle within the 6-foot safety buffer, the robot stops, logs the event, and sends an alert to the supervisor for review and decision.</p></div></div>
+      <div class="workflow-step"><div class="step-num">07</div><div class="step-body"><h3>Mission completion and return</h3><p>On route completion or low-battery threshold, the platform returns to its geotagged dock or staging zone for charging and mission closeout.</p></div></div>
+      <div class="workflow-step"><div class="step-num">08</div><div class="step-body"><h3>Proof-of-service records and GIS outputs</h3><p>Mission records, GPS traces, timestamped geotagged media, and sensor logs are available in the fleet portal. GIS outputs exportable as ArcGIS feature classes, GeoJSON, and API-accessible data.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">05 — GIS and Data Outputs</p>
+    <h2>Every mission produces spatial records.</h2>
+    <div class="gis-grid">
+      <div class="gis-cell"><h3>GPS route traces</h3><p>Full path geometry per mission, exportable as spatial features</p></div>
+      <div class="gis-cell"><h3>Geotagged media</h3><p>Timestamped images and sensor captures with GPS coordinates</p></div>
+      <div class="gis-cell"><h3>Surface observations</h3><p>Conditions recorded along route: ice, debris, surface damage, vegetation</p></div>
+      <div class="gis-cell"><h3>ArcGIS feature classes</h3><p>Structured spatial outputs compatible with ArcGIS workflows</p></div>
+      <div class="gis-cell"><h3>GeoJSON export</h3><p>Open-format spatial exports for custom analysis and external systems</p></div>
+      <div class="gis-cell"><h3>Sensor logs</h3><p>LiDAR, temperature, weather, and environmental readings per mission</p></div>
+      <div class="gis-cell"><h3>API access</h3><p>Programmatic access to mission data, routes, and spatial records</p></div>
+      <div class="gis-cell"><h3>CMMS / 311 integration options</h3><p>Data routing options for asset management systems and municipal workflows</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">Related Technical Specifications</p>
+    <h2>Review the connected specification pages.</h2>
+    <div class="related-nav">
+      <div class="related-item"><a href="snowbotix_techspecs_robot-platform.html">Robot Platform</a><p>Chassis, tracks, weight, terrain</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_attachments-capabilities.html">Attachments &amp; Capabilities</a><p>Snow, sweep, mow, apply, inspect</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_safety-systems.html">Safety Systems</a><p>360° sensing, E-stops, supervision</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Dispatch, live status, proof-of-work</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>GIS, API, OCI, cloud privacy</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_deployment-requirements.html">Deployment Requirements</a><p>Site readiness, mapping, operating plan</p></div>
+      <div class="related-item"><a href="snowbotix_safety-autonomy_autonomous-navigation.html">Autonomy (Buyer Overview)</a><p>Non-technical autonomy overview</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Evaluate navigation fit for your site.</h2>
+    <p>Navigation performance depends on site geometry, sky visibility, terrain, and operating environment. A site assessment determines which navigation modes are appropriate for each route before deployment planning begins.</p>
+    <div class="cta-band-btns">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

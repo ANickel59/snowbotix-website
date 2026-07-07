@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snowbotix Fleet Management Portal Specs | Dispatch, Live Status, Proof-of-Work</title>
+<meta name="description" content="Review Snowbotix Fleet Management Portal specifications: live robot dispatch, battery monitoring, supervisor controls, hazard workflow, proof-of-work reporting, and GIS integrations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--ink-soft:#1E2024;--snow:#F4F1E8;--surface:#242628;--surface-soft:#2A2D30;--line:#2E3235;--steel:#666C72;--muted:#9AA0A6;--brand-green:#008A1E;--gold-yellow:#C9A227;--gold-yellow-soft:rgba(201,162,39,0.1);--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--ink);color:var(--snow);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:#121315;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;filter:brightness(0)invert(1);}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:var(--snow);}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-gold{background:var(--gold-yellow);color:#121315;margin-left:16px;}
+.btn-gold:hover{opacity:.88;}
+.sec-link-light{color:var(--snow);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;opacity:.75;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:1;}
+.breadcrumb{background:#121315;padding:10px 24px;border-bottom:1px solid var(--line);}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
+.breadcrumb a{color:var(--muted);transition:color .15s;}
+.breadcrumb a:hover{color:var(--snow);}
+.hero{background:var(--ink-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:16px;}
+.hero h1{font-size:clamp(26px,3.5vw,42px);font-weight:700;line-height:1.16;max-width:800px;margin-bottom:18px;color:var(--snow);}
+.hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:36px;}
+.spec-strip{display:flex;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--line);padding-top:20px;}
+.spec-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.spec-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold-yellow);flex-shrink:0;}
+.section{padding:64px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
+.section h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;line-height:1.22;margin-bottom:14px;color:var(--snow);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:740px;}
+.section p:last-child{margin-bottom:0;}
+.spec-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.spec-table th{background:#121315;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);}
+.spec-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.spec-table tr:last-child td{border-bottom:none;}
+.spec-table td:first-child{color:var(--snow);font-weight:600;font-size:13px;width:220px;}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:28px;}
+.feature-cell{background:var(--surface);padding:20px 24px;}
+.feature-tag{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-yellow);margin-bottom:8px;}
+.feature-cell h3{font-size:14px;font-weight:700;color:var(--snow);margin-bottom:6px;}
+.feature-cell p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+@media(max-width:760px){.feature-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.feature-grid{grid-template-columns:1fr;}}
+.hazard-list{display:flex;flex-direction:column;gap:1px;margin-top:24px;background:var(--line);}
+.hazard-step{display:flex;background:var(--surface);}
+.hz-num{width:48px;min-width:48px;display:flex;align-items:flex-start;justify-content:center;padding:16px 0;font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--gold-yellow);}
+.hz-body{padding:16px 20px 16px 8px;border-left:1px solid var(--line);}
+.hz-body h3{font-size:14px;font-weight:700;color:var(--snow);margin-bottom:4px;}
+.hz-body p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+.roles-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.roles-table th{background:#121315;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);}
+.roles-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.roles-table tr:last-child td{border-bottom:none;}
+.roles-table td:first-child{color:var(--gold-yellow);font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;width:200px;}
+.integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:24px;}
+.integ-cell{background:var(--surface);padding:16px 18px;}
+.integ-cell h3{font-size:13px;font-weight:700;color:var(--snow);margin-bottom:4px;}
+.integ-cell p{font-size:12px;color:var(--muted);line-height:1.5;margin:0;}
+@media(max-width:640px){.integ-grid{grid-template-columns:1fr 1fr;}}
+.related-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:32px;background:var(--line);}
+.related-item{background:var(--surface);padding:16px 20px;}
+.related-item a{font-size:13px;color:var(--muted);font-weight:500;transition:color .15s;}
+.related-item a:hover{color:var(--gold-yellow);}
+.related-item p{font-size:11px;color:var(--steel);margin-top:4px;font-family:var(--font-mono);}
+@media(max-width:640px){.related-nav{grid-template-columns:1fr 1fr;}}
+.cta-band{background:#121315;border-top:1px solid var(--line);padding:64px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;color:var(--snow);margin-bottom:12px;max-width:600px;}
+.cta-band p{font-size:15px;color:var(--muted);max-width:560px;line-height:1.65;margin-bottom:24px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+footer{background:#0E0F11;color:var(--muted);padding:40px 24px 28px;border-top:1px solid var(--line);}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand img{height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;}
+.footer-brand p{font-size:13px;color:var(--steel);line-height:1.6;}
+.footer-col h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono);}
+.footer-col a{display:block;font-size:13px;color:var(--steel);padding:2px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--muted);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--steel);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_techspecs_robot-platform.html" class="current">Tech Specs</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="snowbotix_techspecs_robot-platform.html">Technology Specifications</a>
+    <span>/</span>
+    <span style="color:var(--snow);">Fleet Management Portal</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Technology Specifications / Fleet Management Portal</p>
+    <h1>A single command view for autonomous outdoor maintenance.</h1>
+    <p class="hero-sub">The Snowbotix Fleet Management Portal and Fleet App give supervisors and fleet managers live robot status, remote dispatch, battery monitoring, hazard event review, proof-of-work reporting, and GIS data exports from one interface, accessible from any networked device.</p>
+    <div class="hero-ctas">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+    <div class="spec-strip">
+      <span class="spec-item">Live robot position tracking</span>
+      <span class="spec-item">Remote dispatch and override</span>
+      <span class="spec-item">Battery state monitoring</span>
+      <span class="spec-item">360° live camera view</span>
+      <span class="spec-item">Hazard alert and review workflow</span>
+      <span class="spec-item">Proof-of-work reporting</span>
+      <span class="spec-item">GIS export and API access</span>
+      <span class="spec-item">8 role-based access tiers</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">01 — Dashboard Features</p>
+    <h2>Everything a supervisor needs to oversee an active outdoor maintenance mission.</h2>
+    <div class="feature-grid">
+      <div class="feature-cell">
+        <p class="feature-tag">Live Operations</p>
+        <h3>Robot position and route visualization</h3>
+        <p>Live map view showing current robot position, active route geometry, exclusion zones, and mission progress in real time.</p>
+      </div>
+      <div class="feature-cell">
+        <p class="feature-tag">Status Monitoring</p>
+        <h3>Battery, speed, and attachment state</h3>
+        <p>Live battery percentage, estimated remaining runtime, current operating speed, attachment status, and mission elapsed time.</p>
+      </div>
+      <div class="feature-cell">
+        <p class="feature-tag">Live Video</p>
+        <h3>360° camera view</h3>
+        <p>Live access to onboard camera feeds for real-time visual supervision without requiring on-site presence during autonomous operation.</p>
+      </div>
+      <div class="feature-cell">
+        <p class="feature-tag">Dispatch</p>
+        <h3>Mission dispatch and scheduling</h3>
+        <p>Manual and scheduled dispatch from the portal or Fleet App. Mission queue management across multiple robots and routes.</p>
+      </div>
+      <div class="feature-cell">
+        <p class="feature-tag">Weather</p>
+        <h3>Hyper-local weather scheduling</h3>
+        <p>Weather data integrated into dispatch scheduling for storm-triggered automatic missions, deicing threshold activation, and hold/resume decisions.</p>
+      </div>
+      <div class="feature-cell">
+        <p class="feature-tag">Maintenance</p>
+        <h3>Predictive maintenance analytics</h3>
+        <p>Usage tracking, component condition indicators, and scheduled maintenance alerts based on runtime hours, cycle counts, and operating conditions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — Supervisor Controls</p>
+    <h2>Human override available at any time, from anywhere.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Control action</th><th>What it does</th><th>Available through</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pause mission</td><td>Robot stops in place. Mission held for supervisor decision.</td><td>Fleet portal, Fleet App</td></tr>
+        <tr><td>Resume mission</td><td>Robot continues the active route from its current position.</td><td>Fleet portal, Fleet App</td></tr>
+        <tr><td>Return to dock</td><td>Mission ended. Robot returns to geotagged dock or staging zone.</td><td>Fleet portal, Fleet App</td></tr>
+        <tr><td>Digital E-stop</td><td>Full remote stop. Robot halts all drive systems. Requires manual restart.</td><td>Fleet portal, Fleet App</td></tr>
+        <tr><td>Route override</td><td>Reassign robot to a different route or priority zone.</td><td>Fleet portal</td></tr>
+        <tr><td>Hazard review and release</td><td>Review captured hazard event. Confirm obstacle clear and authorize mission resume.</td><td>Fleet portal, Fleet App</td></tr>
+        <tr><td>Mission history review</td><td>Access past mission records, GPS traces, camera captures, and event logs.</td><td>Fleet portal</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">03 — Hazard Alert Workflow</p>
+    <h2>Six steps from detection to record.</h2>
+    <div class="hazard-list">
+      <div class="hazard-step"><div class="hz-num">01</div><div class="hz-body"><h3>Detect</h3><p>360° sensing identifies object intrusion within the 6-foot safety buffer during autonomous operation.</p></div></div>
+      <div class="hazard-step"><div class="hz-num">02</div><div class="hz-body"><h3>Capture</h3><p>Robot stops immediately. Sensor snapshot taken: GPS position, timestamp, camera captures, and sensor readings locked to event record.</p></div></div>
+      <div class="hazard-step"><div class="hz-num">03</div><div class="hz-body"><h3>Alert</h3><p>Push notification dispatched to supervisor via fleet portal and Fleet App. On-robot visual and audio alerts active at site.</p></div></div>
+      <div class="hazard-step"><div class="hz-num">04</div><div class="hz-body"><h3>Review</h3><p>Supervisor reviews event: camera capture, GPS location, sensor data. Determines whether to resume, redirect, or hold mission.</p></div></div>
+      <div class="hazard-step"><div class="hz-num">05</div><div class="hz-body"><h3>Notify</h3><p>Supervisor updates site team as needed. On-site crew can be dispatched to clear obstacle or assist with complex maneuver if required.</p></div></div>
+      <div class="hazard-step"><div class="hz-num">06</div><div class="hz-body"><h3>Record</h3><p>Event logged permanently to mission record: time, location, sensor state, camera captures, supervisor response, and outcome. Available in proof-of-work report export.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Role-Based Access</p>
+    <h2>Eight access roles, scoped to function.</h2>
+    <p>Portal access is scoped by role. Not every user needs full fleet control. Role-based access prevents unauthorized route changes, ensures accountability, and supports multi-organization deployments where different stakeholders need different visibility.</p>
+    <table class="roles-table">
+      <thead>
+        <tr><th>Role</th><th>Access scope</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fleet Administrator</td><td>Full portal access: route management, user administration, billing, system configuration</td></tr>
+        <tr><td>Fleet Supervisor</td><td>Live monitoring, dispatch, hazard review, mission override, proof-of-work reports</td></tr>
+        <tr><td>Operations Manager</td><td>Mission scheduling, route review, reporting, team visibility — no robot control</td></tr>
+        <tr><td>Site Lead / Crew</td><td>Fleet App access: live status view, on-site alert receipt, physical E-stop operation</td></tr>
+        <tr><td>Facility Manager</td><td>Route completion status, proof-of-work reports, GIS exports — read-only</td></tr>
+        <tr><td>Maintenance Technician</td><td>Maintenance logs, component health, scheduled maintenance items</td></tr>
+        <tr><td>Compliance / Safety Officer</td><td>Proof-of-work records, event logs, incident reports, audit exports</td></tr>
+        <tr><td>Data / GIS Analyst</td><td>GIS export access, route data, sensor logs, API credentials</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">05 — Proof-of-Work Reporting</p>
+    <h2>Every completed mission produces a documented record.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Record element</th><th>What it contains</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Mission GPS trace</td><td>Full route geometry from mission start to completion, timestamped per position point</td></tr>
+        <tr><td>Geotagged media</td><td>Camera captures at key route points, obstacle events, surface conditions, and periodic interval snapshots</td></tr>
+        <tr><td>Event log</td><td>All obstacle detections, stops, pauses, overrides, battery events, and mission interruptions with timestamps and GPS coordinates</td></tr>
+        <tr><td>Material application record</td><td>Where and when deicing or other materials were applied during the mission</td></tr>
+        <tr><td>Surface condition log</td><td>Sensor-detected surface observations recorded along the route</td></tr>
+        <tr><td>Mission summary</td><td>Total time, distance, area covered, attachments used, and completion status</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">06 — System Integrations</p>
+    <h2>Data routing to external systems where configured.</h2>
+    <p>The fleet portal supports GIS data export and integration with asset management, CMMS, and municipal operations systems through configured API connections. Integration scope and compatibility are determined during deployment planning. Not every integration option is compatible with every third-party system.</p>
+    <div class="integ-grid">
+      <div class="integ-cell"><h3>ArcGIS</h3><p>Feature class exports compatible with ArcGIS workflows</p></div>
+      <div class="integ-cell"><h3>GeoJSON</h3><p>Open-format spatial exports for custom analysis pipelines</p></div>
+      <div class="integ-cell"><h3>API access</h3><p>Programmatic mission data, route records, and sensor outputs</p></div>
+      <div class="integ-cell"><h3>CMMS</h3><p>Maintenance event data routing to configured CMMS platforms</p></div>
+      <div class="integ-cell"><h3>Asset management</h3><p>Mission completion and route record outputs for asset tracking</p></div>
+      <div class="integ-cell"><h3>311 workflows</h3><p>Surface condition and infrastructure observation routing to 311 or service-request systems where supported</p></div>
+      <div class="integ-cell"><h3>Role-based notifications</h3><p>Alert routing to stakeholder roles via portal, Fleet App, and configured notification channels</p></div>
+      <div class="integ-cell"><h3>Export formats</h3><p>Report exports in standard formats for compliance, audit, or service documentation</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">Related Technical Specifications</p>
+    <h2>Review the connected specification pages.</h2>
+    <div class="related-nav">
+      <div class="related-item"><a href="snowbotix_techspecs_robot-platform.html">Robot Platform</a><p>Chassis, tracks, weight, terrain</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_attachments-capabilities.html">Attachments &amp; Capabilities</a><p>Snow, sweep, mow, apply, inspect</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_autonomy-navigation.html">Autonomy &amp; Navigation</a><p>RTK-GNSS, mapping, route planning</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_safety-systems.html">Safety Systems</a><p>360° sensing, E-stops, supervision</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>GIS, API, OCI, cloud privacy</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_deployment-requirements.html">Deployment Requirements</a><p>Site readiness, mapping, operating plan</p></div>
+      <div class="related-item"><a href="#">Download Spec Sheet</a><p>Full technical specifications PDF</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>See how fleet oversight works for your operating model.</h2>
+    <p>Supervision staffing, alert routing, role assignments, and integration requirements are configured during deployment planning. A site assessment maps how the fleet portal fits your site's team structure and reporting requirements.</p>
+    <div class="cta-band-btns">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

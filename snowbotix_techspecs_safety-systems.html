@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snowbotix Safety Systems Specs | 360° Sensing, E-Stops, Remote Override</title>
+<meta name="description" content="Review Snowbotix safety system specifications: 360° sensing envelope, 6-foot safety bubble, dual E-stops, remote override, layered safety architecture, and multi-level alert routing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--ink-soft:#1E2024;--snow:#F4F1E8;--surface:#242628;--surface-soft:#2A2D30;--line:#2E3235;--steel:#666C72;--muted:#9AA0A6;--brand-green:#008A1E;--gold-yellow:#C9A227;--gold-yellow-soft:rgba(201,162,39,0.1);--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--ink);color:var(--snow);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:#121315;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;filter:brightness(0)invert(1);}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:var(--snow);}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-gold{background:var(--gold-yellow);color:#121315;margin-left:16px;}
+.btn-gold:hover{opacity:.88;}
+.sec-link-light{color:var(--snow);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;opacity:.75;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:1;}
+.breadcrumb{background:#121315;padding:10px 24px;border-bottom:1px solid var(--line);}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
+.breadcrumb a{color:var(--muted);transition:color .15s;}
+.breadcrumb a:hover{color:var(--snow);}
+.hero{background:var(--ink-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:16px;}
+.hero h1{font-size:clamp(26px,3.5vw,42px);font-weight:700;line-height:1.16;max-width:800px;margin-bottom:18px;color:var(--snow);}
+.hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:36px;}
+.spec-strip{display:flex;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--line);padding-top:20px;}
+.spec-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.06em;display:flex;align-items:center;gap:6px;}
+.spec-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold-yellow);flex-shrink:0;}
+.section{padding:64px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
+.section h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;line-height:1.22;margin-bottom:14px;color:var(--snow);}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:740px;}
+.section p:last-child{margin-bottom:0;}
+.spec-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.spec-table th{background:#121315;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);}
+.spec-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.spec-table tr:last-child td{border-bottom:none;}
+.spec-table td:first-child{color:var(--snow);font-weight:600;font-size:13px;width:220px;}
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:28px;}
+.metric-cell{background:var(--surface);padding:24px;}
+.metric-cell-label{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;}
+.metric-value{font-size:30px;font-weight:700;color:var(--gold-yellow);line-height:1;margin-bottom:8px;}
+.metric-desc{font-size:13px;color:var(--muted);line-height:1.55;}
+@media(max-width:640px){.metrics-row{grid-template-columns:1fr;}}
+.arch-table{width:100%;border-collapse:collapse;margin-top:24px;}
+.arch-table th{background:#121315;color:var(--muted);font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);}
+.arch-table tr:nth-child(even) td{background:#222628;}
+.arch-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+.arch-table tr:last-child td{border-bottom:none;}
+.arch-table td:first-child{color:var(--gold-yellow);font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:160px;}
+.arch-table td:nth-child(2){color:var(--snow);font-weight:600;width:220px;}
+.alert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:24px;}
+.alert-cell{background:var(--surface);padding:20px 24px;}
+.alert-cell h3{font-size:14px;font-weight:700;color:var(--snow);margin-bottom:6px;}
+.alert-cell p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;}
+@media(max-width:560px){.alert-grid{grid-template-columns:1fr;}}
+.related-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:32px;background:var(--line);}
+.related-item{background:var(--surface);padding:16px 20px;}
+.related-item a{font-size:13px;color:var(--muted);font-weight:500;transition:color .15s;}
+.related-item a:hover{color:var(--gold-yellow);}
+.related-item p{font-size:11px;color:var(--steel);margin-top:4px;font-family:var(--font-mono);}
+@media(max-width:640px){.related-nav{grid-template-columns:1fr 1fr;}}
+.cta-band{background:#121315;border-top:1px solid var(--line);padding:64px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;color:var(--snow);margin-bottom:12px;max-width:600px;}
+.cta-band p{font-size:15px;color:var(--muted);max-width:560px;line-height:1.65;margin-bottom:24px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+footer{background:#0E0F11;color:var(--muted);padding:40px 24px 28px;border-top:1px solid var(--line);}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand img{height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;}
+.footer-brand p{font-size:13px;color:var(--steel);line-height:1.6;}
+.footer-col h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono);}
+.footer-col a{display:block;font-size:13px;color:var(--steel);padding:2px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--muted);}
+.footer-bottom{border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--steel);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_techspecs_robot-platform.html" class="current">Tech Specs</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="snowbotix_techspecs_robot-platform.html">Technology Specifications</a>
+    <span>/</span>
+    <span style="color:var(--snow);">Safety Systems</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Technology Specifications / Safety Systems</p>
+    <h1>Supervised autonomy built for public and commercial operating environments.</h1>
+    <p class="hero-sub">Snowbotix safety architecture combines a 360° sensing envelope, a 6-foot active safety buffer, dual emergency stops, remote override, multi-level alert routing, and human-in-the-loop supervision to support controlled autonomous operation in commercial environments where people, vehicles, and equipment share the same outdoor space.</p>
+    <div class="hero-ctas">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+    <div class="spec-strip">
+      <span class="spec-item">360° sensing envelope</span>
+      <span class="spec-item">6-foot active safety buffer</span>
+      <span class="spec-item">~30 ft detection visibility</span>
+      <span class="spec-item">Dual E-stops (physical + digital)</span>
+      <span class="spec-item">Remote override</span>
+      <span class="spec-item">2 mph autonomous speed</span>
+      <span class="spec-item">5–6 mph line-of-sight max</span>
+      <span class="spec-item">Auto-return to base</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">01 — Core Safety Metrics</p>
+    <h2>Three numbers that govern autonomous operation in shared environments.</h2>
+    <div class="metrics-row">
+      <div class="metric-cell">
+        <p class="metric-cell-label">Safety buffer radius</p>
+        <p class="metric-value">6 ft</p>
+        <p class="metric-desc">Active safety perimeter around the robot during autonomous operation. Intrusion into this zone triggers automated stop, log, and supervisor alert response.</p>
+      </div>
+      <div class="metric-cell">
+        <p class="metric-cell-label">Sensing visibility range</p>
+        <p class="metric-value">~30 ft</p>
+        <p class="metric-desc">Detection range of the 360° combined sensing system in clear conditions. Enables early warning before objects enter the active safety buffer.</p>
+      </div>
+      <div class="metric-cell">
+        <p class="metric-cell-label">Max autonomous speed</p>
+        <p class="metric-value">2 mph</p>
+        <p class="metric-desc">Regulated maximum autonomous operation speed. Supports stopping distance management relative to detected obstacle distances in commercial outdoor environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — Layered Safety Architecture</p>
+    <h2>Ten safety layers, each operating independently.</h2>
+    <p>No single safety layer is the sole control. Each layer functions independently and in combination with the others, so that degradation of any one component does not create a gap in the safety architecture.</p>
+    <table class="arch-table">
+      <thead>
+        <tr><th>Layer</th><th>System</th><th>Function</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Layer 01</td><td>Geofenced boundaries</td><td>GPS-coordinate and marker-defined operating zones that prevent the robot from leaving approved areas</td></tr>
+        <tr><td>Layer 02</td><td>360° sensing</td><td>Full perimeter LiDAR, camera, radar, and thermal coverage in all directions for obstacle detection beyond the safety buffer</td></tr>
+        <tr><td>Layer 03</td><td>6-foot safety buffer</td><td>Active exclusion zone. Any detected intrusion triggers immediate stop, event log, and supervisor alert</td></tr>
+        <tr><td>Layer 04</td><td>2 mph speed regulation</td><td>Autonomous speed is regulated to 2 mph to support stopping distance management relative to detected object proximity</td></tr>
+        <tr><td>Layer 05</td><td>Physical E-stop</td><td>Hardware emergency stop accessible on the robot chassis for on-site crew shutdown</td></tr>
+        <tr><td>Layer 06</td><td>Digital E-stop / remote override</td><td>Fleet portal and app controls allow supervisors to pause, redirect, or stop the robot remotely at any time</td></tr>
+        <tr><td>Layer 07</td><td>Multi-level alert routing</td><td>Visual, audio, supervisor notification, and site-broadcast alert escalation as hazard severity increases</td></tr>
+        <tr><td>Layer 08</td><td>Auto-return to base</td><td>On loss of communication, low battery, or certain fault conditions, the robot returns to its geotagged dock automatically</td></tr>
+        <tr><td>Layer 09</td><td>Human-in-the-loop monitoring</td><td>Remote supervisor has full visibility into position, sensor state, and live camera feeds throughout every mission</td></tr>
+        <tr><td>Layer 10</td><td>Pre-deployment site review</td><td>Risk assessment, route validation, exclusion zone mapping, and crew coordination protocols completed before any autonomous operation begins</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">03 — Speed Governance</p>
+    <h2>Speed is set by operating mode, not operator preference.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Operating mode</th><th>Speed</th><th>Governing logic</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Autonomous mode</td><td>2 mph regulated maximum</td><td>Speed is system-regulated during autonomous operation. Cannot be overridden by the supervisor to exceed this limit during autonomous route execution.</td></tr>
+        <tr><td>Line-of-sight mode</td><td>5–6 mph maximum</td><td>Applies during crew-assisted repositioning, complex maneuvers, and deployment logistics. Requires trained operator within direct line of sight.</td></tr>
+        <tr><td>Docked / standby</td><td>No movement</td><td>Robot is stationary at geotagged dock or staging position. Charging or awaiting dispatch.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Stop-Log-Alert Response</p>
+    <h2>What happens when the sensing system detects an obstacle or hazard.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Event</th><th>Automated response</th><th>Supervisor action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Object detected within ~30 ft range</td><td>Speed modulation, tracking, early warning registered</td><td>Alert posted in fleet portal. Supervisor monitors.</td></tr>
+        <tr><td>Object within 6-foot safety buffer</td><td>Immediate stop. Event logged with timestamp, GPS location, and sensor snapshot.</td><td>Alert dispatched to supervisor. Supervisor reviews and decides: wait, redirect, or override and resume.</td></tr>
+        <tr><td>Physical E-stop engaged</td><td>Immediate full stop. All drive systems deactivated.</td><td>On-site crew engagement required to clear and restart.</td></tr>
+        <tr><td>Remote E-stop / pause</td><td>Robot stops in place or returns to staging depending on command issued.</td><td>Supervisor manages recovery from fleet portal or Fleet App.</td></tr>
+        <tr><td>Communication loss</td><td>Auto-return to geotagged dock initiated.</td><td>Supervisor notified. Robot returns to base and awaits reconnection.</td></tr>
+        <tr><td>Low battery threshold</td><td>Mission pauses. Auto-return to dock initiated.</td><td>Fleet portal shows battery state and return status. Supervisor notified.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">05 — Alert Architecture</p>
+    <h2>Multi-level alert routing by event severity.</h2>
+    <div class="alert-grid">
+      <div class="alert-cell">
+        <h3>Visual alerts</h3>
+        <p>Robot-mounted visual indicators signal status to nearby workers and crew. Operational, slowing, stopped, and fault states have distinct visual output.</p>
+      </div>
+      <div class="alert-cell">
+        <h3>Audio alerts</h3>
+        <p>Audible alerts during autonomous movement and obstacle response, supporting crew awareness in noisy outdoor environments.</p>
+      </div>
+      <div class="alert-cell">
+        <h3>Supervisor notifications</h3>
+        <p>Fleet portal and Fleet App receive push notifications for obstacle events, battery state, communication loss, mission completion, and fault conditions.</p>
+      </div>
+      <div class="alert-cell">
+        <h3>Site notifications</h3>
+        <p>Configurable site-level alert routing for facility managers, operations leads, or on-call staff, based on role and notification preference settings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">06 — Safety Specifications Summary</p>
+    <h2>Full safety system specifications at a glance.</h2>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Safety system</th><th>Specification</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sensing coverage</td><td>360° full perimeter (LiDAR, camera, radar, thermal combined)</td></tr>
+        <tr><td>Safety buffer</td><td>6 feet — active exclusion zone around robot during autonomous operation</td></tr>
+        <tr><td>Detection range</td><td>Approximately 30 feet in clear conditions</td></tr>
+        <tr><td>Emergency stops</td><td>Dual — physical E-stop on chassis + digital E-stop via fleet portal and Fleet App</td></tr>
+        <tr><td>Remote override</td><td>Available at all times through fleet portal and Fleet App. Supervisor can pause, redirect, or stop the robot remotely.</td></tr>
+        <tr><td>Auto-return</td><td>Automated return to geotagged dock on communication loss, low battery, or configured fault conditions</td></tr>
+        <tr><td>Autonomous speed cap</td><td>2 mph — system regulated, not operator-adjustable during autonomous mode</td></tr>
+        <tr><td>Human oversight</td><td>Remote human supervisor monitors live position, sensor alerts, and camera feeds for every mission</td></tr>
+        <tr><td>Operating boundary</td><td>Geofenced — GPS-defined zones set during pre-deployment mapping. Robot cannot leave approved areas.</td></tr>
+        <tr><td>Pre-deployment review</td><td>Site assessment, risk review, route validation, exclusion zone mapping, and crew coordination required before autonomous operation</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">Related Technical Specifications</p>
+    <h2>Review the connected specification pages.</h2>
+    <div class="related-nav">
+      <div class="related-item"><a href="snowbotix_techspecs_robot-platform.html">Robot Platform</a><p>Chassis, tracks, weight, terrain</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_attachments-capabilities.html">Attachments &amp; Capabilities</a><p>Snow, sweep, mow, apply, inspect</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_autonomy-navigation.html">Autonomy &amp; Navigation</a><p>RTK-GNSS, mapping, route planning</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Dispatch, live status, proof-of-work</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>GIS, API, OCI, cloud privacy</p></div>
+      <div class="related-item"><a href="snowbotix_safety-autonomy.html">Safety &amp; Autonomy Overview</a><p>Buyer-facing safety overview</p></div>
+      <div class="related-item"><a href="snowbotix_safety-autonomy_obstacle-detection-geofencing.html">Obstacle Detection Overview</a><p>Buyer-facing sensing overview</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Review safety requirements for your operating environment.</h2>
+    <p>Safety system configuration depends on site geometry, pedestrian density, vehicle traffic patterns, supervision staffing, and operating hours. A site assessment maps these requirements before deployment planning begins.</p>
+    <div class="cta-band-btns">
+      <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
+    <a class="btn btn-gold" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="#">Download Spec Sheet</a>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

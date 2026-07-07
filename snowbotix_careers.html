@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers at Snowbotix | RoboWorkX Inc.</title>
+<meta name="description" content="Build autonomous outdoor maintenance for the physical world. Careers at Snowbotix, the commercial outdoor maintenance platform from RoboWorkX Inc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--ink-soft:#1C1F22;--snow:#F4F1E8;--surface:#242628;--surface-soft:#2A2D30;--line:#3C4146;--line-soft:#2A2E33;--steel:#666C72;--muted:#AEB5BA;--dim:#6E747A;--brand-green:#008A1E;--gold-yellow:#C9A227;--gold-bright:#E29B00;--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--radius:2px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--ink);color:var(--snow);-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(18,19,21,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-brand img{height:22px;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:#c7cdd3;transition:color .15s;}
+.nav-links a:hover{color:#fff;}
+.nav-links a.current{color:var(--gold-bright);}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:13px 22px;border:1px solid transparent;cursor:pointer;transition:all .3s;white-space:nowrap;}
+.btn-gold{background:linear-gradient(135deg,rgba(201,162,39,.95),rgba(226,155,0,.85));color:var(--ink);border-color:rgba(255,255,255,.25);}
+.btn-gold:hover{background:linear-gradient(135deg,rgba(226,180,70,1),rgba(255,194,61,.95));box-shadow:0 0 20px rgba(201,162,39,.4);}
+.btn-ghost{border-color:var(--line);color:#c7cdd3;}
+.btn-ghost:hover{border-color:#fff;color:#fff;}
+.sec-link{font-family:var(--font-body);font-size:13px;font-weight:600;color:#AEB5BA;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .15s,border-color .15s;}
+.sec-link:hover{color:#fff;border-color:#AEB5BA;}
+.wrap{max-width:var(--page-max);margin:0 auto;padding:0 32px;}
+/* HERO */
+.hero{padding:96px 0 80px;border-bottom:1px solid var(--line-soft);}
+.hero-kicker{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:18px;}
+h1{font-family:var(--font-heading);font-size:clamp(44px,5.5vw,76px);font-weight:800;line-height:1.0;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:24px;}
+h1 span{color:var(--gold-yellow);}
+.hero-lead{font-size:17px;line-height:1.7;color:var(--muted);max-width:600px;margin-bottom:36px;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.hchip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:6px 12px;}
+/* MISSION BAND */
+.mission-band{background:var(--surface);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:48px 0;}
+.mission-band p{font-family:var(--font-heading);font-size:clamp(22px,3vw,34px);font-weight:700;text-transform:uppercase;color:var(--snow);line-height:1.2;}
+.mission-band p span{color:var(--gold-yellow);}
+/* SECTION COMMONS */
+.section{padding:80px 0;}
+.sec-kicker{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:12px;}
+h2{font-family:var(--font-heading);font-size:clamp(28px,3.2vw,44px);font-weight:800;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:18px;}
+h3{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+p.body{font-size:15.5px;line-height:1.7;color:var(--muted);}
+/* NO OPENINGS NOTICE */
+.no-openings{background:var(--surface);border:1px solid var(--line);padding:40px;margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.no-openings h3{font-family:var(--font-heading);font-size:28px;font-weight:800;text-transform:uppercase;margin-bottom:12px;}
+.no-openings p{font-size:14.5px;color:var(--muted);line-height:1.7;}
+.no-openings .contact-block{background:var(--surface-soft);border:1px solid var(--line);padding:28px;}
+.no-openings .contact-block .cb-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;}
+.no-openings .contact-block a{font-size:18px;font-weight:700;color:var(--gold-yellow);display:block;margin-bottom:14px;}
+.no-openings .contact-block p{font-size:13px;color:var(--dim);}
+/* AREAS GRID */
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:32px;}
+.area-cell{background:var(--surface);padding:28px 26px;}
+.area-cell .area-n{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:10px;}
+.area-cell h3{font-size:16px;color:var(--snow);margin-bottom:8px;}
+.area-cell p{font-size:13.5px;color:var(--muted);line-height:1.65;}
+/* VALUES GRID */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:32px;}
+.val-cell{background:var(--surface-soft);padding:26px 22px;}
+.val-cell .val-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+.val-cell h3{font-size:15.5px;color:var(--snow);margin-bottom:8px;}
+.val-cell p{font-size:13px;color:var(--muted);line-height:1.6;}
+/* COMPANY SNAPSHOT */
+.snapshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:32px;}
+.snap-cell{background:var(--surface);padding:26px 22px;}
+.snap-cell .snap-n{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:8px;}
+.snap-cell .snap-val{font-family:var(--font-heading);font-size:26px;font-weight:800;color:var(--gold-yellow);margin-bottom:6px;}
+.snap-cell p{font-size:13px;color:var(--muted);line-height:1.55;}
+/* FOUNDERS */
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:32px;}
+.founder-cell{background:var(--surface);padding:28px 26px;}
+.founder-cell .fc-name{font-family:var(--font-heading);font-size:22px;font-weight:800;text-transform:uppercase;color:var(--snow);margin-bottom:4px;}
+.founder-cell .fc-role{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-yellow);margin-bottom:12px;}
+.founder-cell p{font-size:13.5px;color:var(--muted);line-height:1.65;}
+/* CTA BAND */
+.cta-band{background:linear-gradient(135deg,rgba(201,162,39,.15),rgba(201,162,39,.05));border-top:1px solid rgba(201,162,39,.3);border-bottom:1px solid rgba(201,162,39,.3);padding:72px 0;}
+.cta-band h2{color:var(--snow);}
+.cta-band p{color:var(--muted);font-size:16px;max-width:520px;margin-bottom:32px;line-height:1.65;}
+/* FOOTER */
+.footer{background:#0a0c0e;padding:56px 0 28px;border-top:1px solid var(--line-soft);}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:28px;}
+.footer h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:14px;font-weight:600;}
+.footer ul{list-style:none;}
+.footer li{margin-bottom:8px;}
+.footer li a{font-size:13px;color:#5c666c;transition:color .15s;}
+.footer li a:hover{color:var(--gold-bright);}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:20px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--dim);flex-wrap:wrap;gap:8px;}
+@media(max-width:900px){.no-openings{grid-template-columns:1fr;}.areas-grid,.founders-grid{grid-template-columns:1fr;}.values-grid,.snapshot-grid{grid-template-columns:1fr 1fr;}.footer-grid{grid-template-columns:1fr 1fr;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_homepage.html">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_company_page.html">Company</a>
+      <a href="snowbotix_careers.html" class="current">Careers</a>
+    </div>
+    <a class="btn btn-ghost" href="mailto:careers@snowbotix.com">careers@snowbotix.com</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">Careers at Snowbotix / RoboWorkX Inc.</div>
+    <h1>Build autonomous outdoor<br>maintenance for <span>the physical world.</span></h1>
+    <p class="hero-lead">Snowbotix is building the commercial outdoor maintenance platform for real estate portfolios, campuses, municipalities, and public works departments. We are an early-stage company with a working product, real customers, and a focused technical mission.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a class="btn btn-gold" href="mailto:careers@snowbotix.com">Send a General Application</a>
+      <a class="sec-link" href="snowbotix_company_page.html">About the Company &rarr;</a>
+    </div>
+    <div class="hero-chips">
+      <span class="hchip">Detroit, MI / Remote</span>
+      <span class="hchip">Early-stage</span>
+      <span class="hchip">Real product, real customers</span>
+      <span class="hchip">Robotics &amp; field autonomy</span>
+      <span class="hchip">Snow, mow &amp; sweep</span>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION BAND -->
+<div class="mission-band">
+  <div class="wrap">
+    <p>Outdoor maintenance is one of the most labor-intensive, weather-dependent service categories in commercial operations. We are building the platform to automate it.</p>
+  </div>
+</div>
+
+<!-- NO OPENINGS -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-kicker">Open Positions</div>
+    <h2>No active openings right now.</h2>
+    <p class="body" style="max-width:600px;">We are an early-stage company and hire deliberately. We do not post roles until we know exactly what we need. If you want to be considered when that changes, send a general application and tell us what you do well.</p>
+    <div class="no-openings">
+      <div>
+        <h3>Still interested?<br>Send a general application.</h3>
+        <p>Tell us what area you work in, what you have built or done, and why you are interested in Snowbotix specifically. We review every submission and reach out when something is a match, even if we do not have a role open right now.</p>
+        <p style="margin-top:14px;font-size:13.5px;color:var(--dim);">We are most likely to hire in robotics and field systems, software and autonomy, commercial and operations, and field deployment and service. See the areas below.</p>
+      </div>
+      <div class="contact-block">
+        <div class="cb-label">General Applications</div>
+        <a href="mailto:careers@snowbotix.com">careers@snowbotix.com</a>
+        <p>Include your background, what you are looking for, and why Snowbotix. No cover letter format required. No recruiter intermediaries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE HIRING AREAS -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);">
+  <div class="wrap">
+    <div class="sec-kicker">Future Hiring Areas</div>
+    <h2>Where we expect to grow.</h2>
+    <p class="body" style="max-width:600px;">As Snowbotix scales from early commercial deployments to broader market coverage, these are the areas where we expect to hire. We are building a small, focused team and do not plan to hire broadly, we will hire specifically when the need is clear.</p>
+    <div class="areas-grid">
+      <div class="area-cell"><div class="area-n">Area 01: Hardware &amp; Robotics</div><h3>Robotics &amp; Field Systems Engineering</h3><p>Platform engineering, sensor integration, mechatronics, field reliability, actuator systems, and outdoor operation in real environmental conditions. Background in field robotics, autonomous outdoor equipment, or commercial hardware development.</p></div>
+      <div class="area-cell"><div class="area-n">Area 02: Software &amp; Autonomy</div><h3>Autonomy, Mapping &amp; Software Engineering</h3><p>Autonomous navigation, route mapping, geofencing, sensor fusion, mission execution, remote monitoring interfaces, data pipelines, and proof-of-service reporting systems. Background in outdoor autonomy, robotics software, or operations platforms.</p></div>
+      <div class="area-cell"><div class="area-n">Area 03: Commercial &amp; Growth</div><h3>Commercial, Sales &amp; Business Development</h3><p>Customer development, market expansion, account management, channel partnerships, and contract structuring for commercial real estate, institutional, municipal, and contractor-led deployment. Background in commercial operations, B2B sales, or facilities services.</p></div>
+      <div class="area-cell"><div class="area-n">Area 04: Field &amp; Deployment</div><h3>Field Operations &amp; Deployment</h3><p>Site assessment, route mapping, deployment coordination, operator training, field service, and customer success for early commercial deployments. Background in outdoor equipment operations, grounds management, facilities maintenance, or field service.</p></div>
+      <div class="area-cell"><div class="area-n">Area 05: Operations &amp; Infrastructure</div><h3>Operations, Finance &amp; Company Infrastructure</h3><p>Financial operations, reporting, procurement, vendor relationships, facilities contracting, and internal operational infrastructure. Background in early-stage operations, startup finance, or operations management for hardware or field-service companies.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE VALUE -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-kicker">How We Work</div>
+    <h2>What we look for.</h2>
+    <p class="body" style="max-width:600px;">We are solving a real physical-world problem. The candidates who fit best here understand that building in the field is different from building in a controlled environment, and that useful technology has to be reliable before it is impressive.</p>
+    <div class="values-grid">
+      <div class="val-cell"><div class="val-label">Field First</div><h3>Real-environment thinking</h3><p>We operate in snow, mud, ice, and variable conditions. Candidates who have worked in physical environments, robotics, grounds, construction, field service, or manufacturing, understand constraints that lab and office environments do not surface.</p></div>
+      <div class="val-cell"><div class="val-label">Focused</div><h3>Do one thing well before adding the next</h3><p>We do not need generalists. We need people who are extremely good at one thing and can operate without broad supervision.</p></div>
+      <div class="val-cell"><div class="val-label">Commercial</div><h3>Useful is more important than impressive</h3><p>The product has to work for commercial customers with real operations and real problems. Engineering and commercial decisions should be weighted by what makes the product more reliable and more useful, not more technically ambitious.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY SNAPSHOT -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);">
+  <div class="wrap">
+    <div class="sec-kicker">Company Snapshot</div>
+    <h2>Where we are right now.</h2>
+    <div class="snapshot-grid">
+      <div class="snap-cell"><div class="snap-n">Stage</div><div class="snap-val">Early</div><p>Pre-series A. Working platform in commercial deployment with paying contracts.</p></div>
+      <div class="snap-cell"><div class="snap-n">Market</div><div class="snap-val">$12B+</div><p>Addressable market across commercial snow, outdoor maintenance, and autonomous grounds operations for institutional buyers.</p></div>
+      <div class="snap-cell"><div class="snap-n">Platform</div><div class="snap-val">Multi-Utility</div><p>One robot chassis, multiple attachments, snow, sweep, mow, and more. All-season commercial deployment from a single asset.</p></div>
+      <div class="snap-cell"><div class="snap-n">Backers</div><div class="snap-val">Techstars</div><p>Techstars Detroit 2024 portfolio company. Michigan Economic Development Corporation participant. xTechEdge veteran.</p></div>
+      <div class="snap-cell"><div class="snap-n">Location</div><div class="snap-val">Detroit</div><p>Headquartered in Detroit, Michigan. Proximity to manufacturing, field operations, commercial real estate, and Midwest weather test conditions.</p></div>
+      <div class="snap-cell"><div class="snap-n">Team</div><div class="snap-val">Small</div><p>Deep backgrounds in robotics, commercial operations, and field deployment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-kicker">Leadership</div>
+    <h2>Who you would be working with.</h2>
+    <div class="founders-grid">
+      <div class="founder-cell">
+        <div class="fc-name">Dr. Sasi Prabhakaran</div>
+        <div class="fc-role">Co-founder &amp; CEO</div>
+        <p>Dr. Prabhakaran brings 15+ years of experience in robotics and autonomous systems, from academic research through applied field deployment. His background spans sensor fusion, autonomy, and commercial product development. RoboWorkX grew out of his work in intelligent systems for the physical world.</p>
+      </div>
+      <div class="founder-cell">
+        <div class="fc-name">Klaus Hahn</div>
+        <div class="fc-role">COO</div>
+        <p>Hahn brings deep operational experience from 30+ years in the construction, infrastructure, and heavy equipment industries. He has managed large-scale project teams, coordinated multi-site operations, and built commercial relationships with large institutional buyers, exactly the customer base Snowbotix targets. His background grounds the technical platform in commercial operating reality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="sec-kicker">Get in Touch</div>
+    <h2>Interested in what we are building?</h2>
+    <p>There are no active openings right now, but we review general applications and reach out when the fit is there. Tell us what you do, what you have built, and why you want to work on outdoor autonomy for the physical world.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a class="btn btn-gold" href="mailto:careers@snowbotix.com">Send a General Application</a>
+      <a class="sec-link" href="snowbotix_team_page.html">Meet the Team &rarr;</a>
+    </div>
+    <p style="margin-top:20px;font-family:var(--font-mono);font-size:12px;color:var(--dim);letter-spacing:.04em;">careers@snowbotix.com &nbsp;/&nbsp; No recruiters. No intermediaries. Direct to the team.</p>
+  </div>
+</section>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

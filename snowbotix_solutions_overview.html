@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snowbotix Solutions | Autonomous Outdoor Maintenance for Hard-to-Staff Routes</title>
+<meta name="description" content="Snowbotix automates recurring outdoor maintenance across snow, de-icing, mowing, brush control, sweeping, inspection, and proof-of-service records with supervised autonomy and geocoded service evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-heading:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--font-mono:'IBM Plex Mono',monospace;--ink:#121315;--snow:#F4F1E8;--snow-soft:#EDE9DC;--surface:#FFFFFF;--line:#D9DEE3;--steel:#3C4146;--muted:#5A6268;--brand-green:#008A1E;--brand-green-soft:rgba(0,138,30,0.08);--gold-yellow:#C9A227;--telemetry-blue:#00B0F0;--alert-red:#FF7C80;--ink-panel:#1C1F22;--ink-border:#2E3235;--ink-muted:#AEB5BA;--radius:3px;--page-max:1180px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--snow);color:var(--ink);font-size:16px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.nav{background:#fff;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--line);}
+.nav-inner{max-width:var(--page-max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;height:60px;}
+.nav-brand img{height:28px;width:auto;}
+.nav-links{display:flex;gap:24px;margin-left:auto;}
+.nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:color .15s;}
+.nav-links a:hover,.nav-links a.current{color:var(--ink);}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.btn-green{background:var(--brand-green);color:#fff;margin-left:16px;}
+.btn-green:hover{opacity:.88;}
+.sec-link{color:var(--brand-green);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
+.sec-link::after{content:'→';}
+.sec-link:hover{opacity:.8;}
+.sec-link-light{color:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;opacity:.9;}
+.sec-link-light::after{content:'→';}
+.sec-link-light:hover{opacity:1;}
+.hero{background:var(--snow-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-green);margin-bottom:14px;}
+.hero h1{font-size:clamp(26px,3.5vw,44px);font-weight:700;line-height:1.14;max-width:800px;margin-bottom:18px;}
+.hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.section{padding:64px 24px;}
+.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
+.section h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;line-height:1.22;margin-bottom:14px;}
+.section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:740px;}
+.section p:last-child{margin-bottom:0;}
+.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:28px;background:var(--line);}
+.sol-card{background:var(--surface);padding:28px 26px;display:flex;flex-direction:column;gap:10px;}
+.sol-tag{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--brand-green);}
+.sol-card h3{font-size:17px;font-weight:700;line-height:1.25;color:var(--ink);}
+.sol-card p{font-size:13px;color:var(--muted);line-height:1.6;flex:1;}
+.sol-card a{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--brand-green);letter-spacing:.04em;display:inline-flex;align-items:center;gap:4px;margin-top:auto;}
+.sol-card a::after{content:'→';}
+@media(max-width:860px){.solutions-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.solutions-grid{grid-template-columns:1fr;}}
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:28px;background:var(--line);}
+.plat-cell{background:var(--surface);padding:22px 24px;}
+.plat-cell-label{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--steel);margin-bottom:8px;}
+.plat-cell h3{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.plat-cell p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+@media(max-width:760px){.platform-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.platform-grid{grid-template-columns:1fr;}}
+.route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:24px;background:var(--line);}
+.route-cell{background:var(--surface);padding:16px 20px;}
+.route-cell h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.route-cell p{font-size:13px;color:var(--muted);line-height:1.5;margin:0;}
+@media(max-width:560px){.route-grid{grid-template-columns:1fr;}}
+.fit-two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;}
+.fit-col{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+.fit-col h3{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+.fit-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.fit-col li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;line-height:1.5;}
+.fit-col li::before{content:'';position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;}
+.fit-col.strong li::before{background:var(--brand-green);}
+.fit-col.lower li::before{background:var(--steel);}
+@media(max-width:560px){.fit-two{grid-template-columns:1fr;}}
+.cta-band{background:var(--ink);padding:64px 24px;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band h2{font-size:clamp(22px,2.8vw,34px);font-weight:700;color:var(--snow);margin-bottom:12px;max-width:600px;}
+.cta-band p{font-size:15px;color:var(--ink-muted);max-width:560px;line-height:1.65;margin-bottom:28px;}
+.cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+footer{background:#0E0F11;color:var(--ink-muted);padding:40px 24px 28px;border-top:1px solid var(--steel);}
+.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-brand img{height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;}
+.footer-brand p{font-size:13px;color:var(--steel);line-height:1.6;}
+.footer-col h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:10px;font-family:var(--font-mono);}
+.footer-col a{display:block;font-size:13px;color:var(--steel);padding:2px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--ink-muted);}
+.footer-bottom{border-top:1px solid var(--steel);padding-top:18px;font-size:12px;color:var(--steel);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}.footer-brand{grid-column:1/-1;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
+    <div class="nav-links">
+      <a href="snowbotix_solutions_overview.html" class="current">Solutions</a>
+      <a href="snowbotix_who-its-for_commercial-institutional.html">Who It's For</a>
+      <a href="snowbotix_howitworks.html">How It Works</a>
+      <a href="snowbotix_safety-autonomy.html">Safety &amp; Autonomy</a>
+      <a href="snowbotix_resources_proof-gallery.html">Resources</a>
+    </div>
+    <a class="btn btn-green" href="#">Request a Site Assessment</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Snowbotix Multi-Utility Autonomous Solutions</p>
+    <h1>Autonomous outdoor maintenance for hard-to-staff routes.</h1>
+    <p class="hero-sub">Snowbotix automates recurring outdoor maintenance across snow, de-icing, mowing, brush control, sweeping, inspection, and proof-of-service records with supervised autonomy, mapped operating zones and 360-degree sensing, human-in-the-loop monitoring, and geocoded service evidence.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-green" href="#">Request a Site Assessment</a>
+      <a class="sec-link" href="#solutions">Compare Solutions</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="solutions" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">01 — Solutions</p>
+    <h2>Choose the work you need covered.</h2>
+    <p>Snowbotix supports multiple outdoor maintenance use cases on one commercial robotic platform. Solutions can be deployed individually or combined across seasons on the same operating plan.</p>
+    <div class="solutions-grid">
+      <div class="sol-card">
+        <p class="sol-tag">Winter</p>
+        <h3>Snow Removal &amp; De-Icing</h3>
+        <p>Automate priority winter routes including sidewalks, entrances, access paths, parking areas, emergency routes, and de-icing zones.</p>
+        <a href="#">View Snow Removal</a>
+      </div>
+      <div class="sol-card">
+        <p class="sol-tag">Green Season</p>
+        <h3>Slope Mowing &amp; Brush Control</h3>
+        <p>Maintain embankments, retention ponds, perimeters, rough terrain, and brush-heavy areas that are difficult to staff or easy to defer.</p>
+        <a href="snowbotix_slope_mowing_brush_control.html">View Slope Mowing</a>
+      </div>
+      <div class="sol-card">
+        <p class="sol-tag">Year-Round</p>
+        <h3>Sweeping &amp; Debris</h3>
+        <p>Run scheduled sweeping routes for sand, salt, leaves, light snow, litter, and surface buildup across recurring outdoor zones.</p>
+        <a href="snowbotix_solutions_sweeping-debris.html">View Sweeping &amp; Debris</a>
+      </div>
+      <div class="sol-card">
+        <p class="sol-tag">Continuous</p>
+        <h3>Asset Inspection &amp; Site Intelligence</h3>
+        <p>Use each route as a sensing pass to capture site conditions, detect obstructions, document hazards, and surface issues for follow-up.</p>
+        <a href="#">View Asset Inspection</a>
+      </div>
+      <div class="sol-card">
+        <p class="sol-tag">Documentation</p>
+        <h3>Proof of Service &amp; Reporting</h3>
+        <p>Create a documented operating record with geocoded service evidence, route history, before-and-after imagery, and fleet activity logs.</p>
+        <a href="#">View Proof of Service</a>
+      </div>
+      <div class="sol-card">
+        <p class="sol-tag">All Seasons</p>
+        <h3>All-Season Outdoor Maintenance</h3>
+        <p>Use one commercial platform across winter operations, green-season work, cleanup routes, inspection passes, and reporting workflows.</p>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html">View All-Season</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">02 — One Platform, Multiple Outdoor Workflows</p>
+    <h2>The same robot does the work across seasons.</h2>
+    <p>Snowbotix is built around a single commercial-grade robotic chassis — the SMUR™ platform — that supports modular attachments, a fused navigation stack, 360-degree sensing, and remote human oversight. The operating model, routes, and proof-of-service infrastructure stay consistent as you change the season and the work.</p>
+    <div class="platform-grid">
+      <div class="plat-cell">
+        <p class="plat-cell-label">Platform</p>
+        <h3>All-electric multi-utility chassis</h3>
+        <p>~1,500 lb base unit with industrial track propulsion, modular attachment architecture, zero-turn maneuverability, and 24 in. snow capability.</p>
+      </div>
+      <div class="plat-cell">
+        <p class="plat-cell-label">Sensing</p>
+        <h3>360-degree fused sensing stack</h3>
+        <p>RTK-GNSS, IMU, LiDAR, radar, Snow Penetrating Radar, HD cameras, thermal sensing, and hyper-local weather data operating together during every mission.</p>
+      </div>
+      <div class="plat-cell">
+        <p class="plat-cell-label">Oversight</p>
+        <h3>Human-in-the-loop monitoring</h3>
+        <p>Remote supervisor monitors position, battery, sensor alerts, and live camera feeds throughout every mission. Override available at any time.</p>
+      </div>
+      <div class="plat-cell">
+        <p class="plat-cell-label">Operating model</p>
+        <h3>Geofenced mapped routes</h3>
+        <p>Every mission runs within approved zones. Routes are pre-mapped, exclusion zones are set, and the robot cannot leave authorized areas.</p>
+      </div>
+      <div class="plat-cell">
+        <p class="plat-cell-label">Reporting</p>
+        <h3>Proof-of-service records</h3>
+        <p>GPS traces, timestamped geotagged media, surface observations, and event logs created per mission. Exportable as GIS, API, and CMMS outputs.</p>
+      </div>
+      <div class="plat-cell">
+        <p class="plat-cell-label">Power</p>
+        <h3>LFP battery with hot-swap</h3>
+        <p>~7 kW LFP battery, 4–6 hr typical runtime, ~1-min hot-swap, wireless dock on standard 110V, and up to 60 days standby capability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow);">
+  <div class="section-inner">
+    <p class="section-label">03 — Where Snowbotix Fits Best</p>
+    <h2>Built for recurring routes on defined outdoor sites.</h2>
+    <p>Snowbotix is most effective where outdoor maintenance follows regular routes, zones, or recurring service patterns. The robot is not designed for one-off jobs, residential use, or sites without a practical staging and supervision model.</p>
+    <div class="route-grid">
+      <div class="route-cell"><h3>Priority sidewalks and entrances</h3><p>High-frequency clearing, sweeping, or deicing on pedestrian-priority routes</p></div>
+      <div class="route-cell"><h3>Emergency access routes</h3><p>Priority winter clearing and debris management on access-critical outdoor paths</p></div>
+      <div class="route-cell"><h3>Parking lots and garage decks</h3><p>Snow, sweeping, debris, and surface maintenance on paved outdoor areas</p></div>
+      <div class="route-cell"><h3>Retention ponds and steep slopes</h3><p>Slope mowing, brush control, and vegetation management on terrain too hazardous for standard equipment</p></div>
+      <div class="route-cell"><h3>Campus perimeters and walkways</h3><p>Year-round route maintenance on large multi-zone campus footprints</p></div>
+      <div class="route-cell"><h3>Industrial yards and logistics areas</h3><p>Shift-change access, loading-adjacent pedestrian paths, controlled outdoor maintenance zones</p></div>
+      <div class="route-cell"><h3>Transit paths and pedestrian corridors</h3><p>Consistent surface maintenance on high-traffic outdoor circulation routes</p></div>
+      <div class="route-cell"><h3>Remote gates and controlled-access zones</h3><p>Recurring maintenance on low-supervision outdoor routes at large or distributed facilities</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--snow-soft);">
+  <div class="section-inner">
+    <p class="section-label">04 — Fit Criteria</p>
+    <h2>Built for recurring routes, not one-off jobs.</h2>
+    <div class="fit-two">
+      <div class="fit-col strong">
+        <h3>Strong fit</h3>
+        <ul>
+          <li>Commercial, institutional, municipal, industrial, energy, aviation, or government sites</li>
+          <li>Recurring outdoor maintenance routes</li>
+          <li>Hard-to-staff routes or stretched facilities teams</li>
+          <li>Multiple seasonal needs across snow, sweeping, mowing, or inspection</li>
+          <li>Defined sidewalks, paths, slopes, yards, lots, or controlled zones</li>
+          <li>Need for route-level service documentation</li>
+          <li>Ability to support mapping, staging, charging, and supervision</li>
+          <li>Internal owner to coordinate facilities, operations, or public works stakeholders</li>
+        </ul>
+      </div>
+      <div class="fit-col lower">
+        <h3>Likely not a fit</h3>
+        <ul>
+          <li>Residential properties</li>
+          <li>One-time cleanup or event-based jobs</li>
+          <li>Sites with no recurring outdoor maintenance route</li>
+          <li>Indoor-only maintenance needs</li>
+          <li>High-speed public road sweeping or roadway-only work</li>
+          <li>Bulk waste removal or hazardous material cleanup</li>
+          <li>Sites without a practical staging, charging, or supervision model</li>
+          <li>Routes that change too frequently to support repeatable autonomous operation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Start with one route.</h2>
+    <p>Share the route, zone, or recurring outdoor task that is hardest to staff, maintain, or verify. Snowbotix will assess whether the site is a fit for autonomous outdoor maintenance.</p>
+    <div class="cta-band-btns">
+      <a class="btn btn-green" href="#">Request a Site Assessment</a>
+      <a class="sec-link-light" href="snowbotix_howitworks.html">See How It Works</a>
+      <a class="sec-link-light" href="snowbotix_techspecs_robot-platform.html">Review Platform Specs</a>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0E0F11;color:#8a9099;padding:48px 24px 28px;border-top:1px solid #1e2028;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px;">
+      <div class="footer-brand">
+        <img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix" style="height:22px;width:auto;filter:brightness(0)invert(1);margin-bottom:10px;display:block;">
+        <p style="font-size:13px;color:#8a9099;line-height:1.6;">Supervised autonomous outdoor maintenance for commercial and industrial routes.</p>
+        <p style="margin-top:14px;font-size:13px;line-height:1.8;"><a href="mailto:info@snowbotix.com" style="color:#8a9099;text-decoration:none;">info@snowbotix.com</a><br><a href="tel:+13479270009" style="color:#8a9099;text-decoration:none;">+1 (347) 927-0009</a></p>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Solutions</h4>
+        <a href="snowbotix_solutions_snow-removal-deicing.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Snow Removal &amp; De-Icing</a>
+        <a href="snowbotix_solutions_sweeping-debris.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Sweeping &amp; Debris</a>
+        <a href="snowbotix_slope_mowing_brush_control.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Slope Mowing &amp; Brush Control</a>
+        <a href="snowbotix_solutions_all-season-outdoor-maintenance.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">All-Season Maintenance</a>
+        <a href="snowbotix_solutions_proof-of-service.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Proof of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Company</h4>
+        <a href="snowbotix_company_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">About Snowbotix</a>
+        <a href="snowbotix_team_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Team</a>
+        <a href="snowbotix_careers.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Careers</a>
+        <a href="snowbotix_investors_page.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Investors</a>
+      </div>
+      <div class="footer-col">
+        <h4 style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#8a9099;margin-bottom:12px;font-family:monospace;">Platform</h4>
+        <a href="snowbotix_howitworks.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">How It Works</a>
+        <a href="snowbotix_safety-autonomy.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Safety &amp; Autonomy</a>
+        <a href="snowbotix_resources_proof-gallery.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Resources</a>
+        <a href="snowbotix_techspecs_robot-platform.html" style="display:block;padding:3px 0;font-size:13px;color:#6e747a;text-decoration:none;">Tech Specs</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border-top:1px solid #1e2028;padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:#6e747a;">
+      <span>&copy; 2026 RoboWorkX Inc. All rights reserved. Snowbotix is a commercial platform of RoboWorkX Inc.</span>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <a href="#" aria-label="LinkedIn" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram" style="color:#6e747a;opacity:.8;transition:opacity .15s;"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <a href="#" style="color:#6e747a;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Terms of Service</a>
+        <a href="snowbotix_investors_page.html" style="color:#6e747a;text-decoration:none;">Investors</a>
+        <a href="#" style="color:#6e747a;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
