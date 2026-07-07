@@ -101,10 +101,11 @@ p { line-height: 1.65; }
   .wrap { padding-left: 20px; padding-right: 20px; }
 }
 
-.on-dark { background: var(--ink); color: var(--snow); }
-.on-mid { background: #161b20; color: var(--snow); }
-.on-light { background: var(--snow); color: var(--ink); }
-.on-paper50 { background: var(--snow-soft); color: var(--ink); }
+.on-dark { background: #1A1F24; color: var(--snow); }      /* warm slate — not pure black */
+.on-mid  { background: #232A31; color: var(--snow); }      /* mid slate for transition bands */
+.on-light { background: var(--snow); color: var(--ink); }  /* warm off-white #F4F1E8 */
+.on-paper50 { background: var(--snow-soft); color: var(--ink); } /* slightly deeper warm */
+.on-ink  { background: var(--ink); color: var(--snow); }   /* true dark, hero/footer only */
 
 /* ---------- Nav ---------- */
 .nav {
@@ -121,13 +122,52 @@ p { line-height: 1.65; }
 .brand img { height: 22px; width: auto; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-links a {
+.nav-links > a,
+.nav-item > a {
   font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
   color: #c7cdd3; text-transform: uppercase;
   transition: color .15s ease;
 }
-.nav-links a:hover { color: var(--snow); }
+.nav-links > a:hover,
+.nav-item:hover > a { color: var(--snow); }
 .nav-links a.current { color: var(--gold-bright); }
+
+/* Dropdown nav items */
+.nav-item {
+  position: relative;
+  display: flex; align-items: center;
+}
+.nav-item > a::after {
+  content: ' ▾';
+  font-size: 9px;
+  opacity: .55;
+  margin-left: 2px;
+}
+.drop {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -16px;
+  background: rgba(22,24,27,0.98);
+  border: 1px solid #2E3235;
+  min-width: 230px;
+  padding: 8px 0;
+  z-index: 200;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav-item:hover .drop { display: block; }
+.drop a {
+  display: block;
+  padding: 9px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #9AA5AD;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  transition: color .12s, background .12s;
+}
+.drop a:hover { color: var(--snow); background: rgba(255,255,255,0.04); }
 
 .btn {
   display: inline-flex; align-items: center; gap: 8px;

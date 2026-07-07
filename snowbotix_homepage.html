@@ -20,7 +20,7 @@
   .hero-home figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--ink-500); letter-spacing: .06em; text-transform: uppercase; margin-top: 14px; }
 
   /* 02 : qualification bar */
-  .qual-bar { background: var(--ink); border-top: 1px solid #2E3235; border-bottom: 1px solid #2E3235; }
+  .qual-bar { background: #1A1F24; border-top: 1px solid #2E3235; border-bottom: 1px solid #2E3235; }
   .qual-bar .wrap { padding: 22px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
   .qual-bar .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: #6ee68a; border: 1px solid #2a4a31; padding: 8px 14px; }
 
@@ -84,8 +84,8 @@
   .faq-row .plus { font-family: var(--font-mono); color: var(--brand-green); font-size: 16px; }
 
   /* 11 : CTA band */
-  .cta-band { background: var(--brand-green); color: #fff; }
-  .cta-band h2, .cta-band p { color: #fff; }
+  .cta-band { background: #1A1F24; color: var(--snow); }
+  .cta-band h2 { color: var(--snow); } .cta-band p { color: #c7cdd3; }
   .cta-band .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
   .cta-band h2 { font-size: clamp(26px,3vw,38px); max-width: 560px; }
 
@@ -106,10 +106,31 @@
   <div class="wrap nav-row">
     <a class="brand" href="snowbotix_homepage.html"><img src="mockups/images/snowbotix-logo-sm.png" alt="Snowbotix"></a>
     <div class="nav-links">
-      <a href="#" class="current">Solutions</a>
-      <a href="#">Who It's For</a>
+      <div class="nav-item">
+        <a href="snowbotix_solutions_overview.html">Solutions</a>
+        <div class="drop">
+          <a href="snowbotix_solutions_snow-removal-deicing.html">Snow Removal &amp; De-Icing</a>
+          <a href="snowbotix_solutions_sweeping-debris.html">Sweeping &amp; Debris</a>
+          <a href="snowbotix_slope_mowing_brush_control.html">Slope Mowing &amp; Brush</a>
+          <a href="snowbotix_solutions_all-season-outdoor-maintenance.html">All-Season Maintenance</a>
+          <a href="snowbotix_solutions_proof-of-service.html">Proof of Service</a>
+          <a href="snowbotix_solutions_asset-inspection.html">Asset Inspection</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#">Who It&apos;s For</a>
+        <div class="drop">
+          <a href="snowbotix_who-its-for_commercial-institutional.html">Commercial &amp; Institutional</a>
+          <a href="snowbotix_who-its-for_corporate-commercial-real-estate.html">Corporate &amp; CRE</a>
+          <a href="snowbotix_who-its-for_municipalities-public-works.html">Municipalities &amp; Public Works</a>
+          <a href="snowbotix_who-its-for_healthcare-medical-campuses.html">Healthcare</a>
+          <a href="snowbotix_who-its-for_higher-ed-education-campuses.html">Higher Education</a>
+          <a href="snowbotix_who-its-for_defense-government.html">Defense &amp; Government</a>
+          <a href="snowbotix_who-its-for_industrial-energy-infrastructure.html">Industrial &amp; Energy</a>
+          <a href="snowbotix_who-its-for_logistics-ports-intermodal-hubs.html">Logistics &amp; Ports</a>
+        </div>
+      </div>
       <a href="snowbotix_company_page.html">Company</a>
-      <a href="snowbotix_investors_page.html">Investors</a>
     </div>
     <a class="btn btn-green" href="#">Request a Site Assessment</a>
   </div>
@@ -181,7 +202,7 @@
 <section class="section on-dark">
   <div class="wrap">
     <div class="kicker-line"><span class="num">02</span></div>
-    <h2 style="color:var(--white);">Is Your Site a Fit?</h2>
+    <h2 style="color:var(--snow);">Is Your Site a Fit?</h2>
     <p style="max-width:640px; margin-top:16px; color:#c7cdd3; font-size:16px;">Strong deployments start with a defined route, recurring task, and a team ready to support assessment.</p>
     <div class="fit-grid">
       <div class="fit-col yes">
