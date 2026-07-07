@@ -1,0 +1,10 @@
+﻿# Strategy and research docs (keep locally, not in repo)
+*.md
+*.txt
+*.docx
+# Sitemaps at root
+Snowbotix_Sitemap_*.png
+# Claude config
+.claude/
+# Docs folder
+docs/
