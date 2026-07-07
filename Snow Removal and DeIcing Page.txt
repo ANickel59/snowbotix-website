@@ -1,0 +1,290 @@
+Snow Removal & De-Icing Page
+1. Hero
+
+Eyebrow:
+Snow Removal & De-Icing
+
+H1:
+Autonomous snow removal and de-icing for priority outdoor routes.
+
+Subhead:
+Snowbotix automates winter maintenance routes with plowing, brooming, liquid or granular de-icing, supervised autonomy, and proof-of-service records.
+
+Primary CTA:
+Request a Site Assessment
+
+Secondary CTA:
+See Winter Route Fit
+
+Hero proof points:
+Hard-to-staff winter routes
+Supervised autonomous operation
+Geocoded service evidence
+Liquid or granular de-icing
+Mapped routes and site-specific operating logic
+
+2. The operational problem
+Winter service fails where labor, timing, and verification collide.
+
+Snow and ice management is no longer just a seasonal maintenance task. For hospitals, campuses, logistics sites, airfields, public works teams, and controlled facilities, winter access affects shift changes, emergency movement, pedestrian routes, service continuity, and site reputation.
+
+Manual crews and contractors are under the most pressure when conditions are hardest to manage: overnight events, long-duration storms, repeated freeze-thaw cycles, and routes that must be cleared before peak traffic. During those events, facilities teams face the same recurring failure points:
+
+Hard-to-staff coverage
+Winter routes often need service at night, early morning, or during extended storm windows when crews are stretched thin.
+
+Inconsistent response timing
+Regional forecasts do not always reflect actual pavement-level conditions on a specific site.
+
+Material decision complexity
+Some routes need visible granular treatment. Others require liquid de-icing because pervious concrete or sensitive drainage areas should not be treated with granular salt.
+
+Priority-route pressure
+Emergency entrances, helipads, employee walkways, access paths, loading zones, and pedestrian corridors cannot wait for a general site pass.
+
+Limited service visibility
+A cleared route is easier to trust when the site team can see where work occurred, when it occurred, and what conditions were present.
+
+Section CTA:
+Show us the route that is hardest to keep clear.
+
+3. What Snowbotix does
+Snowbotix turns winter maintenance into a mapped, supervised, documented route operation.
+
+Snowbotix automates hard-to-staff outdoor maintenance routes with supervised autonomy, 360-degree sensing, human-in-the-loop monitoring, and proof-of-service records.
+
+For snow and ice operations, Snowbotix can:
+
+Plow priority outdoor routes using commercial snow blade attachments.
+Broom light snow, dry snow, surface buildup, and areas that need cleaner pavement contact.
+Apply liquid or granular de-icing materials based on route requirements.
+Use site-level sensing to support deployment decisions.
+Operate on pre-mapped routes with geofenced boundaries and obstacle logic.
+Escalate unusual conditions to remote human supervisors.
+Generate proof-of-service records with route history and geocoded visual evidence.
+
+Plain-language value proposition:
+Snowbotix reduces dependence on exhausted crews during long storm events and creates a documented operating record with geocoded service evidence.
+
+4. Routes and zones covered
+Built for priority routes where timing matters.
+
+Snowbotix is best used on defined, recurring winter routes where service timing, route consistency, and documentation matter.
+
+Common winter route types:
+
+Route or zone	Why it matters
+Main pedestrian corridors	Keeps high-use walkways on a defined service plan.
+Building entrances	Supports employee, visitor, patient, tenant, and student access.
+Emergency department entries	Prioritizes access routes that cannot wait for general site clearing.
+Helipads and adjacent access paths	Supports route-specific winter maintenance around critical access areas.
+Loading docks and logistics paths	Helps maintain movement for shift-based and delivery operations.
+Parking lot pedestrian paths	Connects parking areas to entrances and transit points.
+Parking garage top decks	Supports areas where larger equipment may be difficult to use.
+Transit stops and shuttle paths	Keeps recurring pedestrian movement areas in the service map.
+Controlled gates and remote access points	Supports locations that are difficult to staff repeatedly during storms.
+Pervious concrete routes	Allows route-specific liquid-only de-icing logic where granular salt is not appropriate.
+
+Route-fit copy block:
+Start with the route that creates the most winter pressure: the entrance that must be clear before 6 AM, the access path that gets missed overnight, the garage deck that is awkward for larger equipment, or the sidewalk network that burns out crews during long storms.
+
+5. Attachments / sensing / operating model
+Commercial winter tools, site-specific sensing, supervised autonomy.
+Attachments
+
+Snowbotix uses a modular platform that can support winter attachments and secondary de-icing systems.
+
+Winter attachments include:
+
+4–6 ft snow plow attachments
+V-blade configurations where appropriate
+Power broom for surface clearing and light snow
+Liquid applicator for calcium chloride or similar site-approved liquid de-icing
+Granular spreader for routes where visible material application is preferred or required
+
+The platform’s winter configuration should be selected by route type, pavement type, accumulation profile, and site operating requirements.
+
+Sensing
+
+Snowbotix supports site-level winter decisions through onboard sensing and route intelligence.
+
+Sensing and route intelligence can include:
+
+Hyper-local weather sensing
+Temperature and precipitation monitoring
+Snow-penetrating radar for accumulation awareness
+360-degree sentry sensing
+Geofenced route boundaries
+Obstacle detection
+GPS-based fleet tracking
+Visual documentation before, during, and after missions
+Operating model
+
+Snowbotix operates a supervised autonomy model. 
+
+Each winter deployment is built around:
+
+Mapped route logic
+Field teams define routes, boundaries, priority zones, pile zones, exclusions, and surface-specific treatment rules.
+
+Autonomous execution
+The robot operates along approved routes for plowing, brooming, de-icing, or inspection passes.
+
+Human-in-the-loop monitoring
+Remote supervisors monitor missions, review escalations, and support decisions when the robot encounters blocked routes, obstructions, or unusual site conditions.
+
+Fleet management visibility
+Facilities teams can track robot status, mission progress, deployment history, and service evidence.
+
+Suggested supporting module:
+“From storm trigger to service record”
+
+Detect site conditions
+Deploy to mapped priority route
+Plow, broom, and/or de-ice
+Escalate obstacles when needed
+Record service history
+Review proof-of-service data
+6. Proof and reporting
+Winter work should not depend on memory, screenshots, or handwritten logs.
+
+Snowbotix creates a documented operating record for winter service. The reporting layer gives facilities, operations, and finance teams visibility into where the robot worked, what route it covered, and what evidence was captured.
+
+Proof-of-service records can include:
+
+Geocoded before-and-after imagery
+Route completion history
+Mission timestamps
+GPS location history
+Area covered
+Deployment frequency
+Runtime data
+Sensor logs
+De-icing activity
+Weather and site-condition context
+Obstruction or stop-event records
+
+Buyer-facing copy:
+When a route is cleared, the work should be visible in the operating record. Snowbotix links winter maintenance activity to route history, geocoded service evidence, and fleet data so teams can review what happened without relying only on manual inspection.
+
+Proof module headline options:
+
+Proof for every priority route.
+A service record your team can actually review.
+Winter maintenance with route-level evidence.
+See where the work happened, not just that it was scheduled.
+7. Site fit criteria
+Best fit: recurring winter routes with clear boundaries and operational value.
+
+Snowbotix is strongest where winter work is repeatable, route-based, and operationally important.
+
+Strong fit
+
+Commercial, institutional, municipal, industrial, energy, airport, or government site
+Recurring snow and de-icing routes
+Priority outdoor zones that must be serviced before peak traffic
+Labor shortages, contractor inconsistency, or overnight coverage gaps
+Defined walkways, entrances, access paths, lots, decks, or controlled zones
+Site map, aerial image, or route sketch available
+Internal facilities owner available for review and coordination
+Staging, storage, and charging area available
+De-icing material requirements are known or can be defined during assessment
+
+May require further assessment
+
+High pedestrian density during service windows
+Mixed vehicle and pedestrian traffic
+Complex intersections or blind corners
+Heavy accumulation zones that may need traditional equipment coordination
+Sensitive pavement materials
+Remote sites with limited connectivity
+Sites requiring special security, procurement, or access protocols
+
+Not a fit
+
+Residential driveways or residential-only sidewalks
+One-time snow service
+Routes with no repeatable pattern
+Sites with no feasible staging or charging location
+Areas where the robot cannot be safely mapped, supervised, or recovered
+Winter service needs that are better handled by large road-clearing equipment
+
+CTA inside section:
+Not sure if the route is viable? Send the map. We will assess fit before recommending a deployment.
+
+8. Related industries
+Designed for winter-critical sites.
+
+Use these as cards that link to vertical pages.
+
+Commercial & Institutional
+Corporate campuses, commercial real estate, hospitals, healthcare campuses, higher education, and institutional sites with high-traffic walkways and recurring winter service needs.
+
+Municipalities & Public Works
+Sidewalk corridors, public facilities, parks, transit-adjacent pedestrian paths, civic buildings, and recurring public access routes.
+
+Industrial & Energy Infrastructure
+Logistics facilities, warehouses, manufacturing sites, substations, energy sites, controlled yards, and access points that need winter continuity.
+
+Airports & Airfields
+Landside routes, controlled access areas, FBO facilities, airfield-adjacent service routes, and winter access zones that require planned operating procedures.
+
+Defense & Government
+Installations, remote gates, test ranges, controlled access points, and government facilities with hard-to-staff outdoor routes.
+
+Suggested section CTA:
+See Snowbotix by industry →
+
+9. CTA
+Start with one winter route.
+
+Share the route, zone, or recurring winter task that is hardest to staff, clear, or verify. Snowbotix will review the site conditions, route complexity, surface requirements, de-icing needs, and operating constraints before recommending a deployment path.
+
+Primary CTA:
+Request a Site Assessment
+
+Secondary CTA:
+Send a Route Map
+
+CTA microcopy:
+Useful inputs include an aerial image, site map, priority route list, snow plan, de-icing requirements, or photos of the zones that create the most winter pressure.
+
+10. Related resources
+
+Use these as cards at the bottom.
+
+How It Works
+See the Snowbotix deployment lifecycle, from site assessment and mapping to fleet management.
+
+Proof of Service & Reporting
+Review how Snowbotix documents route activity, mission history, geocoded imagery, and service evidence.
+
+Safety & Autonomy
+Understand supervised autonomy, 360-degree sensing, geofencing, operating speeds, and human-in-the-loop monitoring.
+
+Technical Specifications
+Review platform, attachments, sensing, power, charging, runtime, deployment requirements, and data/security details.
+
+All-Season Outdoor Maintenance
+See how the same platform can support snow, sweeping, mowing, brush control, inspection, and reporting across the year.
+
+ROI Calculator
+Model winter labor coverage, route frequency, equipment utilization, material usage, and multi-season value.
+
+SEO fields
+
+Meta title:
+Autonomous Snow Removal & De-Icing | Snowbotix
+
+Meta description:
+Snowbotix automates priority winter maintenance routes with plowing, brooming, liquid or granular de-icing, supervised autonomy, and proof-of-service records.
+
+Suggested URL:
+/solutions/snow-removal-deicing
+
+Suggested internal links:
+/solutions/proof-of-service-reporting
+/solutions/all-season-outdoor-maintenance
+/how-it-works
+/safety-autonomy
+/technical-specifications
