@@ -152,12 +152,12 @@ p { line-height: 1.65; }
 .drop {
   display: none;
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;
   left: -16px;
   background: rgba(22,24,27,0.98);
-  border: 1px solid #2E3235;
+  border: 1px solid #3A3E42;
   min-width: 230px;
-  padding: 8px 0;
+  padding: 12px 0 8px;
   z-index: 200;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
