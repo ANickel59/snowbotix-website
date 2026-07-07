@@ -20,25 +20,25 @@
   .hero-home figcaption { font-family: var(--font-mono); font-size: 11px; color: var(--ink-500); letter-spacing: .06em; text-transform: uppercase; margin-top: 14px; }
 
   /* 02 : qualification bar */
-  .qual-bar { background: var(--slate-850); border-top: 1px solid var(--line-on-dark); border-bottom: 1px solid var(--line-on-dark); }
+  .qual-bar { background: var(--ink); border-top: 1px solid #2E3235; border-bottom: 1px solid #2E3235; }
   .qual-bar .wrap { padding: 22px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .qual-bar .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--amber-400); border: 1px solid var(--line-on-dark); padding: 8px 14px; }
+  .qual-bar .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: #6ee68a; border: 1px solid #2a4a31; padding: 8px 14px; }
 
   /* 03 : use case tiles */
   .tile-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--paper-100); margin-top: 44px; }
   .tile-cell { background: var(--white); padding: 30px 26px; }
-  .tile-cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--amber-600); font-weight: 700; }
+  .tile-cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--brand-green); font-weight: 700; }
   .tile-cell h3 { font-size: 19px; margin-top: 14px; }
   .tile-cell p { color: var(--ink-700); font-size: 14px; margin-top: 12px; }
-  .tile-cell .link { display: inline-block; margin-top: 16px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--amber-600); border-bottom: 1px solid transparent; }
-  .tile-cell .link:hover { border-color: var(--amber-600); }
+  .tile-cell .link { display: inline-block; margin-top: 16px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--brand-green); border-bottom: 1px solid transparent; }
+  .tile-cell .link:hover { border-color: var(--brand-green); }
 
   /* 04 : fit columns */
   .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line-on-dark); margin-top: 44px; }
   .fit-col { background: var(--charcoal-900); padding: 36px; }
   .fit-col .fit-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
   .fit-col .fit-mark { width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 700; border: 1px solid currentColor; flex-shrink: 0; }
-  .fit-col.yes .fit-mark { color: var(--amber-400); }
+  .fit-col.yes .fit-mark { color: var(--brand-green); }
   .fit-col.no .fit-mark { color: var(--gray, #6b7580); }
   .fit-col h3 { font-size: 16px; color: var(--white); text-transform: uppercase; }
   .fit-col ul { list-style: none; margin: 0; padding: 0; }
@@ -50,7 +50,7 @@
   .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--paper-100); margin-top: 44px; }
   .proof-cell { background: var(--white); padding: 30px; text-align: center; }
   .proof-cell.pending { background: var(--paper-50); border: 1px dashed var(--paper-100); }
-  .proof-cell .badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--amber-600); border: 1px solid var(--amber-500); padding: 4px 10px; display: inline-block; margin-bottom: 16px; }
+  .proof-cell .badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-green); border: 1px solid var(--amber-500); padding: 4px 10px; display: inline-block; margin-bottom: 16px; }
   .proof-cell.pending .badge { color: var(--ink-500); border-color: var(--paper-100); }
   .proof-cell h4 { font-size: 16px; }
   .proof-cell p { color: var(--ink-700); font-size: 13.5px; margin-top: 10px; }
@@ -58,22 +58,22 @@
   /* 06 : deployment steps */
   .steps-row { display: flex; align-items: flex-start; gap: 0; margin-top: 52px; flex-wrap: wrap; }
   .step-cell { flex: 1; min-width: 110px; text-align: center; position: relative; padding: 0 8px; }
-  .step-cell .circle { width: 40px; height: 40px; background: var(--amber-500); color: var(--charcoal-950); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-family: var(--font-mono); font-weight: 700; font-size: 14px; position: relative; z-index: 1; }
+  .step-cell .circle { width: 40px; height: 40px; background: var(--brand-green); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-family: var(--font-mono); font-weight: 700; font-size: 14px; position: relative; z-index: 1; }
   .step-cell .line { position: absolute; top: 20px; left: -50%; width: 100%; height: 1px; background: var(--paper-100); z-index: 0; }
   .step-cell:first-child .line { display: none; }
   .step-cell .label { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-900); }
 
   /* 07 : autonomy boundaries */
-  .bound-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-on-dark); margin-top: 44px; }
-  .bound-cell { background: var(--charcoal-900); padding: 28px 24px; }
-  .bound-cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--amber-500); }
-  .bound-cell h4 { font-size: 16px; color: var(--white); margin-top: 12px; text-transform: uppercase; }
-  .bound-cell p { color: #c7cdd3; font-size: 13.5px; margin-top: 10px; }
+  .bound-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); margin-top: 44px; }
+  .bound-cell { background: var(--surface); padding: 28px 24px; }
+  .bound-cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--brand-green); }
+  .bound-cell h4 { font-size: 16px; color: var(--ink); margin-top: 12px; text-transform: uppercase; }
+  .bound-cell p { color: var(--muted); font-size: 13.5px; margin-top: 10px; }
 
   /* 08 : system components */
   .sys-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--paper-100); margin-top: 44px; }
   .sys-cell { background: var(--white); padding: 26px 24px; }
-  .sys-cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--amber-600); font-weight: 700; }
+  .sys-cell .n { font-family: var(--font-mono); font-size: 12px; color: var(--brand-green); font-weight: 700; }
   .sys-cell h4 { font-size: 16px; margin-top: 10px; }
   .sys-cell p { color: var(--ink-700); font-size: 13.5px; margin-top: 8px; }
 
@@ -81,10 +81,11 @@
   /* 10 : FAQ */
   .faq-list { margin-top: 40px; border-top: 1px solid var(--paper-100); }
   .faq-row { display: flex; justify-content: space-between; align-items: center; padding: 20px 4px; border-bottom: 1px solid var(--paper-100); font-size: 15px; color: var(--ink-900); font-weight: 500; }
-  .faq-row .plus { font-family: var(--font-mono); color: var(--amber-600); font-size: 16px; }
+  .faq-row .plus { font-family: var(--font-mono); color: var(--brand-green); font-size: 16px; }
 
   /* 11 : CTA band */
-  .cta-band { background: var(--amber-500); color: var(--charcoal-950); }
+  .cta-band { background: var(--brand-green); color: #fff; }
+  .cta-band h2, .cta-band p { color: #fff; }
   .cta-band .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
   .cta-band h2 { font-size: clamp(26px,3vw,38px); max-width: 560px; }
 
@@ -110,18 +111,18 @@
       <a href="snowbotix_company_page.html">Company</a>
       <a href="snowbotix_investors_page.html">Investors</a>
     </div>
-    <a class="btn btn-amber" href="#">Request a Site Assessment</a>
+    <a class="btn btn-green" href="#">Request a Site Assessment</a>
   </div>
 </nav>
 
 <header class="hero-home on-dark">
   <div class="wrap">
     <div>
-      <span class="eyebrow" style="color:var(--amber-400);">All-season autonomous outdoor maintenance</span>
+      <span class="eyebrow" style="color:#6ee68a;">All-season autonomous outdoor maintenance</span>
       <h1>Autonomous outdoor work for commercial sites.</h1>
       <p class="hero-copy">Snow, mowing, sweeping, and proof-of-service handled by robots built for recurring routes, tough conditions, and real documentation.</p>
       <div class="cta-row">
-        <a class="btn btn-amber" href="#">Request a Site Assessment</a>
+        <a class="btn btn-green" href="#">Request a Site Assessment</a>
         <a class="btn btn-ghost-dark" href="#">See How It Works &#8594;</a>
       </div>
     </div>
@@ -235,11 +236,11 @@
   </div>
 </section>
 
-<section class="section on-dark">
+<section class="section on-light">
   <div class="wrap">
     <div class="kicker-line"><span class="num">04</span></div>
-    <h2 style="color:var(--white);">Proof Route to Deployment</h2>
-    <p style="max-width:640px; margin-top:16px; color:#c7cdd3; font-size:16px;">Snowbotix maps the site, configures activity, delivers reporting samples and a customer report, then expands.</p>
+    <h2>Proof Route to Deployment</h2>
+    <p style="max-width:640px; margin-top:16px; color:var(--muted); font-size:16px;">Snowbotix maps the site, configures activity, delivers reporting samples and a customer report, then expands.</p>
     <div class="steps-row">
       <div class="step-cell"><div class="line"></div><div class="circle">1</div><div class="label">Assess</div></div>
       <div class="step-cell"><div class="line"></div><div class="circle">2</div><div class="label">Map</div></div>
@@ -252,11 +253,11 @@
   </div>
 </section>
 
-<section class="section on-dark" style="padding-top:0;">
+<section class="section on-paper50" style="padding-top:0;">
   <div class="wrap">
     <div class="kicker-line"><span class="num">05</span></div>
-    <h2 style="color:var(--white);">Autonomy With Boundaries</h2>
-    <p style="max-width:640px; margin-top:16px; color:#c7cdd3; font-size:16px;">Mapped routes, supervised operation, obstacle detection, and site-specific protocols define the operating model.</p>
+    <h2>Autonomy With Boundaries</h2>
+    <p style="max-width:640px; margin-top:16px; color:var(--muted); font-size:16px;">Mapped routes, supervised operation, obstacle detection, and site-specific protocols define the operating model.</p>
     <div class="bound-grid">
       <div class="bound-cell"><div class="n">01</div><h4>Mapped Routes</h4><p>Predefined routes and geofences guide where robots operate.</p></div>
       <div class="bound-cell"><div class="n">02</div><h4>Supervised Autonomy</h4><p>Human oversight, start/stop controls, and exceptions management.</p></div>
@@ -303,7 +304,7 @@
       <h2>See if your site qualifies</h2>
       <p style="margin-top:14px; max-width:460px; font-weight:500;">Start with one route, zone, or recurring task. Snowbotix will review fit before recommending a deployment path.</p>
     </div>
-    <a class="btn btn-glass-dark" href="#">Request a Site Assessment</a>
+    <a class="btn btn-green" href="#">Request a Site Assessment</a>
   </div>
 </section>
 

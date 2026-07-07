@@ -147,6 +147,17 @@ p { line-height: 1.65; }
 .btn-outline-amber { border-color: var(--gold-yellow); color: var(--gold-yellow); }
 .btn-outline-amber:hover { background: var(--gold-yellow); color: var(--ink); }
 
+/* Primary CTA — Buyer green */
+.btn-green {
+  background: var(--brand-green);
+  color: #fff;
+  border-color: var(--brand-green);
+  transition: background .2s, border-color .2s;
+}
+.btn-green:hover { background: #006B16; border-color: #006B16; }
+.btn-outline-green { border-color: var(--brand-green); color: var(--brand-green); }
+.btn-outline-green:hover { background: var(--brand-green); color: #fff; }
+
 /* Primary CTA — Liquid Glass amber */
 .btn-amber, .btn-glass-dark {
   backdrop-filter: blur(12px) saturate(180%);
