@@ -10,13 +10,18 @@
   --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  --ink: #121315;           /* deep obsidian — text, nav, footer, dark bands */
-  --snow: #F4F1E8;          /* warm off-white — buyer page base, text on dark */
-  --snow-soft: #EDE9DC;     /* slightly deeper warm canvas */
-  --surface: #FFFFFF;       /* cards, panels, high-readability areas */
-  --line: #D9DEE3;          /* light borders, dividers */
+  --ink: #1D2939;           /* deep slate-charcoal — readable text, never pure black */
+  --snow: #F0F2F5;          /* cool technical gray — page base, text on dark */
+  --snow-soft: #E8EAED;     /* slightly deeper cool gray for alternating sections */
+  --surface: #F8F9FA;       /* ultra-light off-gray for cards and panels */
+  --white: #FFFFFF;         /* reserved strictly for text overlays on dark */
+  --line: #D0D5DD;          /* muted steel borders */
   --steel: #3C4146;         /* technical borders, dark panel frames */
   --muted: #5A6268;         /* body muted text on light backgrounds */
+
+  /* Dark layer */
+  --charcoal-bg: #1E2022;   /* rich technical charcoal for dark sections */
+  --charcoal-card: #2A2D30; /* slightly lighter for containers on dark */
 
   --brand-green: #008A1E;   /* buyer CTA, active route, confirmed state */
   --gold-yellow: #C9A227;   /* investor/defense CTA, high-visibility signifier */
@@ -37,7 +42,7 @@
   --slate-800: #1d232a;
   --slate-700: #2a323b;
   --slate-600: #3d4750;
-  --line-on-dark: #2E3235;
+  --line-on-dark: #3A3E42;
   --paper-0: var(--snow);
   --paper-50: var(--snow-soft);
   --paper-100: var(--line);
@@ -47,8 +52,9 @@
   --amber-500: var(--gold-yellow);
   --amber-400: var(--gold-bright);
   --amber-600: var(--gold-dim);
-  --white: var(--surface);
-  --font-display: var(--font-heading); /* Barlow Condensed removed — all headings use Inter */
+  --charcoal-950: var(--ink);
+  --charcoal-900: #101317;
+  --font-display: var(--font-heading);
   --max: var(--page-max);
 }
 
@@ -101,11 +107,11 @@ p { line-height: 1.65; }
   .wrap { padding-left: 20px; padding-right: 20px; }
 }
 
-.on-dark { background: #1A1F24; color: var(--snow); }      /* warm slate — not pure black */
-.on-mid  { background: #232A31; color: var(--snow); }      /* mid slate for transition bands */
-.on-light { background: var(--snow); color: var(--ink); }  /* warm off-white #F4F1E8 */
-.on-paper50 { background: var(--snow-soft); color: var(--ink); } /* slightly deeper warm */
-.on-ink  { background: var(--ink); color: var(--snow); }   /* true dark, hero/footer only */
+.on-dark { background: var(--charcoal-bg); color: var(--snow); }   /* #1E2022 technical charcoal */
+.on-mid  { background: var(--charcoal-card); color: var(--snow); } /* #2A2D30 container charcoal */
+.on-light { background: var(--snow); color: var(--ink); }          /* #F0F2F5 cool technical gray */
+.on-paper50 { background: var(--snow-soft); color: var(--ink); }   /* #E8EAED slightly deeper */
+.on-ink  { background: var(--ink); color: var(--snow); }           /* #1D2939 deep slate, hero only */
 
 /* ---------- Nav ---------- */
 .nav {
@@ -281,8 +287,8 @@ p { line-height: 1.65; }
 }
 
 .card {
-  background: #1d232a;
-  border: 1px solid #2E3235;
+  background: var(--charcoal-card);
+  border: 1px solid var(--line-on-dark);
   padding: 32px;
 }
 .card-light {
