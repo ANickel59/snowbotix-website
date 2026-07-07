@@ -37,17 +37,17 @@
   .leader-card .li-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-900); border-bottom: 1px solid var(--paper-100); padding-bottom: 4px; }
   .leader-card .li-link:hover { border-color: var(--amber-600); color: var(--amber-600); }
 
-  .eng-reality { position: relative; color: var(--white); }
-  .eng-reality .bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(100deg, rgba(10,12,14,0.95) 0%, rgba(10,12,14,0.6) 55%, rgba(10,12,14,0.25) 100%), url('mockups/images/team-shopfloor-hardware.jpg') center 22% / cover no-repeat;
-  }
-  .eng-reality .wrap { position: relative; z-index: 1; }
-  .eng-reality .names { display: flex; gap: 24px; flex-wrap: wrap; margin: 22px 0 30px; }
-  .eng-reality .names span { font-family: var(--font-mono); font-size: 13px; color: var(--amber-400); padding: 8px 14px; border: 1px solid var(--line-on-dark); display: flex; flex-direction: column; gap: 4px; }
-  .eng-reality .names span .t-role { font-size: 11px; color: #9aa3ab; letter-spacing: .04em; text-transform: uppercase; }
-  .eng-reality p { max-width: 560px; color: #d7dbdd; font-size: 16px; }
-  .eng-reality h2 { color: var(--white); max-width: 700px; }
+  .eng-reality { background: var(--charcoal-bg); color: var(--snow); }
+  .eng-reality .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+  .eng-reality figure { margin: 0; }
+  .eng-reality figure img { width: 100%; display: block; border-radius: 4px; }
+  .eng-reality .eng-text .eyebrow { color: var(--amber-400); }
+  .eng-reality .names { display: flex; gap: 16px; flex-wrap: wrap; margin: 22px 0 28px; }
+  .eng-reality .names span { font-family: var(--font-mono); font-size: 12px; color: var(--amber-400); padding: 8px 14px; border: 1px solid var(--line-on-dark); display: flex; flex-direction: column; gap: 4px; }
+  .eng-reality .names span .t-role { font-size: 10px; color: #9aa3ab; letter-spacing: .04em; text-transform: uppercase; }
+  .eng-reality p { color: #d7dbdd; font-size: 15.5px; margin: 0 0 14px; }
+  .eng-reality h2 { color: var(--white); margin: 16px 0 0; }
+  @media (max-width: 860px) { .eng-reality .wrap { grid-template-columns: 1fr; } }
 
   .team-cta { background: var(--paper-0); border-top: 1px solid var(--paper-100); }
   .team-cta .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; padding: 64px 32px; }
@@ -123,7 +123,7 @@
       <div class="leader-card">
         <div class="leader-photo"><img src="mockups/images/team-klaus-portrait.jpg" alt="Klaus Hahn" width="1322" height="1407" loading="lazy"></div>
         <h3>Klaus Hahn</h3>
-        <span class="role">COO, RoboWorkX Inc. / Snowbotix</span>
+        <span class="role">COO, RoboWorkX Inc.</span>
         <p>Brings more than 30 years of leadership experience across outdoor power equipment, commercial cleaning equipment, product development, marketing, supply chain, and international operations.</p>
         <p>His background includes senior executive roles at Greenworks Tools, Techtronic Industries, and K&auml;rcher, with responsibility across North America, Europe, product strategy, business development, customer operations, logistics, and commercialization. He has worked with major outdoor and power-tool categories tied to brands and platforms customers already understand, including Greenworks, Ryobi, Milwaukee, and K&auml;rcher.</p>
         <p>At RoboWorkX, Klaus helps translate robotics into a commercially deployable equipment business. His role strengthens the bridge between Sasi's autonomy technology and the practical requirements of outdoor equipment buyers: product configuration, serviceability, customer proof, channel readiness, cost control, supply chain, and scale.</p>
@@ -134,17 +134,21 @@
 </section>
 
 <section class="section eng-reality">
-  <div class="bg"></div>
   <div class="wrap">
-    <span class="eyebrow" style="color:var(--amber-400);">The Engineering Reality</span>
-    <h2 style="margin-top:20px;">Field robotics requires more than code.</h2>
-    <div class="names">
-      <span>Syed Jaser<span class="t-role">Project Manager</span></span>
-      <span>Pankaj Choudhary<span class="t-role">Supply Chain Manager</span></span>
-      <span>Thejesh P.</span>
+    <figure>
+      <img src="mockups/images/team-group-photo.png" alt="RoboWorkX engineering team" width="1456" height="816" loading="lazy">
+    </figure>
+    <div class="eng-text">
+      <span class="eyebrow">The Engineering Reality</span>
+      <h2>Field robotics requires more than code.</h2>
+      <div class="names">
+        <span>Syed Jaser<span class="t-role">Project Manager</span></span>
+        <span>Pankaj Choudhary<span class="t-role">Supply Chain Manager</span></span>
+        <span>Thejesh P.</span>
+      </div>
+      <p>RoboWorkX is building a team around the realities of outdoor deployment. The company needs robotics engineering, equipment knowledge, fleet software, customer discovery, service operations, and commercial discipline.</p>
+      <p style="color:var(--white); font-weight:500;">Snowbotix brings those pieces together in one commercial platform. AIB gives RoboWorkX a core technology layer to keep improving as the company grows.</p>
     </div>
-    <p>RoboWorkX is building a team around the realities of outdoor deployment. The company needs robotics engineering, equipment knowledge, fleet software, customer discovery, service operations, and commercial discipline.</p>
-    <p style="margin-top:14px; color:var(--white); font-weight:500;">Snowbotix brings those pieces together in one commercial platform. AIB gives RoboWorkX a core technology layer to keep improving as the company grows.</p>
   </div>
 </section>
 
@@ -156,7 +160,7 @@
     </div>
     <div class="cta-row">
       <a class="btn btn-amber" href="#">Request a Site Assessment</a>
-      <a class="btn btn-ghost-light" href="snowbotix_investors_page.html">Investor Inquiries</a>
+      <a href="snowbotix_investors_page.html" style="font-size:13px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px;letter-spacing:0.01em;">Investor Inquiries &#8599;</a>
     </div>
   </div>
 </section>
