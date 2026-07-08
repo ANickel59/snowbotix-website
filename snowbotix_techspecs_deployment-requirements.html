@@ -54,7 +54,7 @@ img{max-width:100%;display:block;}
 .spec-table td{background:var(--surface);font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
 .spec-table tr:last-child td{border-bottom:none;}
 .spec-table td:first-child{color:var(--snow);font-weight:600;font-size:13px;width:220px;}
-.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:24px;}
+.model-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);margin-top:24px;}
 .model-cell{background:var(--surface);padding:22px 24px;}
 .model-tag{font-family:var(--font-mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-yellow);margin-bottom:8px;}
 .model-cell h3{font-size:14px;font-weight:700;color:var(--snow);margin-bottom:8px;}
@@ -262,17 +262,12 @@ img{max-width:100%;display:block;}
 <section class="section" style="background:var(--ink);">
   <div class="section-inner">
     <p class="section-label">03 — Deployment Models</p>
-    <h2>Five common deployment configurations.</h2>
+    <h2>Common deployment configurations.</h2>
     <div class="model-grid">
       <div class="model-cell">
         <p class="model-tag">On-Site Staging</p>
         <h3>Dedicated dock at a fixed site</h3>
         <p>Robot is permanently staged at one facility. Wireless dock charging overnight or between shifts. Suited for campuses, hospitals, government facilities, and logistics yards with consistent recurring routes.</p>
-      </div>
-      <div class="model-cell">
-        <p class="model-tag">Mobile Hopping</p>
-        <h3>Contractor-style multi-site routing</h3>
-        <p>Robot is transported between sites by crew. Hot-swap batteries allow rapid turnaround between locations. Routes are pre-mapped at each site before deployment. Suited for snow contractors and service companies managing multiple accounts.</p>
       </div>
       <div class="model-cell">
         <p class="model-tag">Storm-Response Staging</p>
@@ -285,7 +280,7 @@ img{max-width:100%;display:block;}
         <p>Robot runs recurring passes across approved routes during defined operating windows. Dock return between pass cycles for charging or swap. Suited for airport ground-side, logistics yard, and campus walkway applications.</p>
       </div>
       <div class="model-cell">
-        <p class="model-tag">Pilot</p>
+        <p class="model-tag">Demo / Site Test</p>
         <h3>Bounded first deployment to validate site fit</h3>
         <p>Defined scope — typically one or two routes — under direct supervision for initial service period. Route performance, proof-of-service records, and operational fit reviewed before scale decisions are made.</p>
       </div>
@@ -321,7 +316,7 @@ img{max-width:100%;display:block;}
 <section class="section" style="background:var(--ink);">
   <div class="section-inner">
     <p class="section-label">05 — Deployment Readiness Checklist</p>
-    <h2>16 items. All must be confirmed before first autonomous operation.</h2>
+    <h2>Confirm before first autonomous operation.</h2>
     <div class="checklist">
       <div class="check-item"><div class="check-mark"></div><p>Site walk-through completed</p></div>
       <div class="check-item"><div class="check-mark"></div><p>Operating zones defined and GPS-bounded</p></div>
