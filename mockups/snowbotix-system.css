@@ -278,6 +278,10 @@ p { line-height: 1.65; }
   .nav-links { display: none; }
 }
 
+/* Canonical site footer (see _source/canonical-footer.html): all spacing lives
+   in its inner divs. Outer <footer> stays at zero padding — owned here, not per-page. */
+footer { padding: 0; }
+
 /* ---------- Common patterns ---------- */
 .tag-strip {
   font-family: var(--font-mono);
