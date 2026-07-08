@@ -41,8 +41,8 @@ p.body{font-size:15px;line-height:1.7;color:var(--muted);}
 .sec-num{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin-bottom:10px;}
 
 .hero{padding:72px 0;}
-.hero-center{text-align:center;max-width:680px;margin:0 auto;}
-.cta-row{display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:0;}
+.hero-center{text-align:left;max-width:680px;margin:0;}
+.cta-row{display:flex;align-items:center;gap:14px;justify-content:flex-start;flex-wrap:wrap;margin-bottom:0;}
 
 .process-track{position:relative;margin-top:40px;}
 .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);}
@@ -182,7 +182,7 @@ p.body{font-size:15px;line-height:1.7;color:var(--muted);}
     <div class="hero-center">
       <div class="eyebrow">How It Works</div>
       <h1>Put autonomous outdoor maintenance to work without redesigning your operation.</h1>
-      <p class="lead" style="margin:0 auto 28px;">Snowbotix fits into your existing grounds plan. You keep oversight. We handle route execution, fleet monitoring, safety supervision, and service records.</p>
+      <p class="lead" style="margin:0 0 28px;">Snowbotix fits into your existing grounds plan. You keep oversight. We handle route execution, fleet monitoring, safety supervision, and service records.</p>
       <div class="cta-row">
         <a class="btn btn-green" href="snowbotix_contact.html#request-form">Request a Site Assessment</a>
         <a class="sec-link" href="snowbotix_solutions_proof-of-service.html">See Proof of Service Records &rarr;</a>
@@ -372,16 +372,18 @@ p.body{font-size:15px;line-height:1.7;color:var(--muted);}
           <li>Dual physical E-stops</li>
           <li>Digital kill switch via remote supervisors</li>
           <li>HD cameras and thermal sensing</li>
-          <li>LiDAR</li>
+          <li>LiDAR and radar processed on the robot itself</li>
           <li>RTK-GNSS for positioning and boundary enforcement</li>
           <li>Automatic stop on obstruction or out-of-bounds detection</li>
+          <li>Navigation and obstacle detection continue safely even if the network connection degrades</li>
         </ul>
       </div>
       <div class="dark-cell">
         <div class="d-label">Human Supervision &amp; Escalation</div>
         <ul>
           <li>Snowbotix remote supervisors monitor active routes</li>
-          <li>Command-and-control workflow with live camera feeds</li>
+          <li>Command-and-control workflow with live, low-latency camera feeds</li>
+          <li>Redundant bonded cellular (4G/5G) connectivity, with satellite options for remote sites — encrypted end to end</li>
           <li>Obstructions, pedestrians, and anomalies escalate to the supervisor</li>
           <li>Supervisor reviews and either clears the path or pauses the route</li>
           <li>Client team receives alerts for site conditions that require on-site attention</li>
@@ -487,13 +489,15 @@ p.body{font-size:15px;line-height:1.7;color:var(--muted);}
   <div class="wrap">
     <div class="sec-num">09: Fleet Management Portal</div>
     <h2>Real-time route visibility. Documented service history.</h2>
+    <p class="body" style="max-width:580px;margin-top:16px;">The portal works from desktop, tablet, or mobile, and access is scoped by role — owners control the account, admins run day-to-day operations, and field crews see live status and alerts without administrative controls.</p>
     <div class="grid-2" style="margin-top:28px;">
       <div class="grid-cell">
         <div class="cell-label">Live Visibility</div>
         <h3>Monitor routes in real time</h3>
         <ul>
           <li>Live GPS location and route progress</li>
-          <li>Active camera and sensor feeds</li>
+          <li>Live, low-latency camera and sensor feeds</li>
+          <li>Battery charge and mechanical status</li>
           <li>Obstruction alerts and escalation notifications</li>
           <li>Route completion status per session</li>
           <li>Operational schedule and deployment calendar</li>

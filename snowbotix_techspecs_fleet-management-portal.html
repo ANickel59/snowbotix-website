@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Snowbotix Fleet Management Portal Specs | Dispatch, Live Status, Proof-of-Work</title>
-<meta name="description" content="Review Snowbotix Fleet Management Portal specifications: live robot dispatch, battery monitoring, supervisor controls, hazard workflow, proof-of-work reporting, and GIS integrations.">
+<title>Snowbotix Fleet Management Portal Specs | Scheduler, Monitor, Proof-of-Service</title>
+<meta name="description" content="Review Snowbotix Fleet Management Portal specifications: scheduling, live GPS and video monitoring, battery state of charge, supervisor controls, hazard workflow, proof-of-service reporting, role-based access, and GIS integrations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -159,21 +159,21 @@ img{max-width:100%;display:block;}
   <div class="hero-inner">
     <p class="eyebrow">Technology Specifications / Fleet Management Portal</p>
     <h1>A single command view for autonomous outdoor maintenance.</h1>
-    <p class="hero-sub">The Snowbotix Fleet Management Portal and Fleet App give supervisors and fleet managers live robot status, remote dispatch, battery monitoring, hazard event review, proof-of-work reporting, and GIS data exports from one interface, accessible from any networked device.</p>
+    <p class="hero-sub">The Snowbotix Fleet Management Portal gives your team three working views: schedule deployments in advance, monitor live missions with GPS, video, and battery state of charge, and pull proof-of-service reports for every completed route. Responsive across desktop, tablet, and mobile.</p>
     <div class="hero-ctas">
       <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
     <a class="btn btn-gold" href="snowbotix_contact.html#request-form">Request a Site Assessment</a>
       <a class="sec-link-light" href="assets/Technical Spec Sheet.pdf" download>Download Spec Sheet</a>
     </div>
     <div class="spec-strip">
-      <span class="spec-item">Live robot position tracking</span>
-      <span class="spec-item">Remote dispatch and override</span>
-      <span class="spec-item">Battery state monitoring</span>
-      <span class="spec-item">360° live camera view</span>
+      <span class="spec-item">Scheduler / Monitor / Report</span>
+      <span class="spec-item">Live GPS position tracking</span>
+      <span class="spec-item">Low-latency live video</span>
+      <span class="spec-item">Battery state of charge (SoC)</span>
       <span class="spec-item">Hazard alert and review workflow</span>
-      <span class="spec-item">Proof-of-work reporting</span>
+      <span class="spec-item">Proof-of-service reporting</span>
       <span class="spec-item">GIS export and API access</span>
-      <span class="spec-item">8 role-based access tiers</span>
+      <span class="spec-item">Desktop, tablet &amp; mobile</span>
     </div>
   </div>
 </section>
@@ -182,6 +182,7 @@ img{max-width:100%;display:block;}
   <div class="section-inner">
     <p class="section-label">01 — Dashboard Features</p>
     <h2>Everything a supervisor needs to oversee an active outdoor maintenance mission.</h2>
+    <p>The portal is organized around three working views. <strong>Scheduler</strong> plans future deployments, assigns robots to operational zones, and manages seasonal transitions. <strong>Monitor</strong> tracks active missions — live GPS location, low-latency video streams, mechanical status, and battery state of charge. <strong>Report</strong> generates geo-tagged, timestamped proof-of-service records for every completed route.</p>
     <div class="feature-grid">
       <div class="feature-cell">
         <p class="feature-tag">Live Operations</p>
@@ -191,7 +192,7 @@ img{max-width:100%;display:block;}
       <div class="feature-cell">
         <p class="feature-tag">Status Monitoring</p>
         <h3>Battery, speed, and attachment state</h3>
-        <p>Live battery percentage, estimated remaining runtime, current operating speed, attachment status, and mission elapsed time.</p>
+        <p>Live battery state of charge (SoC), estimated remaining runtime, current operating speed, attachment status, and mission elapsed time.</p>
       </div>
       <div class="feature-cell">
         <p class="feature-tag">Live Video</p>
@@ -248,7 +249,7 @@ img{max-width:100%;display:block;}
       <div class="hazard-step"><div class="hz-num">03</div><div class="hz-body"><h3>Alert</h3><p>Push notification dispatched to supervisor via fleet portal and Fleet App. On-robot visual and audio alerts active at site.</p></div></div>
       <div class="hazard-step"><div class="hz-num">04</div><div class="hz-body"><h3>Review</h3><p>Supervisor reviews event: camera capture, GPS location, sensor data. Determines whether to resume, redirect, or hold mission.</p></div></div>
       <div class="hazard-step"><div class="hz-num">05</div><div class="hz-body"><h3>Notify</h3><p>Supervisor updates site team as needed. On-site crew can be dispatched to clear obstacle or assist with complex maneuver if required.</p></div></div>
-      <div class="hazard-step"><div class="hz-num">06</div><div class="hz-body"><h3>Record</h3><p>Event logged permanently to mission record: time, location, sensor state, camera captures, supervisor response, and outcome. Available in proof-of-work report export.</p></div></div>
+      <div class="hazard-step"><div class="hz-num">06</div><div class="hz-body"><h3>Record</h3><p>Event logged permanently to mission record: time, location, sensor state, camera captures, supervisor response, and outcome. Available in proof-of-service report export.</p></div></div>
     </div>
   </div>
 </section>
@@ -256,30 +257,27 @@ img{max-width:100%;display:block;}
 <section class="section" style="background:var(--ink-soft);">
   <div class="section-inner">
     <p class="section-label">04 — Role-Based Access</p>
-    <h2>Eight access roles, scoped to function.</h2>
-    <p>Portal access is scoped by role. Not every user needs full fleet control. Role-based access prevents unauthorized route changes, ensures accountability, and supports multi-organization deployments where different stakeholders need different visibility.</p>
+    <h2>A strict role hierarchy: Organization Owner, Admin, Crew.</h2>
+    <p>Not every user needs full fleet control. The portal enforces a strict role hierarchy so each user only has access to the controls and data relevant to their clearance level — preventing unauthorized route changes and keeping accountability clear across your team.</p>
     <table class="roles-table">
       <thead>
         <tr><th>Role</th><th>Access scope</th></tr>
       </thead>
       <tbody>
-        <tr><td>Fleet Administrator</td><td>Full portal access: route management, user administration, billing, system configuration</td></tr>
-        <tr><td>Fleet Supervisor</td><td>Live monitoring, dispatch, hazard review, mission override, proof-of-work reports</td></tr>
-        <tr><td>Operations Manager</td><td>Mission scheduling, route review, reporting, team visibility — no robot control</td></tr>
-        <tr><td>Site Lead / Crew</td><td>Fleet App access: live status view, on-site alert receipt, physical E-stop operation</td></tr>
-        <tr><td>Facility Manager</td><td>Route completion status, proof-of-work reports, GIS exports — read-only</td></tr>
-        <tr><td>Maintenance Technician</td><td>Maintenance logs, component health, scheduled maintenance items</td></tr>
-        <tr><td>Compliance / Safety Officer</td><td>Proof-of-work records, event logs, incident reports, audit exports</td></tr>
-        <tr><td>Data / GIS Analyst</td><td>GIS export access, route data, sensor logs, API credentials</td></tr>
+        <tr><td>Organization Owner</td><td>Full account control: user management, route management, system configuration, export controls, API credentials</td></tr>
+        <tr><td>Admin</td><td>Day-to-day fleet operation: scheduling, live monitoring, dispatch, hazard review, mission override, proof-of-service reports, GIS exports</td></tr>
+        <tr><td>Crew</td><td>Field access: live status view, on-site alert receipt, physical E-stop operation — no administrative controls</td></tr>
       </tbody>
     </table>
+    <p style="margin-top:16px;">Read-only visibility for stakeholders such as facility managers, compliance officers, or GIS analysts is configured within these roles during deployment setup.</p>
   </div>
 </section>
 
 <section class="section" style="background:var(--ink);">
   <div class="section-inner">
-    <p class="section-label">05 — Proof-of-Work Reporting</p>
+    <p class="section-label">05 — Proof-of-Service Reporting</p>
     <h2>Every completed mission produces a documented record.</h2>
+    <p>Geo-tagged, timestamped proof-of-service reports document exactly what was serviced, where, and when — the record your team needs for SLA compliance, billing verification, and liability documentation in a managed service model.</p>
     <table class="spec-table">
       <thead>
         <tr><th>Record element</th><th>What it contains</th></tr>
@@ -300,7 +298,7 @@ img{max-width:100%;display:block;}
   <div class="section-inner">
     <p class="section-label">06 — System Integrations</p>
     <h2>Data routing to external systems where configured.</h2>
-    <p>The fleet portal supports GIS data export and integration with asset management, CMMS, and municipal operations systems through configured API connections. Integration scope and compatibility are determined during deployment planning. Not every integration option is compatible with every third-party system.</p>
+    <p>The backend features structured APIs designed so the Snowbotix platform can sit natively within your broader digital ecosystem — facility management software, asset management, CMMS, municipal operations systems, weather data providers, and tactical mesh networks. Integration scope and compatibility are determined during deployment planning. Not every integration option is compatible with every third-party system.</p>
     <div class="integ-grid">
       <div class="integ-cell"><h3>ArcGIS</h3><p>Feature class exports compatible with ArcGIS workflows</p></div>
       <div class="integ-cell"><h3>GeoJSON</h3><p>Open-format spatial exports for custom analysis pipelines</p></div>
@@ -308,6 +306,8 @@ img{max-width:100%;display:block;}
       <div class="integ-cell"><h3>CMMS</h3><p>Maintenance event data routing to configured CMMS platforms</p></div>
       <div class="integ-cell"><h3>Asset management</h3><p>Mission completion and route record outputs for asset tracking</p></div>
       <div class="integ-cell"><h3>311 workflows</h3><p>Surface condition and infrastructure observation routing to 311 or service-request systems where supported</p></div>
+      <div class="integ-cell"><h3>Weather data providers</h3><p>Third-party weather feeds for storm-triggered scheduling and deicing threshold activation</p></div>
+      <div class="integ-cell"><h3>Tactical mesh networks</h3><p>API integration with tactical mesh networks for defense and secure-network deployments</p></div>
       <div class="integ-cell"><h3>Role-based notifications</h3><p>Alert routing to stakeholder roles via portal, Fleet App, and configured notification channels</p></div>
       <div class="integ-cell"><h3>Export formats</h3><p>Report exports in standard formats for compliance, audit, or service documentation</p></div>
     </div>
@@ -315,6 +315,26 @@ img{max-width:100%;display:block;}
 </section>
 
 <section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">07 — Accessibility &amp; Conformance</p>
+    <h2>Section 508 compliant hardware. A published roadmap for portal accessibility.</h2>
+    <p>The SMUR hardware platform is fully compliant with US Section 508 requirements. The fleet management portal already supports baseline visual contrast, text scaling, and keyboard navigation, and Snowbotix is executing a dedicated remediation roadmap to bring it into full WCAG 2.1 A and AA conformance — with dates, not vague intentions.</p>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Phase</th><th>Scope</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Accessibility audit &amp; gap analysis</td><td>Internal review of contrast, text scaling, keyboard navigation, semantic structure, and ARIA labeling</td><td>Completed</td></tr>
+        <tr><td>Core dashboard remediation</td><td>Alt-text for dynamic elements, accessible text formats for map and telemetry layers, structured data tables for battery, payload, and mission status</td><td>In progress — Q3 2026</td></tr>
+        <tr><td>Screen reader &amp; assistive technology support</td><td>NVDA and JAWS on desktop; VoiceOver and TalkBack on tablet and mobile. Operational alerts, safety notifications, and telemetry read aloud in real time</td><td>Scheduled — Q4 2026</td></tr>
+        <tr><td>Validation &amp; conformance report</td><td>Usability testing with accessibility professionals and native assistive-technology users, followed by a formal Accessibility Conformance Report (VPAT 2.5 Rev 508)</td><td>Scheduled — Q1 2027</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:16px;">If your procurement process requires accessibility documentation, request the current conformance status through a site assessment.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
   <div class="section-inner">
     <p class="section-label">Related Technical Specifications</p>
     <h2>Review the connected specification pages.</h2>
@@ -324,7 +344,7 @@ img{max-width:100%;display:block;}
       <div class="related-item"><a href="snowbotix_techspecs_autonomy-navigation.html">Autonomy &amp; Navigation</a><p>RTK-GNSS, mapping, route planning</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_safety-systems.html">Safety Systems</a><p>360° sensing, E-stops, supervision</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
-      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>GIS, API, OCI, cloud privacy</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>Bonded 4G/5G, private cloud, encryption</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_deployment-requirements.html">Deployment Requirements</a><p>Site readiness, mapping, operating plan</p></div>
       <div class="related-item"><a href="assets/Technical Spec Sheet.pdf" download>Download Spec Sheet</a><p>Full technical specifications PDF</p></div>
     </div>

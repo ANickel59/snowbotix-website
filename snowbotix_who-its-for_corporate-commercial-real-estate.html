@@ -29,17 +29,13 @@ img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}
 .breadcrumb .wrap{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;color:var(--steel);letter-spacing:.04em;text-transform:uppercase;}
 .breadcrumb span{color:var(--line);}
 .hero{padding:64px 0 72px;}
-.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start;}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:64px;align-items:start;max-width:760px;}
 .eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green);margin-bottom:16px;}
 h1{font-size:clamp(30px,3.5vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;}
 .lead{font-size:16.5px;line-height:1.65;color:var(--muted);max-width:560px;margin-bottom:32px;}
 .cta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
 .chip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--steel);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:var(--radius);}
-.hero-aside{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
-.memory-line{background:var(--brand-green);color:#fff;padding:16px 20px;border-radius:var(--radius);text-align:center;margin-top:16px;}
-.memory-line strong{display:block;font-size:17px;font-weight:800;}
-.memory-line span{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-top:3px;display:block;}
 .qual-bar{background:var(--ink);border-top:1px solid #2A2D34;border-bottom:1px solid #2A2D34;padding:18px 0;}
 .qual-bar .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .qual-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#AEB5BA;border:1px solid #3C4146;padding:7px 14px;border-radius:var(--radius);}
@@ -176,7 +172,6 @@ p.body{font-size:15.5px;line-height:1.7;color:var(--muted);}
         <p class="lead">Snowbotix automates hard-to-staff outdoor maintenance routes with supervised autonomy, mapped operating zones and 360-degree sensing, human-in-the-loop monitoring, and proof-of-service records. One robot handles snow, mowing, sweeping, and more across recurring commercial routes.</p>
         <div class="cta-row">
           <a class="btn btn-green" href="snowbotix_contact.html#request-form">Request a Site Assessment</a>
-          <a class="sec-link" href="snowbotix_howitworks.html">View Deployment Process &rarr;</a>
           <a class="sec-link" href="snowbotix_techspecs_deployment-requirements.html">Review Deployment Requirements &rarr;</a>
         </div>
         <div class="chips">
@@ -184,18 +179,6 @@ p.body{font-size:15.5px;line-height:1.7;color:var(--muted);}
           <span class="chip">Snow, Mow &amp; Sweep from one chassis</span>
           <span class="chip">Geocoded proof-of-service records</span>
           <span class="chip">Commercial routes, not residential</span>
-        </div>
-      </div>
-      <div class="hero-aside">
-        <p style="font-size:13px;color:var(--steel);font-family:var(--font-mono);letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px;">Also in this vertical</p>
-        <div style="display:flex;flex-direction:column;gap:6px;">
-          <a href="snowbotix_who-its-for_healthcare-medical-campuses.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--snow-soft);border:1px solid var(--line);border-radius:var(--radius);font-size:13.5px;font-weight:500;">Healthcare &amp; Medical Campuses <span style="color:var(--steel);">?</span></a>
-          <a href="snowbotix_who-its-for_higher-ed-education-campuses.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--snow-soft);border:1px solid var(--line);border-radius:var(--radius);font-size:13.5px;font-weight:500;">Higher Ed &amp; Education Campuses <span style="color:var(--steel);">?</span></a>
-          <a href="snowbotix_who-its-for_municipalities-public-works.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--snow-soft);border:1px solid var(--line);border-radius:var(--radius);font-size:13.5px;font-weight:500;">Municipalities &amp; Public Works <span style="color:var(--steel);">?</span></a>
-        </div>
-        <div class="memory-line">
-          <strong>One Robot. Snow, Mow, and Sweep.</strong>
-          <span>All-season commercial route automation</span>
         </div>
       </div>
     </div>

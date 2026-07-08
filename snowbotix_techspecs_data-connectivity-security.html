@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Snowbotix Data, Connectivity &amp; Security Specs | OCI, GIS, Role-Based Access</title>
-<meta name="description" content="Review Snowbotix data architecture specifications: OCI cloud with regional residency, on-board navigation data, GPS traces, geotagged media, GIS outputs, API access, and role-based access control.">
+<title>Snowbotix Data, Connectivity &amp; Security Specs | Private Cloud, Encrypted Telemetry, Role-Based Access</title>
+<meta name="description" content="Review Snowbotix data architecture specifications: bonded 4G/5G and Starlink connectivity, encrypted telemetry and video, private cloud infrastructure, on-board navigation data, GIS outputs, API access, and role-based access control.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -157,42 +157,44 @@ img{max-width:100%;display:block;}
   <div class="hero-inner">
     <p class="eyebrow">Technology Specifications / Data, Connectivity &amp; Security</p>
     <h1>Field data for the routes your team has to manage.</h1>
-    <p class="hero-sub">Snowbotix missions generate GPS traces, timestamped geotagged media, sensor logs, surface observations, and proof-of-service records stored on OCI with regional data residency. Navigation data is kept on-board. GIS exports, API access, and role-based access control give teams the data they need without distributing more than they should.</p>
+    <p class="hero-sub">Snowbotix missions generate GPS traces, timestamped geotagged media, sensor logs, surface observations, and proof-of-service records stored in Snowbotix&rsquo;s private cloud, fully encrypted in transit. Navigation runs on-board, so the robot keeps working when the network doesn&rsquo;t. GIS exports, API access, and role-based access control give teams the data they need without distributing more than they should.</p>
     <div class="hero-ctas">
       <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
     <a class="btn btn-gold" href="snowbotix_contact.html#request-form">Request a Site Assessment</a>
       <a class="sec-link-light" href="assets/Technical Spec Sheet.pdf" download>Download Spec Sheet</a>
     </div>
     <div class="spec-strip">
-      <span class="spec-item">OCI with regional residency</span>
+      <span class="spec-item">Bonded 4G/5G + Starlink option</span>
+      <span class="spec-item">Encrypted in transit, end to end</span>
+      <span class="spec-item">Private cloud infrastructure</span>
       <span class="spec-item">On-board navigation data</span>
       <span class="spec-item">GPS traces per mission</span>
-      <span class="spec-item">Geotagged timestamped media</span>
       <span class="spec-item">ArcGIS + GeoJSON exports</span>
-      <span class="spec-item">API access options</span>
-      <span class="spec-item">Role-based access — 6 tiers</span>
+      <span class="spec-item">API gateway integrations</span>
+      <span class="spec-item">Role-based access control</span>
     </div>
   </div>
 </section>
 
 <section class="section" style="background:var(--ink);">
   <div class="section-inner">
-    <p class="section-label">01 — Cloud Architecture</p>
-    <h2>Two data tiers: cloud platform and on-board navigation.</h2>
+    <p class="section-label">01 — Connectivity &amp; Telemetry</p>
+    <h2>Redundant, encrypted connectivity built for storm conditions.</h2>
+    <p>Remote supervision only works if the connection holds. Snowbotix maintains a continuous, redundant link between every robot and the fleet portal — and keeps operating safely when that link degrades.</p>
     <div class="two-col">
       <div class="col-block">
-        <p class="col-head">OCI — Oracle Cloud Infrastructure</p>
-        <div class="col-item"><h4>Regional data residency</h4><p>Mission data is stored within a defined geographic region. Data does not leave that region without explicit configuration.</p></div>
-        <div class="col-item"><h4>Proof-of-service records</h4><p>GPS traces, geotagged media, event logs, and sensor records stored per mission in OCI.</p></div>
-        <div class="col-item"><h4>Fleet portal infrastructure</h4><p>Dashboard, dispatch, reporting, and role-based access are hosted on OCI.</p></div>
-        <div class="col-item"><h4>Access control layer</h4><p>User authentication, role permissions, and audit logging managed at the OCI layer.</p></div>
+        <p class="col-head">How the robot stays connected</p>
+        <div class="col-item"><h4>Bonded multi-carrier 4G/5G</h4><p>Industrial edge mobile routers bond multiple cellular carriers, so a weak or congested carrier on your site does not interrupt supervision.</p></div>
+        <div class="col-item"><h4>Starlink option for remote sites</h4><p>Satellite connectivity can be integrated for rural routes, large campuses, and infrastructure sites beyond reliable cellular coverage.</p></div>
+        <div class="col-item"><h4>Parallel data paths</h4><p>Low-bandwidth telemetry and command signals run alongside a separate high-bandwidth, low-latency video pipeline, so supervisors keep uninterrupted live streams without competing against control traffic.</p></div>
+        <div class="col-item"><h4>Encrypted in transit</h4><p>All data moving between the robot, the cloud, and the fleet portal travels through secure, encrypted tunnels.</p></div>
       </div>
       <div class="col-block">
-        <p class="col-head">On-Board Navigation Data</p>
-        <div class="col-item"><h4>Mapped routes and boundaries</h4><p>Approved routes, geofenced zones, and exclusion zone data are stored on the robot's on-board system for navigation during autonomous operation.</p></div>
-        <div class="col-item"><h4>Real-time sensor fusion</h4><p>Active navigation data — positioning, IMU, LiDAR, camera, radar — processed on-board during missions. Does not require constant cloud connectivity for navigation.</p></div>
-        <div class="col-item"><h4>Mission sync</h4><p>Mission records and sensor logs sync to OCI at mission completion or on reconnection after a communication gap.</p></div>
-        <div class="col-item"><h4>Local resilience</h4><p>Route execution can continue during brief connectivity interruptions. Communication loss triggers auto-return to dock per safety protocol.</p></div>
+        <p class="col-head">What happens when the network degrades</p>
+        <div class="col-item"><h4>Autonomy runs at the edge</h4><p>Path planning, sensor fusion, and obstacle detection are processed on the robot itself. Critical maneuvers never depend on a cloud round-trip.</p></div>
+        <div class="col-item"><h4>Missions continue safely</h4><p>The robot keeps navigating, detecting obstacles, and operating safely in degraded network conditions.</p></div>
+        <div class="col-item"><h4>Records catch up automatically</h4><p>Mission records and sensor logs sync to the cloud at mission completion or on reconnection after a communication gap.</p></div>
+        <div class="col-item"><h4>Defined loss protocol</h4><p>Sustained communication loss triggers auto-return to dock per safety protocol.</p></div>
       </div>
     </div>
   </div>
@@ -200,7 +202,30 @@ img{max-width:100%;display:block;}
 
 <section class="section" style="background:var(--ink-soft);">
   <div class="section-inner">
-    <p class="section-label">02 — Data Types Produced</p>
+    <p class="section-label">02 — Cloud Architecture</p>
+    <h2>Two data tiers: private cloud and on-board navigation.</h2>
+    <div class="two-col">
+      <div class="col-block">
+        <p class="col-head">Snowbotix Private Cloud</p>
+        <div class="col-item"><h4>Private, segregated infrastructure</h4><p>Mission data is hosted in Snowbotix&rsquo;s private cloud environment. Customer data and operations are segregated, not pooled on shared public tenancy.</p></div>
+        <div class="col-item"><h4>Single source of truth</h4><p>The backend aggregates telemetry, processes video streams, and stores historical operational data for the entire fleet — one authoritative record of what ran, where, and when.</p></div>
+        <div class="col-item"><h4>Proof-of-service records</h4><p>GPS traces, geotagged media, event logs, and sensor records stored per mission.</p></div>
+        <div class="col-item"><h4>Access control layer</h4><p>User authentication, role permissions, and audit logging managed at the cloud layer.</p></div>
+      </div>
+      <div class="col-block">
+        <p class="col-head">On-Board Navigation Data</p>
+        <div class="col-item"><h4>Mapped routes and boundaries</h4><p>Approved routes, geofenced zones, and exclusion zone data are stored on the robot's on-board system for navigation during autonomous operation.</p></div>
+        <div class="col-item"><h4>Real-time sensor fusion</h4><p>Active navigation data — positioning, IMU, LiDAR, camera, radar — processed on-board during missions. Does not require constant cloud connectivity for navigation.</p></div>
+        <div class="col-item"><h4>Mission sync</h4><p>Mission records and sensor logs sync to the private cloud at mission completion or on reconnection after a communication gap.</p></div>
+        <div class="col-item"><h4>Local resilience</h4><p>Route execution can continue during brief connectivity interruptions. Communication loss triggers auto-return to dock per safety protocol.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink);">
+  <div class="section-inner">
+    <p class="section-label">03 — Data Types Produced</p>
     <h2>What a completed outdoor maintenance mission generates.</h2>
     <div class="data-types">
       <div class="dt-cell"><h3>GPS route traces</h3><p>Full mission path geometry with timestamped position points, exportable as spatial features</p></div>
@@ -213,9 +238,9 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<section class="section" style="background:var(--ink);">
+<section class="section" style="background:var(--ink-soft);">
   <div class="section-inner">
-    <p class="section-label">03 — GIS and System Outputs</p>
+    <p class="section-label">04 — GIS and System Outputs</p>
     <h2>Data formats and integration options.</h2>
     <table class="spec-table">
       <thead>
@@ -228,27 +253,7 @@ img{max-width:100%;display:block;}
         <tr><td>CMMS integration</td><td>Maintenance event data routing to configured computerized maintenance management systems</td><td>Facility maintenance tracking, work order generation, equipment records</td></tr>
         <tr><td>Asset management</td><td>Mission completion and route records output to asset tracking systems where configured</td><td>Infrastructure asset records, condition assessment workflows</td></tr>
         <tr><td>311 / service request routing</td><td>Surface condition observations routed to 311 or municipal service request systems where supported</td><td>Municipal infrastructure reporting, public works workflows</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="section" style="background:var(--ink-soft);">
-  <div class="section-inner">
-    <p class="section-label">04 — Role-Based Access</p>
-    <h2>Six data access roles scoped to function and clearance.</h2>
-    <p>Access to fleet portal, proof-of-service records, GIS exports, and API credentials is controlled by role assignment. Roles are configured during deployment setup and managed by the fleet administrator.</p>
-    <table class="roles-table">
-      <thead>
-        <tr><th>Role</th><th>Data access scope</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Fleet Administrator</td><td>Full access: user management, all data, system configuration, export controls, API credentials</td></tr>
-        <tr><td>Operations Supervisor</td><td>Live mission data, mission history, proof-of-work records, event logs, GIS exports</td></tr>
-        <tr><td>Facility Manager</td><td>Mission completion records, proof-of-work reports, surface condition summaries — read-only</td></tr>
-        <tr><td>Compliance / Safety Officer</td><td>Event logs, incident records, proof-of-service audit exports — read-only</td></tr>
-        <tr><td>Data / GIS Analyst</td><td>GIS export formats, sensor logs, route data, API access — read and export</td></tr>
-        <tr><td>Site Lead / Crew</td><td>Live mission status, active alerts — Fleet App only, no portal data access</td></tr>
+        <tr><td>API gateway integrations</td><td>Structured APIs connect the platform to external facility management software, third-party weather data providers, and tactical mesh networks</td><td>Sitting natively within your existing digital ecosystem; defense and secure-network deployments</td></tr>
       </tbody>
     </table>
   </div>
@@ -256,8 +261,26 @@ img{max-width:100%;display:block;}
 
 <section class="section" style="background:var(--ink);">
   <div class="section-inner">
-    <p class="section-label">05 — Data Governance</p>
-    <h2>Built for controlled, region-aware data handling.</h2>
+    <p class="section-label">05 — Role-Based Access</p>
+    <h2>A strict role hierarchy: Organization Owner, Admin, Crew.</h2>
+    <p>The portal enforces a strict role hierarchy so every user sees only the controls and data relevant to their clearance level. Roles are configured during deployment setup and managed by your organization owner.</p>
+    <table class="roles-table">
+      <thead>
+        <tr><th>Role</th><th>Data access scope</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Organization Owner</td><td>Full account control: user management, all mission data, system configuration, export controls, API credentials</td></tr>
+        <tr><td>Admin</td><td>Day-to-day fleet operation: scheduling, live monitoring, hazard review, proof-of-service reports, GIS exports</td></tr>
+        <tr><td>Crew</td><td>Live mission status and active alerts in the field — no administrative controls or configuration access</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" style="background:var(--ink-soft);">
+  <div class="section-inner">
+    <p class="section-label">06 — Data Governance &amp; Security Controls</p>
+    <h2>Built for controlled, security-conscious data handling.</h2>
     <p>Snowbotix is designed to support enterprise and public-sector buyers that need clear answers about where data lives, how it is accessed, and what is logged.</p>
     <p>Snowbotix makes specific, verifiable claims about its data architecture. It does not make unsupported claims about certifications, regulatory compliance, or security capabilities that have not been confirmed. If your procurement process requires a specific compliance standard, certification, or security review, those requirements should be validated directly with RoboWorkX before purchase.</p>
     <table class="spec-table">
@@ -265,10 +288,10 @@ img{max-width:100%;display:block;}
         <tr><th>Data architecture element</th><th>Snowbotix approach</th></tr>
       </thead>
       <tbody>
-        <tr><td>Cloud platform</td><td>Uses Oracle Cloud Infrastructure (OCI) with regional data residency</td></tr>
+        <tr><td>Cloud platform</td><td>Hosted in Snowbotix&rsquo;s private cloud environment — customer data and operations are segregated</td></tr>
+        <tr><td>Encryption</td><td>All communications between the robot, cloud, and user portal are fully encrypted in transit</td></tr>
         <tr><td>Navigation data</td><td>Stored and processed on-board the robot. Cloud access is not required for route execution.</td></tr>
-        <tr><td>Data residency</td><td>Mission data remains within the configured geographic region</td></tr>
-        <tr><td>Access control</td><td>Role-based access control with defined permission tiers by role</td></tr>
+        <tr><td>Access control</td><td>Strict role-based hierarchy — Organization Owner, Admin, Crew — governs user permissions</td></tr>
         <tr><td>Audit logging</td><td>User access and data export actions are logged</td></tr>
         <tr><td>Retention</td><td>Data retention policies are configured by deployment. Retention periods are deployment-defined, not unlimited.</td></tr>
       </tbody>
@@ -287,7 +310,7 @@ img{max-width:100%;display:block;}
       <div class="related-item"><a href="snowbotix_techspecs_autonomy-navigation.html">Autonomy &amp; Navigation</a><p>RTK-GNSS, mapping, route planning</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_safety-systems.html">Safety Systems</a><p>360° sensing, E-stops, supervision</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
-      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Dispatch, live status, proof-of-work</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Scheduler, monitor, proof-of-service</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_deployment-requirements.html">Deployment Requirements</a><p>Site readiness, mapping, operating plan</p></div>
       <div class="related-item"><a href="assets/Technical Spec Sheet.pdf" download>Download Spec Sheet</a><p>Full technical specifications PDF</p></div>
     </div>

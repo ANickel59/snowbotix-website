@@ -9,52 +9,54 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="mockups/snowbotix-system.css">
 <style>
-  /* 01 : hero (full-bleed image, aspect-preserved, left-aligned copy zone) */
+  /* 01 : hero (full-bleed use-case slideshow flowing behind left-aligned copy zone) */
   .hero-v2 { position: relative; overflow: hidden; padding: 110px 0 90px; min-height: 620px; display: flex; align-items: center; }
-  .hero-v2-bg { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; background-image: url('assets/HomePage_Hero Rough Mow_Real World Example.png'); background-size: auto 100%; background-position: right center; background-repeat: no-repeat; }
-  .hero-v2-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(255,255,255,.55) 55%, rgba(255,255,255,0) 65%); }
+  .hero-v2-bg { position: absolute; inset: 0; }
+  .hero-v2-slide { position: absolute; inset: 0; background-size: cover; background-position: 72% center; background-repeat: no-repeat; opacity: 0; transition: opacity 1.4s ease; }
+  .hero-v2-slide.active { opacity: 1; }
+  .hero-v2-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.96) 40%, rgba(255,255,255,.55) 55%, rgba(255,255,255,0) 68%); }
   .hero-v2 > .wrap { position: relative; z-index: 2; width: 100%; }
   .hero-v2-content { display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 560px; margin-left: 0; margin-right: auto; }
   .hero-v2 .eyebrow { color: var(--brand-green); }
   .hero-v2 h1 { color: var(--ink-900); margin-top: 18px; font-size: clamp(28px,3.4vw,46px); line-height: 1.14; text-align: left; }
   .hero-v2 .hero-copy { color: var(--ink-700); margin-top: 20px; font-size: 16.5px; line-height: 1.6; text-align: left; }
   .hero-v2 .cta-row { margin-top: 32px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .hero-v2 .proof-tags { display: flex; flex-wrap: wrap; column-gap: 24px; row-gap: 10px; margin-top: 36px; }
+  .hero-v2 .proof-tags span { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-700); display: inline-flex; align-items: center; gap: 7px; }
+  .hero-v2 .proof-tags span::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--brand-green); flex-shrink: 0; }
   .sec-link { color: var(--brand-green); font-weight: 600; font-size: 14px; transition: opacity .15s; }
   .sec-link:hover { opacity: .75; }
   @media (max-width: 1024px) and (min-width: 761px) {
-    .hero-v2-bg { width: 44%; }
     .hero-v2-content { max-width: 400px; }
-    .hero-v2-overlay { background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,.5) 48%, rgba(255,255,255,0) 58%); }
+    .hero-v2-overlay { background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,.96) 42%, rgba(255,255,255,.5) 56%, rgba(255,255,255,0) 70%); }
   }
   @media (max-width: 760px) {
     .hero-v2 { min-height: 0; padding: 90px 0 60px; flex-direction: column; align-items: stretch; }
-    .hero-v2-bg { position: relative; width: 100%; height: 220px; margin-top: 32px; background-size: cover; background-position: 70% center; order: 2; }
+    .hero-v2-bg { position: relative; inset: auto; width: 100%; height: 220px; margin-top: 32px; order: 2; }
+    .hero-v2-slide { background-position: 70% center; }
     .hero-v2-overlay { display: none; }
     .hero-v2-content { max-width: 100%; }
     .hero-v2 > .wrap { order: 1; }
   }
 
-  /* proof strip (dark band, 3 tags) */
-  .proof-strip { background: #1A1F24; border-top: 1px solid #3A3E42; border-bottom: 1px solid #3A3E42; }
-  .proof-strip .wrap { padding: 20px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center; }
-  .proof-strip .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: #6ee68a; border: 1px solid #2a4a31; padding: 8px 14px; }
-
-  /* industry vertical row (standalone light band, balanced 4-and-4 grid) */
-  .audience-row { background: var(--white); border-bottom: 1px solid var(--paper-100); }
-  .audience-row .wrap { padding: 28px 32px; }
-  .audience-row-grid { display: grid; grid-template-columns: repeat(4, auto); justify-content: center; column-gap: 36px; row-gap: 14px; }
-  .audience-row a { font-size: 14px; font-weight: 600; color: var(--ink-700); transition: color .15s; text-align: center; white-space: nowrap; }
-  .audience-row a:hover { color: var(--brand-green); }
+  /* industry vertical band (large dark band, balanced 4-and-4 grid) */
+  .audience-row { background: #1A1F24; }
+  .audience-row .wrap { padding: 32px 32px; }
+  .audience-row-grid { display: grid; grid-template-columns: repeat(4, auto); justify-content: center; column-gap: 44px; row-gap: 16px; }
+  .audience-row a { font-size: 14px; font-weight: 600; color: #c7cdd3; transition: color .15s; text-align: center; white-space: nowrap; }
+  .audience-row a:hover { color: #6ee68a; }
   @media (max-width: 900px) {
     .audience-row-grid { grid-template-columns: repeat(2, auto); }
     .audience-row a { white-space: normal; }
   }
 
-  /* trusted band (dark, logos) */
-  .trusted-band { background: #12161A; padding: 36px 0; }
-  .trusted-band .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8b939b; text-align: center; margin-bottom: 24px; }
+  /* trusted band (white/light, logos) */
+  .trusted-band { background: var(--white); padding: 48px 0; border-bottom: 1px solid var(--paper-100); }
+  .trusted-band .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-500); text-align: center; margin-bottom: 28px; }
   .trusted-logos { display: flex; align-items: center; justify-content: center; gap: 44px; flex-wrap: wrap; }
-  .trusted-logos img { height: 30px; width: auto; max-width: 120px; object-fit: contain; opacity: .92; }
+  .trusted-logos img { height: 30px; width: auto; max-width: 120px; object-fit: contain; }
+  .trusted-logos .logo-tile-dark { background: #1A1F24; padding: 10px 18px; display: flex; align-items: center; justify-content: center; border-radius: 3px; }
+  .trusted-logos .logo-tile-dark img { height: 22px; }
 
   /* 03 : chips */
   .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -98,14 +100,34 @@
   .bound-cell h4 { font-size: 16px; color: var(--ink); margin-top: 12px; text-transform: uppercase; }
   .bound-cell p { color: var(--muted); font-size: 13.5px; margin-top: 10px; }
 
-  /* route visual (section 4) */
-  .route-visual { margin-top: 44px; background: var(--white); border: 1px solid var(--paper-100); padding: 20px; }
-  .route-visual img { width: 100%; display: block; max-height: 420px; object-fit: cover; }
-  .route-visual-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-  .route-visual-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-900); font-weight: 700; }
-  .route-visual-sub { font-size: 13px; color: var(--ink-700); }
-  .checkpoints { display: flex; gap: 8px; }
-  .checkpoints span { width: 24px; height: 24px; border-radius: 50%; background: var(--brand-green); color: #fff; font-family: var(--font-mono); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  /* immersive robots-to-work panel (section 4): steps over route map */
+  .rw-panel { position: relative; margin-top: 44px; background: #101418 url('assets/Mapped Route.png') right center / auto 100% no-repeat; border: 1px solid var(--paper-100); overflow: hidden; }
+  .rw-fade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 34%, rgba(255,255,255,.9) 52%, rgba(255,255,255,0) 76%); }
+  .rw-inner { position: relative; z-index: 2; padding: 40px 36px; max-width: 68%; }
+  .rw-inner h2 { max-width: 480px; }
+  .rw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+  .rw-dot-row { position: relative; height: 26px; margin-bottom: 14px; }
+  .rw-dot { position: relative; z-index: 2; width: 26px; height: 26px; border-radius: 50%; background: var(--brand-green); color: #fff; font-family: var(--font-mono); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+  .rw-step:not(:last-child) .rw-dot-row::after { content: ''; position: absolute; top: 12px; left: 34px; right: -24px; border-top: 2px dashed rgba(0,138,30,.45); }
+  .rw-card { background: var(--white); border: 1px solid var(--paper-100); border-radius: 4px; padding: 18px 16px; box-shadow: 0 10px 24px rgba(10,14,18,.07); height: 100%; }
+  .rw-card h4 { font-size: 14.5px; }
+  .rw-card p { color: var(--ink-700); font-size: 12.5px; margin-top: 8px; line-height: 1.55; }
+  .rw-link { margin-top: 26px; }
+  .rw-telemetry { position: absolute; z-index: 2; top: 26px; right: 26px; background: rgba(10,14,18,.92); border: 1px solid #2E3235; border-radius: 4px; padding: 14px 16px; min-width: 176px; }
+  .rw-t-brand { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #fff; margin-bottom: 10px; }
+  .rw-t-brand { display: flex; align-items: center; gap: 6px; }
+  .rw-t-row { display: flex; justify-content: space-between; gap: 16px; font-family: var(--font-mono); font-size: 11px; padding: 3px 0; }
+  .rw-t-row span { color: #8b939b; text-transform: uppercase; letter-spacing: .04em; }
+  .rw-t-row strong { color: #6ee68a; font-weight: 600; }
+  .rw-map-mobile { display: none; }
+  @media (max-width: 900px) {
+    .rw-panel { background-image: none; background-color: var(--white); }
+    .rw-fade, .rw-telemetry { display: none; }
+    .rw-inner { max-width: 100%; padding: 28px 22px; }
+    .rw-steps { grid-template-columns: 1fr 1fr; }
+    .rw-step:nth-child(even) .rw-dot-row::after { display: none; }
+    .rw-map-mobile { display: block; width: 100%; }
+  }
 
   /* system components (section 6) */
   .sys-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--paper-100); margin-top: 44px; }
@@ -189,7 +211,11 @@
 
 <!-- 1. HERO -->
 <header class="hero-v2">
-  <div class="hero-v2-bg" role="img" aria-label="Snowbotix robot performing autonomous slope mowing and brush control on vegetated terrain"></div>
+  <div class="hero-v2-bg" role="img" aria-label="Snowbotix robots working across real environments: slope mowing on vegetated terrain, snow plowing on a campus walkway, and sweeping debris in a parking structure">
+    <div class="hero-v2-slide active" style="background-image:url('assets/HomePage_Hero Rough Mow_Real World Example.png');"></div>
+    <div class="hero-v2-slide" style="background-image:url('assets/HomePage_Hero Plow_Real World Example.png');"></div>
+    <div class="hero-v2-slide" style="background-image:url('assets/HomePage_Hero Sweep_Real World Example.png');"></div>
+  </div>
   <div class="hero-v2-overlay"></div>
   <div class="wrap">
     <div class="hero-v2-content">
@@ -200,17 +226,14 @@
         <a class="btn btn-green" href="snowbotix_contact.html#request-form">See if My Site is a Fit</a>
         <a class="sec-link" href="snowbotix_howitworks.html">See How It Works &#8594;</a>
       </div>
+      <div class="proof-tags">
+        <span>Fills labor gaps</span>
+        <span>Supervised autonomy</span>
+        <span>Verified service records</span>
+      </div>
     </div>
   </div>
 </header>
-
-<section class="proof-strip">
-  <div class="wrap">
-    <span class="tag">Fills labor gaps</span>
-    <span class="tag">Supervised autonomy</span>
-    <span class="tag">Verified service records</span>
-  </div>
-</section>
 
 <section class="audience-row">
   <div class="wrap">
@@ -223,20 +246,6 @@
       <a href="snowbotix_who-its-for_logistics-ports-intermodal-hubs.html">Industrial &amp; Logistics Sites</a>
       <a href="snowbotix_who-its-for_industrial-energy-infrastructure.html">Energy &amp; Utilities</a>
       <a href="snowbotix_who-its-for_defense-government.html">Defense &amp; Government</a>
-    </div>
-  </div>
-</section>
-
-<section class="trusted-band">
-  <div class="wrap">
-    <p class="label">Trusted by industry leaders</p>
-    <div class="trusted-logos">
-      <img src="assets/bedrock-logo.svg" alt="Bedrock">
-      <img src="assets/csca-logo.png" alt="Colorado Smart Cities Alliance">
-      <img src="assets/ford-logo.webp" alt="Ford">
-      <img src="assets/grr-logo.svg" alt="GRR">
-      <img src="assets/ltu-logo.jpg" alt="Lawrence Technological University">
-      <img src="assets/tpg-logo-extracted-official-cover.png" alt="The Professional Group">
     </div>
   </div>
 </section>
@@ -272,6 +281,20 @@
         <p>If the work is not documented, it is harder to verify.</p>
         <a class="link" href="snowbotix_solutions_proof-of-service.html">See proof-of-service reporting &#8594;</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="trusted-band">
+  <div class="wrap">
+    <p class="label">Trusted by industry leaders</p>
+    <div class="trusted-logos">
+      <span class="logo-tile-dark"><img src="assets/bedrock-logo.svg" alt="Bedrock"></span>
+      <img src="assets/csca-logo.png" alt="Colorado Smart Cities Alliance">
+      <img src="assets/ford-logo.webp" alt="Ford">
+      <img src="assets/grr-logo.svg" alt="GRR">
+      <img src="assets/ltu-logo.jpg" alt="Lawrence Technological University">
+      <img src="assets/tpg-logo-extracted-official-cover.png" alt="The Professional Group">
     </div>
   </div>
 </section>
@@ -330,23 +353,37 @@
 <section class="section on-light">
   <div class="wrap">
     <div class="kicker-line"><span class="num">04</span></div>
-    <h2>Here&rsquo;s How We Put Robots to Work on Your Site</h2>
-    <div class="bound-grid">
-      <div class="bound-cell"><div class="n">01</div><h4>Share the Site</h4><p>Send a route, zone, map, aerial view, or basic site details.</p></div>
-      <div class="bound-cell"><div class="n">02</div><h4>Schedule a Deep Dive</h4><p>Review operations, constraints, service goals, robot requirements, demos, and Q&amp;A.</p></div>
-      <div class="bound-cell"><div class="n">03</div><h4>Receive a Recommendation</h4><p>Get the proposed route, robot setup, attachments, support model, monthly terms, and next steps.</p></div>
-      <div class="bound-cell"><div class="n">04</div><h4>Start Robot Operations</h4><p>Snowbotix delivers, maps, configures, trains, supervises, and reports.</p></div>
-    </div>
-    <p style="margin-top:24px;"><a class="sec-link" href="snowbotix_howitworks.html">See the full Deployment Process &#8594;</a></p>
-    <div class="route-visual">
-      <img src="assets/Mapped Route.png" alt="Aerial site map with robot route overlay">
-      <div class="route-visual-meta">
-        <div>
-          <div class="route-visual-label">Site Route Map</div>
-          <div class="route-visual-sub">Aerial view with robot route overlay</div>
+    <div class="rw-panel" role="img" aria-label="Aerial site map with a mapped robot route, service zones, charging dock, and proof-of-service endpoint">
+      <div class="rw-fade"></div>
+      <div class="rw-inner">
+        <h2>Here&rsquo;s How We Put Robots to Work on Your Site</h2>
+        <div class="rw-steps">
+          <div class="rw-step">
+            <div class="rw-dot-row"><span class="rw-dot">1</span></div>
+            <div class="rw-card"><h4>Share the Site</h4><p>Send a route, zone, map, aerial view, or basic site details.</p></div>
+          </div>
+          <div class="rw-step">
+            <div class="rw-dot-row"><span class="rw-dot">2</span></div>
+            <div class="rw-card"><h4>Schedule a Deep Dive</h4><p>Review operations, constraints, service goals, robot requirements, demos, and Q&amp;A.</p></div>
+          </div>
+          <div class="rw-step">
+            <div class="rw-dot-row"><span class="rw-dot">3</span></div>
+            <div class="rw-card"><h4>Receive a Recommendation</h4><p>Get the proposed route, robot setup, attachments, support model, monthly terms, and next steps.</p></div>
+          </div>
+          <div class="rw-step">
+            <div class="rw-dot-row"><span class="rw-dot">4</span></div>
+            <div class="rw-card"><h4>Start Robot Operations</h4><p>Snowbotix delivers, maps, configures, trains, supervises, and reports.</p></div>
+          </div>
         </div>
-        <div class="checkpoints"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+        <p class="rw-link"><a class="sec-link" href="snowbotix_howitworks.html">See the full Deployment Process &#8594;</a></p>
       </div>
+      <div class="rw-telemetry" aria-hidden="true">
+        <div class="rw-t-brand">&#9679; Snowbotix</div>
+        <div class="rw-t-row"><span>Route</span><strong>SBX-001</strong></div>
+        <div class="rw-t-row"><span>Distance</span><strong>1.62 mi</strong></div>
+        <div class="rw-t-row"><span>Est. time</span><strong>2h 15m</strong></div>
+      </div>
+      <img class="rw-map-mobile" src="assets/Mapped Route.png" alt="">
     </div>
   </div>
 </section>
@@ -375,9 +412,9 @@
     <p style="max-width:640px; margin-top:16px; color:var(--ink-700); font-size:16px;">Six components. One deployment. All seasons.</p>
     <div class="sys-list">
       <div class="sys-cell"><div class="n">01</div><h4>Commercial Robot Platform</h4><p>All-electric, rugged platform built for outdoor work.</p></div>
-      <div class="sys-cell"><div class="n">02</div><h4>Autonomy + Navigation System</h4><p>Navigation, perception, and route execution engine.</p></div>
+      <div class="sys-cell"><div class="n">02</div><h4>Autonomy + Navigation System</h4><p>Onboard autonomy that navigates, detects obstacles, and keeps working when the network drops.</p></div>
       <div class="sys-cell"><div class="n">03</div><h4>Modular Attachments</h4><p>Snow plow, brush, mower, sweeper, and more.</p></div>
-      <div class="sys-cell"><div class="n">04</div><h4>Fleet Portal</h4><p>Monitor, manage, and update robots and routes.</p></div>
+      <div class="sys-cell"><div class="n">04</div><h4>Fleet Portal</h4><p>Schedule missions, watch live routes, and pull service records — from desktop, tablet, or mobile.</p></div>
       <div class="sys-cell"><div class="n">05</div><h4>Service &amp; Support</h4><p>Training, maintenance, and operational support.</p></div>
       <div class="sys-cell"><div class="n">06</div><h4>Proof-of-Service Reporting</h4><p>Geo-tagged, time-stamped records and exports.</p></div>
     </div>
@@ -539,6 +576,19 @@
   </div>
 </footer>
 <!-- SITE-FOOTER-END -->
+
+<script>
+(function () {
+  var slides = document.querySelectorAll('.hero-v2-slide');
+  if (slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var i = 0;
+  setInterval(function () {
+    slides[i].classList.remove('active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active');
+  }, 6000);
+})();
+</script>
 
 </body>
 </html>

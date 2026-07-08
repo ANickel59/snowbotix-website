@@ -166,13 +166,14 @@ img{max-width:100%;display:block;}
   <div class="hero-inner">
     <p class="eyebrow">Technology Specifications / Autonomy &amp; Navigation</p>
     <h1>Mapped-route autonomy for commercial outdoor maintenance.</h1>
-    <p class="hero-sub">Snowbotix uses a fused navigation stack combining RTK-GNSS, tactical-grade IMU, LiDAR, radar, Snow Penetrating Radar, HD cameras, thermal sensing, and hyper-local weather data to execute mapped routes in outdoor commercial environments. All autonomous operation is bounded by approved zones, supervised by remote human operators, and logged for proof-of-service records.</p>
+    <p class="hero-sub">Snowbotix uses a fused navigation stack combining RTK-GNSS, tactical-grade IMU, LiDAR, radar, Snow Penetrating Radar, HD cameras, thermal sensing, and hyper-local weather data to execute mapped routes in outdoor commercial environments. Sensor fusion and path planning run entirely on the robot&rsquo;s onboard Autonomy-in-a-Box (AIB) compute, so critical maneuvers never wait on a cloud connection. All autonomous operation is bounded by approved zones, supervised by remote human operators, and logged for proof-of-service records.</p>
     <div class="hero-ctas">
       <a class="spec-dl" href="assets/Technical Spec Sheet.pdf" download style="font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-yellow);opacity:.85;white-space:nowrap;transition:opacity .15s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85">&#x2193; Spec Sheet</a>
     <a class="btn btn-gold" href="snowbotix_contact.html#request-form">Request a Site Assessment</a>
       <a class="sec-link-light" href="assets/Technical Spec Sheet.pdf" download>Download Spec Sheet</a>
     </div>
     <div class="spec-strip">
+      <span class="spec-item">Onboard AIB edge compute</span>
       <span class="spec-item">RTK-GNSS positioning</span>
       <span class="spec-item">Tactical-grade IMU</span>
       <span class="spec-item">LiDAR + radar sensing</span>
@@ -190,6 +191,7 @@ img{max-width:100%;display:block;}
     <p class="section-label">01 — Navigation Stack</p>
     <h2>Eight sensor and data sources operating as one system.</h2>
     <p>Snowbotix does not rely on a single sensor for navigation. The platform fuses multiple positioning and perception inputs into a coherent navigation picture. When one input degrades due to weather, terrain, or signal conditions, the fusion stack adjusts without stopping the mission.</p>
+    <p style="margin-top:12px;">All of this processing happens at the edge. The Autonomy-in-a-Box (AIB) system — the brain of the platform, powered by high-performance edge compute — processes LiDAR, radar, and camera inputs locally on the robot. Navigation, obstacle detection, and safe operation continue even in degraded network conditions, with no dependence on cloud compute for critical maneuvers.</p>
     <div class="stack-list">
       <div class="stack-item">
         <div class="stack-num">01</div>
@@ -325,8 +327,8 @@ img{max-width:100%;display:block;}
       <div class="related-item"><a href="snowbotix_techspecs_attachments-capabilities.html">Attachments &amp; Capabilities</a><p>Snow, sweep, mow, apply, inspect</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_safety-systems.html">Safety Systems</a><p>360° sensing, E-stops, supervision</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_power-charging-runtime.html">Power, Charging &amp; Runtime</a><p>LFP battery, hot-swap, wireless dock</p></div>
-      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Dispatch, live status, proof-of-work</p></div>
-      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>GIS, API, OCI, cloud privacy</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_fleet-management-portal.html">Fleet Management Portal</a><p>Scheduler, monitor, proof-of-service</p></div>
+      <div class="related-item"><a href="snowbotix_techspecs_data-connectivity-security.html">Data, Connectivity &amp; Security</a><p>Bonded 4G/5G, private cloud, encryption</p></div>
       <div class="related-item"><a href="snowbotix_techspecs_deployment-requirements.html">Deployment Requirements</a><p>Site readiness, mapping, operating plan</p></div>
       <div class="related-item"><a href="snowbotix_safety-autonomy_autonomous-navigation.html">Autonomy (Buyer Overview)</a><p>Non-technical autonomy overview</p></div>
     </div>
