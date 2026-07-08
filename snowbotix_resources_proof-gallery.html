@@ -73,6 +73,8 @@ img{display:block;max-width:100%;}
   border:1px solid var(--line);
   border-radius:var(--radius);
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
   transition:border-color .2s ease,box-shadow .2s ease;
 }
 .proof-card:hover{
@@ -100,6 +102,36 @@ img{display:block;max-width:100%;}
   top:0;left:0;
   width:100%;height:100%;
   object-fit:cover;
+}
+.video-link{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  display:block;
+}
+.play-btn{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:64px;height:64px;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  border:2px solid rgba(255,255,255,.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s ease,transform .2s ease;
+}
+.play-btn::after{
+  content:"";
+  border-style:solid;
+  border-width:10px 0 10px 16px;
+  border-color:transparent transparent transparent #fff;
+  margin-left:4px;
+}
+.video-container:hover .play-btn{
+  background:var(--brand-green);
+  transform:translate(-50%,-50%) scale(1.08);
 }
 
 /* Status badge overlay */
@@ -202,15 +234,28 @@ img{display:block;max-width:100%;}
       </div>
       <div class="nav-item">
         <a href="#">Who It&apos;s For</a>
-        <div class="drop">
-          <a href="snowbotix_who-its-for_commercial-institutional.html">Commercial &amp; Institutional</a>
-          <a href="snowbotix_who-its-for_corporate-commercial-real-estate.html">Corporate &amp; CRE</a>
-          <a href="snowbotix_who-its-for_municipalities-public-works.html">Municipalities &amp; Public Works</a>
-          <a href="snowbotix_who-its-for_healthcare-medical-campuses.html">Healthcare</a>
-          <a href="snowbotix_who-its-for_higher-ed-education-campuses.html">Higher Education</a>
-          <a href="snowbotix_who-its-for_defense-government.html">Defense &amp; Government</a>
-          <a href="snowbotix_who-its-for_industrial-energy-infrastructure.html">Industrial &amp; Energy</a>
-          <a href="snowbotix_who-its-for_logistics-ports-intermodal-hubs.html">Logistics &amp; Ports</a>
+        <div class="drop drop-grouped">
+          <div class="drop-group">
+            <a class="drop-hub" href="snowbotix_who-its-for_commercial-institutional.html">Commercial &amp; Institutional</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_corporate-commercial-real-estate.html">Corporate &amp; Commercial Real Estate</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_healthcare-medical-campuses.html">Healthcare &amp; Medical Campuses</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_higher-ed-education-campuses.html">Higher Ed &amp; Education Campuses</a>
+          </div>
+          <div class="drop-group">
+            <a class="drop-hub" href="snowbotix_who-its-for_municipalities-public-works.html">Municipalities &amp; Public Works</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_smart-cities-urban-centers.html">Smart Cities &amp; Urban Centers</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_public-parks-recreational-facilities.html">Public Parks &amp; Recreational Facilities</a>
+          </div>
+          <div class="drop-group">
+            <a class="drop-hub" href="snowbotix_who-its-for_industrial-energy-infrastructure.html">Industrial &amp; Energy Infrastructure</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_oil-gas-mining-operations.html">Oil, Gas &amp; Mining Operations</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_logistics-ports-intermodal-hubs.html">Logistics, Ports &amp; Intermodal Hubs</a>
+          </div>
+          <div class="drop-group">
+            <a class="drop-hub" href="snowbotix_who-its-for_defense-government.html">Defense &amp; Government</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_airfields-flightlines.html">Airfields &amp; Flightlines</a>
+            <a class="drop-sub" href="snowbotix_who-its-for_military-installations-test-ranges.html">Military Installations &amp; Test Ranges</a>
+          </div>
         </div>
       </div>
       <a href="snowbotix_howitworks.html">How It Works</a>
@@ -267,13 +312,10 @@ img{display:block;max-width:100%;}
       <!-- CARD 01 — Snow & De-Icing -->
       <div class="proof-card" data-category="snow">
         <div class="video-container">
-          <iframe
-            src="https://www.youtube.com/embed/ZfHroUvlmkc?playlist=ZfHroUvlmkc&loop=1&controls=1&mute=1&rel=0"
-            title="Zero-turn robotic snow plow for commercial facility management"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy">
-          </iframe>
+          <a class="video-link" href="https://www.youtube.com/watch?v=ZfHroUvlmkc" target="_blank" rel="noopener">
+            <img class="card-thumb" src="https://img.youtube.com/vi/ZfHroUvlmkc/hqdefault.jpg" alt="Zero-turn robotic snow plow for commercial facility management" loading="lazy">
+            <span class="play-btn" aria-hidden="true"></span>
+          </a>
           <span class="status-badge live">Field Log: Active</span>
         </div>
         <div class="card-meta">
