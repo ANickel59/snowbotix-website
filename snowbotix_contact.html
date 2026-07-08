@@ -21,18 +21,24 @@ img{max-width:100%;display:block;}
 .btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
 .btn-green{background:var(--brand-green);color:#fff;margin-left:16px;}
 .btn-green:hover{opacity:.88;}
+.next-grid{display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:start;margin-top:28px;}
+.next-grid .steps-list{margin-top:0;}
+.share-formats{margin:0;}
+.share-formats img{width:100%;display:block;border:1px solid var(--line);border-radius:4px;}
+.share-formats figcaption{font-family:var(--font-mono);font-size:10.5px;color:var(--steel);letter-spacing:.05em;text-transform:uppercase;margin-top:10px;line-height:1.6;}
+@media(max-width:860px){.next-grid{grid-template-columns:1fr;gap:28px;}.share-formats{max-width:420px;}}
 .sec-link{color:var(--brand-green);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;}
 .sec-link::after{content:'→';}
 .sec-link:hover{opacity:.8;}
 .sec-link-light{color:#fff;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:6px;opacity:.9;}
 .sec-link-light::after{content:'→';}
 .sec-link-light:hover{opacity:1;}
-.breadcrumb{background:var(--surface);padding:10px 24px;border-bottom:1px solid var(--line);}
-.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
+.breadcrumb{background:var(--surface);padding:10px 0;border-bottom:1px solid var(--line);}
+.breadcrumb-inner{max-width:var(--page-max);margin:0 auto;padding-left:32px;padding-right:32px;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
 .breadcrumb a{color:var(--muted);transition:color .15s;}
 .breadcrumb a:hover{color:var(--ink);}
-.hero{background:var(--snow-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
-.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.hero{background:var(--snow-soft);padding:72px 0 64px;border-bottom:1px solid var(--line);}
+.hero-inner{max-width:var(--page-max);margin:0 auto;padding-left:32px;padding-right:32px;}
 .eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-green);margin-bottom:14px;}
 .hero h1{font-size:clamp(26px,3.5vw,44px);font-weight:700;line-height:1.14;max-width:800px;margin-bottom:18px;}
 .hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
@@ -40,8 +46,8 @@ img{max-width:100%;display:block;}
 .qual-bar{display:flex;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--line);padding-top:18px;}
 .qual-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.04em;display:flex;align-items:center;gap:6px;}
 .qual-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--brand-green);flex-shrink:0;}
-.section{padding:64px 24px;}
-.section-inner{max-width:var(--page-max);margin:0 auto;}
+.section{padding:64px 0;}
+.section-inner{max-width:var(--page-max);margin:0 auto;padding-left:32px;padding-right:32px;}
 .section-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
 .section h2{font-size:clamp(20px,2.5vw,30px);font-weight:700;line-height:1.22;margin-bottom:14px;}
 .section p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:740px;}
@@ -88,12 +94,12 @@ img{max-width:100%;display:block;}
 @media(max-width:760px){.route-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:460px){.route-grid{grid-template-columns:1fr;}}
 
-.cta-band{background:var(--ink);padding:64px 24px;}
-.cta-band-inner{max-width:var(--page-max);margin:0 auto;}
+.cta-band{background:var(--ink);padding:64px 0;}
+.cta-band-inner{max-width:var(--page-max);margin:0 auto;padding-left:32px;padding-right:32px;}
 .cta-band h2{font-size:clamp(22px,2.8vw,34px);font-weight:700;color:var(--snow);margin-bottom:12px;max-width:600px;}
 .cta-band p{font-size:15px;color:var(--ink-muted);max-width:560px;line-height:1.65;margin-bottom:12px;}
 .cta-band-btns{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:12px;}
-.footer-inner{max-width:var(--page-max);margin:0 auto;}
+.footer-inner{max-width:var(--page-max);margin:0 auto;padding-left:32px;padding-right:32px;}
 </style>
 </head>
 <body>
@@ -332,6 +338,11 @@ img{max-width:100%;display:block;}
   <div class="section-inner">
     <p class="section-label">What Happens Next</p>
     <h2>What happens after you submit.</h2>
+    <div class="next-grid">
+    <figure class="share-formats">
+      <img src="assets/Aerial image_site map_route sketch_ GISmap.png" alt="Four accepted submission formats: an aerial image, a site map, a hand-drawn route sketch, and GIS map files" loading="lazy">
+      <figcaption>Any format works: aerial image, site plan, hand-drawn route sketch, or GIS files (SHP, KML, GeoJSON, CSV).</figcaption>
+    </figure>
     <div class="steps-list">
       <div class="step-row">
         <span class="step-num">01</span>
@@ -362,6 +373,7 @@ img{max-width:100%;display:block;}
         </div>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
@@ -390,6 +402,7 @@ img{max-width:100%;display:block;}
       <div class="route-cell">
         <h3>Investors</h3>
         <p>For investor inquiries and strategic financing conversations.</p>
+        <a class="sec-link" href="snowbotix_investors_page.html" style="margin-top:10px;font-size:13px;">Visit the Investor page</a>
       </div>
       <div class="route-cell">
         <h3>Press / media</h3>
@@ -398,6 +411,7 @@ img{max-width:100%;display:block;}
       <div class="route-cell">
         <h3>Careers</h3>
         <p>For roles, hiring, and future team inquiries.</p>
+        <a class="sec-link" href="snowbotix_careers.html" style="margin-top:10px;font-size:13px;">Visit the Careers page</a>
       </div>
     </div>
   </div>
