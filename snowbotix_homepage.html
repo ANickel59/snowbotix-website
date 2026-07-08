@@ -9,23 +9,31 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="mockups/snowbotix-system.css">
 <style>
-  /* 01 : hero (full-bleed image, left-aligned copy zone) */
-  .hero-v2 { position: relative; overflow: hidden; padding: 120px 0 100px; min-height: 640px; display: flex; align-items: center; }
-  .hero-v2-bg { position: absolute; inset: 0; background-image: url('assets/HomePage_Hero Rough Mow_Real World Example.png'); background-size: cover; background-position: right center; background-repeat: no-repeat; }
-  .hero-v2-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.98) 0%, rgba(255,255,255,.98) 45%, rgba(255,255,255,.75) 55%, rgba(255,255,255,0) 68%); }
-  .hero-v2 > .wrap { position: relative; z-index: 2; width: 100%; }
-  .hero-v2-content { display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 620px; margin-left: 0; margin-right: auto; }
+  /* 01 : hero (natural-scale right-anchored image, left-aligned copy zone) */
+  .hero-v2 { position: relative; overflow: hidden; background: var(--white); padding: 100px 0 80px; min-height: 620px; display: flex; align-items: center; }
+  .hero-v2-visual { position: absolute; top: 0; right: 0; height: 100%; width: 45%; max-width: 640px; z-index: 1; }
+  .hero-v2-visual img { width: 100%; height: 100%; max-width: none; object-fit: contain; object-position: right center; display: block; }
+  .hero-v2-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 46%, rgba(255,255,255,.7) 60%, rgba(255,255,255,0) 74%); }
+  .hero-v2 > .wrap { position: relative; z-index: 3; width: 100%; }
+  .hero-v2-content { display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 560px; margin-left: 0; margin-right: auto; }
   .hero-v2 .eyebrow { color: var(--brand-green); }
-  .hero-v2 h1 { color: var(--ink-900); margin-top: 18px; font-size: clamp(28px,3.4vw,46px); line-height: 1.14; text-align: left; }
+  .hero-v2 h1 { color: var(--ink-900); margin-top: 18px; font-size: clamp(26px,3vw,46px); line-height: 1.14; text-align: left; }
   .hero-v2 .hero-copy { color: var(--ink-700); margin-top: 20px; font-size: 16.5px; line-height: 1.6; text-align: left; }
   .hero-v2 .cta-row { margin-top: 32px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
   .sec-link { color: var(--brand-green); font-weight: 600; font-size: 14px; transition: opacity .15s; }
   .sec-link:hover { opacity: .75; }
+  @media (max-width: 1024px) and (min-width: 761px) {
+    .hero-v2 { min-height: 460px; }
+    .hero-v2-content { max-width: 440px; }
+    .hero-v2-overlay { background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 52%, rgba(255,255,255,.7) 64%, rgba(255,255,255,0) 76%); }
+  }
   @media (max-width: 760px) {
-    .hero-v2 { min-height: 0; padding: 90px 0 60px; }
-    .hero-v2-bg { background-position: 80% center; }
-    .hero-v2-overlay { background: linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.97) 55%, rgba(255,255,255,.85) 75%, rgba(255,255,255,.65) 100%); }
+    .hero-v2 { min-height: 0; padding: 90px 0 60px; flex-direction: column; align-items: stretch; }
+    .hero-v2-visual { position: relative; height: 220px; width: 100%; max-width: none; margin-top: 32px; order: 2; }
+    .hero-v2-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+    .hero-v2-overlay { display: none; }
     .hero-v2-content { max-width: 100%; }
+    .hero-v2 > .wrap { order: 1; }
   }
 
   /* proof strip (dark band, 3 tags) */
@@ -33,11 +41,13 @@
   .proof-strip .wrap { padding: 20px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: center; }
   .proof-strip .tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: #6ee68a; border: 1px solid #2a4a31; padding: 8px 14px; }
 
-  /* audience link row (light band) */
+  /* audience link row (standalone light band) */
   .audience-row { background: var(--white); border-bottom: 1px solid var(--paper-100); }
-  .audience-row .wrap { padding: 18px 32px; display: flex; align-items: center; gap: 12px 28px; flex-wrap: wrap; justify-content: center; }
-  .audience-row a { font-size: 13px; font-weight: 600; color: var(--ink-700); transition: color .15s; }
+  .audience-row .wrap { padding: 22px 32px; display: flex; align-items: center; gap: 10px 8px; flex-wrap: wrap; justify-content: center; }
+  .audience-row a { font-size: 14px; font-weight: 600; color: var(--ink-700); transition: color .15s; padding: 4px 10px; }
   .audience-row a:hover { color: var(--brand-green); }
+  .audience-row a:not(:first-child) { position: relative; }
+  .audience-row a:not(:first-child)::before { content: ''; position: absolute; left: -5px; top: 50%; transform: translateY(-50%); width: 1px; height: 14px; background: var(--paper-100); }
 
   /* trusted band (dark, logos) */
   .trusted-band { background: #12161A; padding: 36px 0; }
@@ -178,7 +188,9 @@
 
 <!-- 1. HERO -->
 <header class="hero-v2">
-  <div class="hero-v2-bg"></div>
+  <div class="hero-v2-visual">
+    <img src="assets/HomePage_Hero Rough Mow_Real World Example.png" alt="Snowbotix robot performing autonomous slope mowing and brush control on vegetated terrain">
+  </div>
   <div class="hero-v2-overlay"></div>
   <div class="wrap">
     <div class="hero-v2-content">
@@ -203,13 +215,13 @@
 
 <section class="audience-row">
   <div class="wrap">
-    <a href="snowbotix_who-its-for_commercial-institutional.html">Commercial &amp; Institutional</a>
+    <a href="snowbotix_who-its-for_commercial-institutional.html">Facilities Management</a>
     <a href="snowbotix_who-its-for_airfields-flightlines.html">Airports &amp; Airfields</a>
-    <a href="snowbotix_who-its-for_healthcare-medical-campuses.html">Healthcare Campuses</a>
-    <a href="snowbotix_who-its-for_higher-ed-education-campuses.html">Higher Ed &amp; Education</a>
+    <a href="snowbotix_who-its-for_higher-ed-education-campuses.html">Education</a>
+    <a href="snowbotix_who-its-for_healthcare-medical-campuses.html">Healthcare</a>
     <a href="snowbotix_who-its-for_municipalities-public-works.html">Municipal / Public Works</a>
-    <a href="snowbotix_who-its-for_logistics-ports-intermodal-hubs.html">Industrial &amp; Logistics</a>
-    <a href="snowbotix_who-its-for_industrial-energy-infrastructure.html">Energy Infrastructure</a>
+    <a href="snowbotix_who-its-for_logistics-ports-intermodal-hubs.html">Industrial &amp; Logistics Sites</a>
+    <a href="snowbotix_who-its-for_industrial-energy-infrastructure.html">Energy &amp; Utilities</a>
     <a href="snowbotix_who-its-for_defense-government.html">Defense &amp; Government</a>
   </div>
 </section>
