@@ -37,6 +37,10 @@ img{max-width:100%;display:block;}
 .hero h1{font-size:clamp(26px,3.5vw,44px);font-weight:700;line-height:1.14;max-width:800px;margin-bottom:18px;}
 .hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
 .hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+.hero-media{background:#1d1f22;border:1px solid var(--line);border-radius:4px;overflow:hidden;align-self:stretch;display:flex;}
+.hero-media img{width:100%;height:100%;object-fit:contain;display:block;}
+@media(max-width:880px){.hero-split{grid-template-columns:1fr;gap:32px;}.hero-media{max-height:300px;}}
 .qual-bar{display:flex;flex-wrap:wrap;gap:6px 20px;border-top:1px solid var(--line);padding-top:18px;}
 .qual-item{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--steel);letter-spacing:.04em;display:flex;align-items:center;gap:6px;}
 .qual-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--brand-green);flex-shrink:0;}
@@ -170,7 +174,8 @@ img{max-width:100%;display:block;}
 </div>
 
 <section class="hero">
-  <div class="hero-inner">
+  <div class="hero-inner hero-split">
+    <div>
     <p class="eyebrow">All-Season Outdoor Maintenance</p>
     <h1>Keep outdoor routes maintained year-round with one autonomous platform.</h1>
     <p class="hero-sub">Snowbotix automates hard-to-staff outdoor maintenance routes across snow removal, de-icing, sweeping, debris management, slope mowing, brush control, asset inspection, and proof-of-service reporting. The platform uses supervised autonomy, mapped operating zones and 360-degree sensing, human-in-the-loop monitoring, and geocoded service records to turn recurring grounds work into a managed operating system.</p>
@@ -185,6 +190,10 @@ img{max-width:100%;display:block;}
       <span class="qual-item">Human-in-the-loop monitoring</span>
       <span class="qual-item">Geocoded service evidence</span>
       <span class="qual-item">Fleet dashboard visibility</span>
+    </div>
+    </div>
+    <div class="hero-media">
+      <img src="assets/Multiple Seasonal Attachments_v2.png" alt="Snowbotix tracked base platform surrounded by its seasonal attachments: BOSS snowplow, solid spreader, sweeper, mowing deck, and liquid spreader">
     </div>
   </div>
 </section>

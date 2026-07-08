@@ -31,8 +31,11 @@ img{max-width:100%;display:block;}
 .breadcrumb-inner{max-width:var(--page-max);margin:0 auto;display:flex;gap:8px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--steel);}
 .breadcrumb a{color:var(--muted);transition:color .15s;}
 .breadcrumb a:hover{color:var(--ink);}
-.hero{background:var(--snow-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);}
-.hero-inner{max-width:var(--page-max);margin:0 auto;}
+.hero{background:var(--snow-soft);padding:72px 24px 60px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+.hero-bg{position:absolute;top:0;right:0;bottom:0;width:58%;background:url('assets/sweeping-brush-path.png') 70% 22%/cover no-repeat;}
+.hero-fade{position:absolute;inset:0;background:linear-gradient(90deg,var(--snow-soft) 0%,var(--snow-soft) 45%,rgba(232,234,237,.85) 58%,rgba(232,234,237,0) 74%);}
+@media(max-width:760px){.hero-bg{position:static;width:100%;height:220px;margin-top:28px;border-radius:4px;}.hero-fade{display:none;}}
+.hero-inner{max-width:var(--page-max);margin:0 auto;position:relative;z-index:2;}
 .eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-green);margin-bottom:14px;}
 .hero h1{font-size:clamp(26px,3.5vw,44px);font-weight:700;line-height:1.14;max-width:800px;margin-bottom:18px;}
 .hero-sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.65;margin-bottom:32px;}
@@ -183,6 +186,8 @@ img{max-width:100%;display:block;}
       <span class="qual-item">Geocoded proof-of-service records</span>
     </div>
   </div>
+  <div class="hero-bg" role="img" aria-label="Snowbotix robot sweeping debris from a tree-lined pedestrian path with a rotary brush"></div>
+  <div class="hero-fade" aria-hidden="true"></div>
 </section>
 
 <section class="section" style="background:var(--snow);">
